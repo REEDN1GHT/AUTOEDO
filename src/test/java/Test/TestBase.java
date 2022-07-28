@@ -19,7 +19,7 @@ import java.time.Duration;
 public class TestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    BD con = new BD();
+    public BD con = new BD();
     @BeforeEach
     public void setUp() throws SQLException, ClassNotFoundException {
         System.setProperty("webdriver.chrome.driver","drivers\\chromedriver.exe");

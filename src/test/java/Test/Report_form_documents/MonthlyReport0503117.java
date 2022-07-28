@@ -1,10 +1,11 @@
-package Test;
+package Test.Report_form_documents;
 
 import Page.CabinetPage;
 import Page.InteractiveDoc;
 import Page.MainPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import Test.TestBase;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -38,7 +39,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Доходы");
         docPage.setAddString();
-        assertEquals(docPage.valuesADM(),con.checkIsADMExist(),message);
+        Assertions.assertEquals(docPage.valuesADM(),con.checkIsADMExist(),message);
     }
 
     //Справочник Код дохода
@@ -79,7 +80,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
-        assertEquals(docPage.valuesADM(),con.checkADM(),message);
+        Assertions.assertEquals(docPage.valuesADM(),con.checkADM(),message);
 
         //System.out.println();
 
@@ -100,7 +101,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
-        assertEquals(docPage.RazdelRasxod(),con.checkIsDocExist(),message);
+        Assertions.assertEquals(docPage.RazdelRasxod(),con.checkIsDocExist(),message);
 
 
     }
@@ -199,7 +200,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Источники");
         docPage.setAddString();
-        assertEquals(docPage.valuesADM(),con.checkIsADMIstochnick(),message);
+        Assertions.assertEquals(docPage.valuesADM(),con.checkIsADMIstochnick(),message);
     }
 
     //Справочник Код источника
@@ -218,7 +219,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Источники");
         docPage.setAddString();
-        assertEquals(docPage.kodDoxoda(),con.checkIsKodIstochnick(),message);
+        Assertions.assertEquals(docPage.kodDoxoda(),con.checkIsKodIstochnick(),message);
     }
 
 }
