@@ -29,6 +29,9 @@ public class InteractiveDoc{
     @FindBy(css = ".btn.mr-2.btn-outline-primary.btn-small")
     WebElement addString;
 
+    @FindBy (id = "gwt-uid-27")
+    WebElement yearFormRio;
+
     @FindBy (css=".swal2-actions.swal2-loading")
     private By loaderDoc = By.id("swal2-title");
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
@@ -43,6 +46,12 @@ public void setPeriod()
     clickPeriod.click();
     viborPeriod.click();
 
+}
+public void setYearFormRio()
+{
+//    yearFormRio.click();
+   // wait.until(ExpectedConditions.visibilityOfElementLocated((By) yearFormRio));
+    yearFormRio.sendKeys("2022");
 }
     public void setPodotchet_doxod(String podotchet) throws InterruptedException {
         clickPod.click();

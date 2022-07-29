@@ -3,6 +3,7 @@ package Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -21,6 +22,16 @@ public class MainPage {
         PageFactory.initElements(driver,this);
     }
     private By cabinetRole = By.id("cabinet");
+
+    @FindAll(
+            {@FindBy (id = "login"),
+             @FindBy(id = "password")})
+    public WebElement logopas;
+
+
+
+
+
 
     @FindBy(css = ".btn.d-flex.mt-4.align-items-center.btn-primary.btn-huge")
     public WebElement buttonEnterMainPage;
@@ -70,6 +81,7 @@ public class MainPage {
     {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSignInCabinet));
     }
+
     public void authorization(String logopas,String value)  {
         setLoginField(logopas);
         setPasswordField(logopas);

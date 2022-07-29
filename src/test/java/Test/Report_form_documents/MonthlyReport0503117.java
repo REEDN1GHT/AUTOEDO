@@ -6,15 +6,7 @@ import Page.MainPage;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import Test.TestBase;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.Arguments;
-import org.junit.jupiter.params.provider.MethodSource;
-
-import java.sql.SQLException;
-import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.params.provider.Arguments.arguments;
+import org.openqa.selenium.WebElement;
 
 public class MonthlyReport0503117 extends TestBase {
     String message = "Справочник ЭДО не соответствует справочнику в БД";
@@ -29,7 +21,7 @@ public class MonthlyReport0503117 extends TestBase {
         MainPage mainPage = new MainPage(driver, wait);
         mainPage.open();
         mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+       // mainPage.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -39,7 +31,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Доходы");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.valuesADM(),con.checkIsADMExist(),message);
+        Assertions.assertEquals(docPage.valuesADM(),request.checkIsADMExist(),message);
     }
 
     //Справочник Код дохода
@@ -58,7 +50,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Доходы");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.kodDoxoda(),con.checkKodDoxodaDoxod(),message);
+        Assertions.assertEquals(docPage.kodDoxoda(),request.checkKodDoxodaDoxod(),message);
 
     }
 
@@ -80,7 +72,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.valuesADM(),con.checkADM(),message);
+        Assertions.assertEquals(docPage.valuesADM(),request.checkADM(),message);
 
         //System.out.println();
 
@@ -101,7 +93,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.RazdelRasxod(),con.checkIsDocExist(),message);
+        Assertions.assertEquals(docPage.RazdelRasxod(),request.checkIsDocExist(),message);
 
 
     }
@@ -121,7 +113,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.TselevaiaRasxod(),con.TselevaiaRasxod(),message);
+        Assertions.assertEquals(docPage.TselevaiaRasxod(),request.TselevaiaRasxod(),message);
         // System.out.println(docPage.TselevaiaRasxod());
     }
     //Справочник Целевая ст. МО
@@ -140,7 +132,7 @@ public class MonthlyReport0503117 extends TestBase {
            docPage.loaderDoc();
            docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
          docPage.setAddString();
-        Assertions.assertEquals(docPage.TselevaiaMORasxod(),con.TselevaiaMORasxod(),message);
+        Assertions.assertEquals(docPage.TselevaiaMORasxod(),request.TselevaiaMORasxod(),message);
        // System.out.println(con.TselevaiaMORasxod());
     }
 
@@ -160,7 +152,8 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.VIRasxod(),con.viRasxod(),message);
+        Assertions.assertEquals(docPage.VIRasxod(),request.viRasxod(),message);
+
     }
 
     //Справочик КОСГУ
@@ -179,7 +172,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.KosgyRasxod(),con.kosgyRasxod(),message);
+        Assertions.assertEquals(docPage.KosgyRasxod(),request.kosgyRasxod(),message);
     }
 
     //подотчет (0503117) Отчет об исполнении. Источники
@@ -200,7 +193,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Источники");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.valuesADM(),con.checkIsADMIstochnick(),message);
+        Assertions.assertEquals(docPage.valuesADM(),request.checkIsADMIstochnick(),message);
     }
 
     //Справочник Код источника
@@ -219,7 +212,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.loaderDoc();
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Источники");
         docPage.setAddString();
-        Assertions.assertEquals(docPage.kodDoxoda(),con.checkIsKodIstochnick(),message);
+        Assertions.assertEquals(docPage.kodDoxoda(),request.checkIsKodIstochnick(),message);
     }
 
 }
