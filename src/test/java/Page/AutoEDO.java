@@ -11,11 +11,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 
-public class MainPage {
+public class AutoEDO {
     private WebDriver driver;
     private WebDriverWait wait;
     String url = "http://172.31.1.149/#/";
-    public MainPage(WebDriver driver, WebDriverWait wait)
+    public AutoEDO(WebDriver driver, WebDriverWait wait)
     {
         this.driver = driver;
         this.wait = wait;

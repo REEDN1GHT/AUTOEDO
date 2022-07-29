@@ -1,12 +1,11 @@
 package Test.Report_form_documents;
 
+import Page.AutoEDO;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
-import Page.MainPage;
+import Test.TestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import Test.TestBase;
-import org.openqa.selenium.WebElement;
 
 public class MonthlyReport0503117 extends TestBase {
     String message = "Справочник ЭДО не соответствует справочнику в БД";
@@ -18,10 +17,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник АДМ
     @Test
     public void interactivePage_CheckGuideAdm_GuideAdmCorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-       // mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -37,10 +36,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Код дохода
     @Test
     public void interactivePage_CheckGuideKodDoxod_GuideKodDoxodCorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -59,10 +58,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник АДМ
     @Test
     public void interactivePage_CheckGuideKodAdmRasxod_GuideKodAdmRasxodCorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -80,10 +79,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Раздел расхода
     @Test
     public void interactivePage_CheckGuideKodRazdelRasxod_GuideKodAdmRazdelCorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -100,10 +99,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Целевая статья
     @Test
     public void interactivePage_CheckGuideKodTselevaiaRasxod_GuideKodAdmTselevaiaCorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -119,10 +118,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Целевая ст. МО
     @Test
     public void interactivePage_CheckGuideKodTselevaiaMORasxod_GuideKodAdmTselevaiaMOCorrect() throws InterruptedException {
-            MainPage mainPage = new MainPage(driver, wait);
-           mainPage.open();
-           mainPage.buttonEnterMainPage.click();
-          mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+            AutoEDO autoEDO = new AutoEDO(driver, wait);
+           autoEDO.open();
+           autoEDO.buttonEnterMainPage.click();
+          autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
            CabinetPage cabinetPage = new CabinetPage(driver, wait);
            cabinetPage.createDocument();
            cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -139,10 +138,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Вид расходов
     @Test
     public void interactivePage_CheckGuideKodVIRasxod_GuideKodVICorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -153,16 +152,15 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
         Assertions.assertEquals(docPage.VIRasxod(),request.viRasxod(),message);
-
     }
 
     //Справочик КОСГУ
     @Test
     public void interactivePage_CheckGuideKosgyRasxod_GuideKodKosgyCorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -180,10 +178,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник АДМ
     @Test
     public void interactivePage_CheckGuideAdmIstochnick_GuideAdmCorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -199,10 +197,10 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Код источника
     @Test
     public void interactivePage_CheckGuideKodIstochnick_GuideAdmCorrect() throws InterruptedException {
-        MainPage mainPage = new MainPage(driver, wait);
-        mainPage.open();
-        mainPage.buttonEnterMainPage.click();
-        mainPage.authorization("MO_022", "Сотрудник Администрации МО");
+        AutoEDO autoEDO = new AutoEDO(driver, wait);
+        autoEDO.open();
+        autoEDO.buttonEnterMainPage.click();
+        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
