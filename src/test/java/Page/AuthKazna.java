@@ -5,7 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 
 
 public class AuthKazna {
@@ -30,20 +33,17 @@ public class AuthKazna {
     @FindBy(css=".btn.flex-grow-1.w-25.btn-huge.btn-primary")
     public WebElement buttonSignIn;
 
-    public By CheckLSbyBTN= By.cssSelector(".list-group-item.list-elements__item.list-group-item-action");
+    //public By CheckLSbyBTN= By.cssSelector(".list-group-item.list-elements__item.list-group-item-action");
+    @FindBy(css = ".list-group.list-elements.mb-3>button:nth-child(1)")
+    WebElement clickCardAuth;
 
     @FindBy(xpath = "//*[@id=\"app\"]/div/div/div/div[1]/div[2]/button[1]")
     public WebElement LSKIO;
 
 
-    public boolean existsSomeLS() {
-        try {
-            driver.findElement(CheckLSbyBTN);
-            return true;
-        } catch (NumberFormatException kek) {
-            return false;
-        }
-
+    protected boolean isElementPresent() {
+        List list = driver.findElements(By.cssSelector(".personal-account.d-flex.flex-column"));
+        return list.size() >0;
     }
 
     public void openulr()
@@ -51,7 +51,7 @@ public class AuthKazna {
         driver.navigate().to(url);
     }
 
-    public void setLoginfield(String login)
+   public void setLoginfield(String login)
     {
         Loginfield.sendKeys(login);
     }
@@ -65,20 +65,20 @@ public class AuthKazna {
     {
         buttonSignIn.click();
     }
-
-    public void setLSKIO()
+    public void setClickCardAuth()
     {
-        LSKIO.click();
+        clickCardAuth.click();
     }
 
-
-
-    public void authorKazna(String login, String pass)
+    public void kaznaAuthor(String login, String password)
     {
         setLoginfield(login);
-        setPasswordfield(pass);
+        setPasswordfield(password);
         setButtonSignIn();
-        existsSomeLS();
-        setLSKIO();
+        if (isElementPresent())
+        {
+            setClickCardAuth();
+        }
+
     }
 }

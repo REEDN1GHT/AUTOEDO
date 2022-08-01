@@ -27,12 +27,7 @@ public class AutoEDO {
             {@FindBy (id = "login"),
              @FindBy(id = "password")})
     public WebElement logopas;
-
-
-
-
-
-
+    
     @FindBy(css = ".btn.d-flex.mt-4.align-items-center.btn-primary.btn-huge")
     public WebElement buttonEnterMainPage;
     @FindBy(id = "login")

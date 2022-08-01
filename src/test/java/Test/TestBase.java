@@ -34,6 +34,7 @@ public class TestBase {
 
     }
 
+
     @AfterAll
     public static void tearDown() throws IOException, SQLException {
         var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);

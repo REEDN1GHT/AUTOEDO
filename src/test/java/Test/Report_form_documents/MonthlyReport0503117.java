@@ -1,11 +1,11 @@
 package Test.Report_form_documents;
 
-import Page.AutoEDO;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
-import Test.TestBase;
+import Page.AutoEDO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import Test.TestBase;
 
 public class MonthlyReport0503117 extends TestBase {
     String message = "Справочник ЭДО не соответствует справочнику в БД";
@@ -20,7 +20,7 @@ public class MonthlyReport0503117 extends TestBase {
         AutoEDO autoEDO = new AutoEDO(driver, wait);
         autoEDO.open();
         autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+       // mainPage.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
@@ -152,6 +152,7 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Расходы");
         docPage.setAddString();
         Assertions.assertEquals(docPage.VIRasxod(),request.viRasxod(),message);
+
     }
 
     //Справочик КОСГУ
