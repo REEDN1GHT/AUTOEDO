@@ -3,6 +3,10 @@ package Page;
 import Test.TestBase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Test1 extends TestBase {
 
@@ -11,7 +15,7 @@ public class Test1 extends TestBase {
        AuthKazna authKazna = new AuthKazna(driver,wait);
        authKazna.openulr();
        authKazna.kaznaAuthor("7810577007","7810577007");
-       Thread.sleep(5000);
-        driver.navigate().to("http://172.31.1.149/#/");
-   }
+       //driver.switchTo().activeElement(".modal-open");
+        authKazna.buttonClickLK.click();
+    }
 }
