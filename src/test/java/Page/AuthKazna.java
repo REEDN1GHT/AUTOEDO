@@ -21,6 +21,7 @@ public class AuthKazna {
     private WebDriverWait wait;
 
     String url = "http://172.31.1.149/kazna/login";
+    //String orgLS;
 
     public AuthKazna(WebDriver driver, WebDriverWait wait)
     {
@@ -37,11 +38,10 @@ public class AuthKazna {
     public WebElement buttonSignIn;
 
     //public By CheckLSbyBTN= By.cssSelector(".list-group-item.list-elements__item.list-group-item-action");
-    @FindBy(css = ".list-group.list-elements.mb-3>button:nth-child(1)")
-    WebElement clickCardAuth;
+    /*@FindBy(xpath = "//div[contains(text(),'0806003')]")
+    WebElement clickCardAuth;*/
 
-    @FindBy(xpath = "//*[@id=\"app\"]/div/div/div/div[1]/div[2]/button[1]")
-    public WebElement LSKIO;
+
 
     @FindBy(xpath = "//button[text()=' Перейти в ЛК ']")
     WebElement buttonClickLK;
@@ -71,19 +71,21 @@ public class AuthKazna {
     {
         buttonSignIn.click();
     }
-    public void setClickCardAuth()
+    public void setClickCardAuth(String orgLS)
     {
-        clickCardAuth.click();
+        WebElement SwitchLS = driver.findElement(By.xpath("//div[contains(text(),'"+orgLS+"')]"));
+        SwitchLS.click();
+        //clickCardAuth.click();
     }
 
-    public void kaznaAuthor(String login, String password)
+    public void kaznaAuthor(String login, String password, String orgLS)
     {
         setLoginfield(login);
         setPasswordfield(password);
         setButtonSignIn();
         if (isElementPresent())
         {
-            setClickCardAuth();
+            setClickCardAuth(orgLS);
         }
 
     }
