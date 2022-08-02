@@ -1,5 +1,6 @@
 package Test;
 
+import Test.Form_RIO.BD_Request_FormRIO;
 import Test.Report_form_documents.BD_Request_Monthly_Report_0503117;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
@@ -20,6 +21,7 @@ public class TestBase {
     protected static WebDriverWait wait;
     public static BD con = new BD();
     public BD_Request_Monthly_Report_0503117 request = new BD_Request_Monthly_Report_0503117();
+    public BD_Request_FormRIO requestRIO = new BD_Request_FormRIO();
 
     @BeforeAll
     public static void setUp() throws SQLException, ClassNotFoundException {

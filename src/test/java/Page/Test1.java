@@ -19,4 +19,12 @@ public class Test1 extends TestBase {
        //driver.switchTo().activeElement(".modal-open");
         //authKazna.buttonClickLK.click();
     }
+
+    @Test
+    public void testBD(){
+        requestRIO.CheckKBKMessages();
+        //System.out.println(requestRIO.CheckRequestGRBS());
+    }
+
+
 }
