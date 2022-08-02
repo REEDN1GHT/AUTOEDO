@@ -1,12 +1,12 @@
 package Page;
 
-import Test.TestBase;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,30 +28,34 @@ public class InteractiveDoc{
     WebElement podotchet_doxod_click;
     @FindBy(css = ".btn.mr-2.btn-outline-primary.btn-small")
     WebElement addString;
+    @FindBy (css=".swal2-actions.swal2-loading")
+    private By loaderDoc = By.id("swal2-title");
+
+    //РИО
 
     @FindBy (id = "gwt-uid-27")
     WebElement yearFormRio;
-
-    @FindBy (css=".swal2-actions.swal2-loading")
-    private By loaderDoc = By.id("swal2-title");
+    @FindBy (id="gwt-uid-29")
+    WebElement stageFormRIO;
+    @FindBy (id = "gwt-uid-33")
+    WebElement kbkFormRIO;
+    @FindBy(id = "gwt-uid-35")
+    WebElement versionDocument;
+@FindBy(css = ".gwt-MenuItem.gwt-MenuItem-selected")
+WebElement viborElement;
+@FindBy(xpath = "//button[text()='ОК']")
+public WebElement modalWindow;
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
     {
         this.driver = driver;
         this.wait = wait;
         PageFactory.initElements(driver,this);
     }
-//Методы для периодички
 public void setPeriod()
 {
     clickPeriod.click();
     viborPeriod.click();
 
-}
-public void setYearFormRio()
-{
-//    yearFormRio.click();
-   // wait.until(ExpectedConditions.visibilityOfElementLocated((By) yearFormRio));
-    yearFormRio.sendKeys("2022");
 }
     public void setPodotchet_doxod(String podotchet) throws InterruptedException {
         clickPod.click();
@@ -68,7 +72,34 @@ public void setYearFormRio()
     {
         addString.click();
     }
+    //Поле Год в шапке документа
+    public void setYearFormRio(String year) throws InterruptedException {
+        wait_waitYearRIO();
+        yearFormRio.sendKeys(year);
+        viborElement.click();
+        //yearFormRio.sendKeys(Keys.ENTER);
+    }
 
+    public void setStageFormRIO(String stage) throws InterruptedException {
+        wait_waitStageRio();
+        stageFormRIO.sendKeys(stage);
+        viborElement.click();
+       // stageFormRIO.sendKeys(Keys.ENTER);
+    }
+
+    public void setKbkFormRIO(String kbk) throws InterruptedException {
+        wait_Kbk_Rio();
+        kbkFormRIO.sendKeys(kbk);
+        viborElement.click();
+       // kbkFormRIO.sendKeys(Keys.ENTER);
+    }
+
+    public void setVersionDocument(String version) throws InterruptedException {
+        wait_VersionDocumentRio();
+        versionDocument.sendKeys(version);
+        viborElement.click();
+        //versionDocument.sendKeys(Keys.ENTER);
+    }
     public List<String> valuesADM()
     {
         List<String> myValuess = driver.findElements(By.cssSelector("#period-table__row_0 [aria-colindex='3'] .multiselect__element .multiselect__option"))
@@ -135,4 +166,63 @@ public void setYearFormRio()
 
         return myValuess;
     }
+    public boolean wait_waitYearRIO()
+    {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            return yearFormRio.isDisplayed();
+        }
+        catch (NoSuchElementException e){return false;}
+        finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+    }
+    public boolean wait_waitStageRio()
+    {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            return stageFormRIO.isDisplayed();
+        }
+        catch (NoSuchElementException e){return false;}
+        finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+    }
+    public boolean wait_Kbk_Rio()
+    {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            return kbkFormRIO.isDisplayed();
+        }
+        catch (NoSuchElementException e){return false;}
+        finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+    }
+    public boolean wait_VersionDocumentRio()
+    {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            return versionDocument.isDisplayed();
+        }
+        catch (NoSuchElementException e){return false;}
+        finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+    }
+
+    public void createDocument()  {
+        WebElement shadowHost = driver.findElement(By.tagName("left-nav-interactive"));
+        SearchContext shadowRoot = shadowHost.getShadowRoot();
+        WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#upload"));
+        shadowContent.click();
+   }
+ //  public boolean checkModal()
+  // {
+  //     try {
+  //         driver.findElements(By.id("swal2-title"));
+    //   return true;
+     //  }
+      // catch ()
+  // }
 }

@@ -1,10 +1,13 @@
-package Test;
+package Tests;
 
-import Test.Form_RIO.BD_Request_FormRIO;
-import Test.Report_form_documents.BD_Request_Monthly_Report_0503117;
+
+import Tests.Form_Rio.Form_Rio_11.BD_Request_FormRIO;
+import Tests.Report_form_documents.BD_Request_Monthly_Report_0503117;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -23,8 +26,8 @@ public class TestBase {
     public BD_Request_Monthly_Report_0503117 request = new BD_Request_Monthly_Report_0503117();
     public BD_Request_FormRIO requestRIO = new BD_Request_FormRIO();
 
-    @BeforeAll
-    public static void setUp() throws SQLException, ClassNotFoundException {
+    @BeforeEach
+    public void setUp() throws SQLException, ClassNotFoundException {
         con.getConnection();
         System.setProperty("webdriver.chrome.driver","drivers\\chromedriver.exe");
 
@@ -37,8 +40,8 @@ public class TestBase {
     }
 
 
-    @AfterAll
-    public static void tearDown() throws IOException, SQLException {
+    @AfterEach
+    public void tearDown() throws IOException, SQLException {
         var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(sourceFile,new File("C:\\creen\\screenshot.png"));
         //BD con = new BD();

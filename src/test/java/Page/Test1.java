@@ -1,12 +1,7 @@
 package Page;
 
-import Test.TestBase;
-import org.junit.jupiter.api.Assertions;
+import Tests.TestBase;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class Test1 extends TestBase {
 

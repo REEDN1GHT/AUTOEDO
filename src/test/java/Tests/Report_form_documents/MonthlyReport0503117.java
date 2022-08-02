@@ -1,11 +1,11 @@
-package Test.Report_form_documents;
+package Tests.Report_form_documents;
 
 import Page.CabinetPage;
 import Page.InteractiveDoc;
 import Page.AutoEDO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import Test.TestBase;
+import Tests.TestBase;
 
 public class MonthlyReport0503117 extends TestBase {
     String message = "Справочник ЭДО не соответствует справочнику в БД";

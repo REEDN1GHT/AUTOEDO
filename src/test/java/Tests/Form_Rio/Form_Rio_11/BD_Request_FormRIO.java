@@ -1,6 +1,6 @@
-package Test.Form_RIO;
+package Tests.Form_Rio.Form_Rio_11;
 
-import Test.BD;
+import Tests.BD;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -45,15 +45,15 @@ public class BD_Request_FormRIO extends BD {
         return RDOCID;
     }
 
-        public void CheckKBKMessages () {
-            CheckRequestGRBS();
-            if (DU_R == null) {
-                System.out.println("grbs request not approved");
-            }
-            else {
-                System.out.println("EDO is broken");
-            }
-
-
+    public void CheckKBKMessages () {
+        CheckRequestGRBS();
+        if (DU_R == null) {
+            System.out.println("grbs request not approved");
         }
+        else {
+            System.out.println("EDO is broken");
+        }
+
+
+    }
 }

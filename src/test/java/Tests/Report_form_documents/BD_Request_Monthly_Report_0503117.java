@@ -1,6 +1,6 @@
-package Test.Report_form_documents;
+package Tests.Report_form_documents;
 
-import Test.BD;
+import Tests.BD;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
