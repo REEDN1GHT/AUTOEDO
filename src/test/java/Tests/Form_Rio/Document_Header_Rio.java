@@ -3,6 +3,7 @@ package Tests.Form_Rio;
 import Page.AutoEDO;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
+import Tests.Form_Rio.Form_Rio_11.BD_Request_FormRIO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -12,6 +13,7 @@ import java.time.Duration;
 
 
 public class Document_Header_Rio extends Tests.TestBase {
+
     public static String yearFormRIO="2023";
     public static String stageFormRIO="01";
 
@@ -21,7 +23,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         AutoEDO autoEDO = new AutoEDO(driver, wait);
         autoEDO.open();
         autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("DavydovaGP", "Сотрудник ГРБС");
+        autoEDO.authorization("7832000076", "Сотрудник ГРБС");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
         cabinetPage.setSelect("Расчёты и обоснования, форма 11");
@@ -30,6 +32,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setYearFormRio(yearFormRIO);
         interactiveDoc.setStageFormRIO(stageFormRIO);
         interactiveDoc.modalWindow.click();
+        requestRIO.CheckKBKMessages();
 
     }
 
