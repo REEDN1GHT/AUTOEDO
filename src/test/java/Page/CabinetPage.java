@@ -1,5 +1,6 @@
 package Page;
 
+import Resources.ConfigBuilder;
 import org.openqa.selenium.By;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -60,10 +61,10 @@ shadowContent.click();
   //  {
  //       wait.until(ExpectedConditions.visibilityOfElementLocated(".nav-link"));
   //  }
-    public void setSelect(String value) throws InterruptedException {
+    public void setSelect() throws InterruptedException {
         var viborDoc = new Select(docSelect);
         Thread.sleep(1000);
-        viborDoc.selectByVisibleText(value);
+        viborDoc.selectByVisibleText(ConfigBuilder.getproperty("EDOnamedoc"));
     }
     public void clickCreate()
     {

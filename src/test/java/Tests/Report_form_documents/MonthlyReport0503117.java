@@ -2,7 +2,7 @@ package Tests.Report_form_documents;
 
 import Page.CabinetPage;
 import Page.InteractiveDoc;
-import Page.AutoEDO;
+import Page.AuthEDO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import Tests.TestBase;
@@ -17,13 +17,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник АДМ
     @Test
     public void interactivePage_CheckGuideAdm_GuideAdmCorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
        // mainPage.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();
@@ -36,13 +36,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Код дохода
     @Test
     public void interactivePage_CheckGuideKodDoxod_GuideKodDoxodCorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
+        authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();
@@ -58,13 +58,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник АДМ
     @Test
     public void interactivePage_CheckGuideKodAdmRasxod_GuideKodAdmRasxodCorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
+        authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();
@@ -79,13 +79,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Раздел расхода
     @Test
     public void interactivePage_CheckGuideKodRazdelRasxod_GuideKodAdmRazdelCorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
+        authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();
@@ -99,13 +99,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Целевая статья
     @Test
     public void interactivePage_CheckGuideKodTselevaiaRasxod_GuideKodAdmTselevaiaCorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
+        authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();
@@ -118,13 +118,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Целевая ст. МО
     @Test
     public void interactivePage_CheckGuideKodTselevaiaMORasxod_GuideKodAdmTselevaiaMOCorrect() throws InterruptedException {
-            AutoEDO autoEDO = new AutoEDO(driver, wait);
-           autoEDO.open();
-           autoEDO.buttonEnterMainPage.click();
-          autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+            AuthEDO authEDO = new AuthEDO(driver, wait);
+           authEDO.open();
+           authEDO.buttonEnterMainPage.click();
+          authEDO.authorization();
            CabinetPage cabinetPage = new CabinetPage(driver, wait);
            cabinetPage.createDocument();
-           cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+           cabinetPage.setSelect();
            cabinetPage.clickCreate();
            InteractiveDoc docPage = new InteractiveDoc(driver, wait);
            docPage.setPeriod();
@@ -138,13 +138,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Вид расходов
     @Test
     public void interactivePage_CheckGuideKodVIRasxod_GuideKodVICorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
+        authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();
@@ -158,13 +158,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочик КОСГУ
     @Test
     public void interactivePage_CheckGuideKosgyRasxod_GuideKodKosgyCorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
+        authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();
@@ -179,13 +179,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник АДМ
     @Test
     public void interactivePage_CheckGuideAdmIstochnick_GuideAdmCorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
+        authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();
@@ -198,13 +198,13 @@ public class MonthlyReport0503117 extends TestBase {
     //Справочник Код источника
     @Test
     public void interactivePage_CheckGuideKodIstochnick_GuideAdmCorrect() throws InterruptedException {
-        AutoEDO autoEDO = new AutoEDO(driver, wait);
-        autoEDO.open();
-        autoEDO.buttonEnterMainPage.click();
-        autoEDO.authorization("MO_022", "Сотрудник Администрации МО");
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        authEDO.buttonEnterMainPage.click();
+        authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
-        cabinetPage.setSelect("Месячный отчет по форме «(0503117) Отчет об исполнении бюджета»");
+        cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc docPage = new InteractiveDoc(driver, wait);
         docPage.setPeriod();

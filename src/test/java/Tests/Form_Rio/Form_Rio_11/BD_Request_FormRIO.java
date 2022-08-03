@@ -12,27 +12,27 @@ import java.util.List;
 import static Tests.Form_Rio.Document_Header_Rio.yearFormRIO;
 import static Tests.Form_Rio.Document_Header_Rio.stageFormRIO;
 
+
 public class BD_Request_FormRIO extends BD {
 
-    public String DU_R;
+    public static String DU_R;
     public String NDOCID;
 
 
-    public List<String> CheckRequestGRBS() {
+    public String CheckRequestGRBS() {
 
         List<String> RDOCID = new ArrayList<>();
         try {
             Statement statement1 = getConnection().createStatement();
             String sql = "Execute dbo.PRB_R_ZR_Doc_Check" +
                     " @GroupName='7830002430/1599', " +
-                    "@CUL='7832000076', " +
-                    "@CSTD=\""+stageFormRIO+"\"," +
-                    "@YEAR=\""+yearFormRIO+"\"";
+                    "@CUL='7809029013', " +
+                    "@CSTD=\"" + stageFormRIO + "\"," +
+                    "@YEAR=\"" + yearFormRIO + "\"";
             ResultSet Result1 = statement1.executeQuery(sql);
             while (Result1.next()) {
                 NDOCID = Result1.getString("DOCID");
             }
-            String DocIID = String.valueOf(90428907);
             Statement statement2 = getConnection().createStatement();
             String sql2 = "select * from DOC where docid=" + NDOCID;
 
@@ -45,19 +45,6 @@ public class BD_Request_FormRIO extends BD {
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
-        //System.out.println(RDOCID);
-        return RDOCID;
-    }
-
-    public void CheckKBKMessages () {
-        CheckRequestGRBS();
-        if (DU_R == null) {
-            System.out.println("grbs request not approved");
-        }
-        else {
-            System.out.println("EDO is broken");
-        }
-
-
+        return DU_R;
     }
 }

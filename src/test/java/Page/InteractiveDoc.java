@@ -1,5 +1,6 @@
 package Page;
 
+import Resources.ConfigBuilder;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -73,23 +74,23 @@ public void setPeriod()
         addString.click();
     }
     //Поле Год в шапке документа
-    public void setYearFormRio(String year) throws InterruptedException {
+    public void setYearFormRio() throws InterruptedException {
         wait_waitYearRIO();
-        yearFormRio.sendKeys(year);
+        yearFormRio.sendKeys(ConfigBuilder.getproperty("yearFormRIO"));
         viborElement.click();
         //yearFormRio.sendKeys(Keys.ENTER);
     }
 
-    public void setStageFormRIO(String stage) throws InterruptedException {
+    public void setStageFormRIO() throws InterruptedException {
         wait_waitStageRio();
-        stageFormRIO.sendKeys(stage);
+        stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
         viborElement.click();
        // stageFormRIO.sendKeys(Keys.ENTER);
     }
 
-    public void setKbkFormRIO(String kbk) throws InterruptedException {
+    public void setKbkFormRIO() throws InterruptedException {
         wait_Kbk_Rio();
-        kbkFormRIO.sendKeys(kbk);
+        kbkFormRIO.sendKeys(ConfigBuilder.getproperty("kbkFormRIO"));
         viborElement.click();
        // kbkFormRIO.sendKeys(Keys.ENTER);
     }

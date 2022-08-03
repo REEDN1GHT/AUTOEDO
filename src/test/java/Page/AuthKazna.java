@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+import Resources.ConfigBuilder;
+
 
 
 public class AuthKazna {
@@ -20,7 +22,7 @@ public class AuthKazna {
 
     private WebDriverWait wait;
 
-    String url = "http://172.31.1.149/kazna/login";
+    String url;
     //String orgLS;
 
     public AuthKazna(WebDriver driver, WebDriverWait wait)
@@ -54,38 +56,39 @@ public class AuthKazna {
 
     public void openulr()
     {
-        driver.navigate().to(url);
+        driver.navigate().to(ConfigBuilder.getproperty("KAZNAurl"));
     }
 
-   public void setLoginfield(String login)
+   public void setLoginfield()
     {
-        Loginfield.sendKeys(login);
+        Loginfield.sendKeys(ConfigBuilder.getproperty("KAZNAlogin"));
     }
 
-    public void setPasswordfield(String pass)
+    public void setPasswordfield()
     {
-        Passwordfield.sendKeys(pass);
+        Passwordfield.sendKeys(ConfigBuilder.getproperty("KAZNApassword"));
     }
 
     public void setButtonSignIn()
     {
         buttonSignIn.click();
     }
-    public void setClickCardAuth(String orgLS)
+    public void setClickCardAuth()
     {
+        String orgLS = ConfigBuilder.getproperty("KAZNAorgLS");
         WebElement SwitchLS = driver.findElement(By.xpath("//div[contains(text(),'"+orgLS+"')]"));
         SwitchLS.click();
         //clickCardAuth.click();
     }
 
-    public void kaznaAuthor(String login, String password, String orgLS)
+    public void kaznaAuthor()
     {
-        setLoginfield(login);
-        setPasswordfield(password);
+        setLoginfield();
+        setPasswordfield();
         setButtonSignIn();
         if (isElementPresent())
         {
-            setClickCardAuth(orgLS);
+            setClickCardAuth();
         }
 
     }

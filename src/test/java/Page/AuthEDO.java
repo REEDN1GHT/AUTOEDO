@@ -3,19 +3,20 @@ package Page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import Resources.ConfigBuilder;
 
 
-public class AutoEDO {
+public class AuthEDO {
     private WebDriver driver;
     private WebDriverWait wait;
+
     String url = "http://172.31.1.149/#/";
-    public AutoEDO(WebDriver driver, WebDriverWait wait)
+    public AuthEDO(WebDriver driver, WebDriverWait wait)
     {
         this.driver = driver;
         this.wait = wait;
@@ -23,10 +24,10 @@ public class AutoEDO {
     }
     private By cabinetRole = By.id("cabinet");
 
-    @FindAll(
+    /*@FindAll(
             {@FindBy (id = "login"),
              @FindBy(id = "password")})
-    public WebElement logopas;
+    public WebElement logopas;*/
     
     @FindBy(css = ".btn.d-flex.mt-4.align-items-center.btn-primary.btn-huge")
     public WebElement buttonEnterMainPage;
@@ -47,24 +48,24 @@ public class AutoEDO {
 
     public void open()
     {
-        driver.navigate().to(url);
+        driver.navigate().to(ConfigBuilder.getproperty("EDOurl"));
     }
 
-    public void setLoginField(String logoPas)
+    public void setLoginField()
     {
-        loginField.sendKeys(logoPas);
+        loginField.sendKeys(ConfigBuilder.getproperty("EDOlogin"));
     }
-    public void setPasswordField(String logoPas)
+    public void setPasswordField()
     {
-        passwordField.sendKeys(logoPas);
+        passwordField.sendKeys(ConfigBuilder.getproperty("EDOpassword"));
     }
     public void setButtonEnterAuthorization()
     {
         buttonEnterAuthorization.click();
     }
-    public void role(String value)  {
+    public void role()  {
         var cabinetRole = new Select(role);
-        cabinetRole.selectByVisibleText(value);
+        cabinetRole.selectByVisibleText(ConfigBuilder.getproperty("EDOrole"));
 
         //return new CabinetPage(driver,wait);
     }
@@ -77,11 +78,11 @@ public class AutoEDO {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSignInCabinet));
     }
 
-    public void authorization(String logopas,String value)  {
-        setLoginField(logopas);
-        setPasswordField(logopas);
+    public void authorization()  {
+        setLoginField();
+        setPasswordField();
         setButtonEnterAuthorization();
-        role(value);
+        role();
         waitCabinet();
         //Thread.sleep(500);
         setButtonSignInCabinet();
