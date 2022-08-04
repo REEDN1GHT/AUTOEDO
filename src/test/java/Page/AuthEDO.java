@@ -10,25 +10,29 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Resources.ConfigBuilder;
 
+import java.util.Objects;
+
 
 public class AuthEDO {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    String url = "http://172.31.1.149/#/";
-    public AuthEDO(WebDriver driver, WebDriverWait wait)
-    {
+    String EDOurl = ConfigBuilder.getproperty("EDOurl");
+    String EDOPROD = "https://edo.fincom.gov.spb.ru/#/";
+
+    public AuthEDO(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
     private By cabinetRole = By.id("cabinet");
 
     /*@FindAll(
             {@FindBy (id = "login"),
              @FindBy(id = "password")})
     public WebElement logopas;*/
-    
+
     @FindBy(css = ".btn.d-flex.mt-4.align-items-center.btn-primary.btn-huge")
     public WebElement buttonEnterMainPage;
     @FindBy(id = "login")
@@ -39,52 +43,61 @@ public class AuthEDO {
     private WebElement buttonEnterAuthorization;
     @FindBy(css = ".btn.flex-grow-1.btn-primary.btn-huge")
     public WebElement buttonSubmit;
-    @FindBy(id="cabinet")
+    @FindBy(id = "cabinet")
     WebElement role;
     @FindBy(css = "#cabinet-modal___BV_modal_footer_ >button:nth-child(1)")
     public WebElement buttonSignInCabinet;
     //@FindBy(id = "")
     public By titleRoleText = By.id("no-target-role");
 
-    public void open()
-    {
+    public void open() {
         driver.navigate().to(ConfigBuilder.getproperty("EDOurl"));
     }
 
-    public void setLoginField()
-    {
+    public void setButtonEnterMainPage(){
+        buttonEnterMainPage.click();
+    }
+    public void setLoginField() {
         loginField.sendKeys(ConfigBuilder.getproperty("EDOlogin"));
     }
-    public void setPasswordField()
-    {
+
+    public void setPasswordField() {
         passwordField.sendKeys(ConfigBuilder.getproperty("EDOpassword"));
     }
-    public void setButtonEnterAuthorization()
-    {
+
+    public void setButtonEnterAuthorization() {
         buttonEnterAuthorization.click();
     }
-    public void role()  {
+
+    public void role() {
         var cabinetRole = new Select(role);
         cabinetRole.selectByVisibleText(ConfigBuilder.getproperty("EDOrole"));
 
         //return new CabinetPage(driver,wait);
     }
-    public void setButtonSignInCabinet()
-    {
+
+    public void setButtonSignInCabinet() {
         buttonSignInCabinet.click();
     }
-    public void waitCabinet()
-    {
+
+    public void waitCabinet() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSignInCabinet));
     }
 
-    public void authorization()  {
-        setLoginField();
-        setPasswordField();
-        setButtonEnterAuthorization();
-        role();
-        waitCabinet();
-        //Thread.sleep(500);
-        setButtonSignInCabinet();
+    public void authorization() throws InterruptedException {
+        Auth_through_the_admin_panel authADM = new Auth_through_the_admin_panel(driver, wait);
+        if (Objects.equals(EDOurl, EDOPROD)) {
+            authADM.ADMINauthorization();
+        } else {
+            open();
+            setButtonEnterMainPage();
+            setLoginField();
+            setPasswordField();
+            setButtonEnterAuthorization();
+            role();
+            waitCabinet();
+            //Thread.sleep(500);
+            setButtonSignInCabinet();
+        }
     }
 }

@@ -16,8 +16,6 @@ public class Document_Header_Rio extends Tests.TestBase {
     @Test
     public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -36,8 +34,6 @@ public class Document_Header_Rio extends Tests.TestBase {
     @Test
     public void interactivePage_CheckYearFormRIO_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -51,8 +47,6 @@ public class Document_Header_Rio extends Tests.TestBase {
     @Test
     public void interactivePage_CheckStageFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -68,8 +62,6 @@ public class Document_Header_Rio extends Tests.TestBase {
     @Test
     public void interactivePage_CheckKbkFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -86,8 +78,6 @@ public class Document_Header_Rio extends Tests.TestBase {
     @Test
     public void interactivePage_CheckVersionFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();

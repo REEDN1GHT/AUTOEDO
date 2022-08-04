@@ -18,8 +18,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideAdm_GuideAdmCorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
        // mainPage.authorization("MO_022", "Сотрудник Администрации МО");
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -37,8 +35,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideKodDoxod_GuideKodDoxodCorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -59,8 +55,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideKodAdmRasxod_GuideKodAdmRasxodCorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -80,8 +74,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideKodRazdelRasxod_GuideKodAdmRazdelCorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -100,8 +92,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideKodTselevaiaRasxod_GuideKodAdmTselevaiaCorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -119,8 +109,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideKodTselevaiaMORasxod_GuideKodAdmTselevaiaMOCorrect() throws InterruptedException {
             AuthEDO authEDO = new AuthEDO(driver, wait);
-           authEDO.open();
-           authEDO.buttonEnterMainPage.click();
           authEDO.authorization();
            CabinetPage cabinetPage = new CabinetPage(driver, wait);
            cabinetPage.createDocument();
@@ -139,8 +127,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideKodVIRasxod_GuideKodVICorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -159,8 +145,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideKosgyRasxod_GuideKodKosgyCorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
@@ -180,8 +164,6 @@ public class MonthlyReport0503117 extends TestBase {
     @Test
     public void interactivePage_CheckGuideAdmIstochnick_GuideAdmCorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.open();
-        authEDO.buttonEnterMainPage.click();
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         cabinetPage.createDocument();
