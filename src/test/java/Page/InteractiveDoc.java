@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 public class InteractiveDoc{
     private WebDriver driver;
     private WebDriverWait wait;
+
+    public static String iNNGRBS;
     //Локаторы для периодички
    // @FindBy(id="gwt-uid-57")// присмотреться к локатору, возможно изменится
    // WebElement period;
@@ -38,6 +40,9 @@ public class InteractiveDoc{
     WebElement yearFormRio;
     @FindBy (id="gwt-uid-29")
     WebElement stageFormRIO;
+    @FindBy (id = "gwt-uid-31")
+    WebElement placeiNNGRBS;
+
     @FindBy (id = "gwt-uid-33")
     WebElement kbkFormRIO;
     @FindBy(id = "gwt-uid-35")
@@ -93,6 +98,10 @@ public void setPeriod()
         kbkFormRIO.sendKeys(ConfigBuilder.getproperty("kbkFormRIO"));
         viborElement.click();
        // kbkFormRIO.sendKeys(Keys.ENTER);
+    }
+
+    public void setiNNGRBS() {
+        iNNGRBS = placeiNNGRBS.getAttribute("value");
     }
 
     public void setVersionDocument(String version) throws InterruptedException {

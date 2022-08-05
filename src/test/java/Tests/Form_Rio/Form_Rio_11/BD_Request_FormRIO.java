@@ -11,6 +11,7 @@ import java.util.List;
 
 import static Tests.Form_Rio.Document_Header_Rio.yearFormRIO;
 import static Tests.Form_Rio.Document_Header_Rio.stageFormRIO;
+import static Page.InteractiveDoc.iNNGRBS;
 
 
 public class BD_Request_FormRIO extends BD {
@@ -26,7 +27,7 @@ public class BD_Request_FormRIO extends BD {
             Statement statement1 = getConnection().createStatement();
             String sql = "Execute dbo.PRB_R_ZR_Doc_Check" +
                     " @GroupName='7830002430/1599', " +
-                    "@CUL='7809029013', " +
+                    "@CUL=\"" + iNNGRBS + "\"," +
                     "@CSTD=\"" + stageFormRIO + "\"," +
                     "@YEAR=\"" + yearFormRIO + "\"";
             ResultSet Result1 = statement1.executeQuery(sql);

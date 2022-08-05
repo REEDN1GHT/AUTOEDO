@@ -43,8 +43,22 @@ public class Test1 extends TestBase {
     public void testAYHTcofn() throws InterruptedException{
     AuthEDO authEDO = new AuthEDO(driver, wait);
     authEDO.authorization();
+    }
+
+    @Test
+    public void testaprs() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setiNNGRBS();
+
 
     }
+
 }
 
 
