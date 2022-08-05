@@ -4,11 +4,13 @@ import Tests.Form_Rio.Form_Rio_11.BD_Request_FormRIO;
 import Tests.TestBase;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import static Tests.Form_Rio.Form_Rio_11.BD_Request_FormRIO.DU_R;
 
 public class Test1 extends TestBase {
 
+    public static String numFO;
     @Test
     public void testauth() throws InterruptedException {
         AuthKazna authKazna = new AuthKazna(driver, wait);
@@ -57,8 +59,26 @@ public class Test1 extends TestBase {
         interactiveDoc.setiNNGRBS();
 
 
-    }
 
+    }
+    //Парс номера fo из url
+    @Test
+    public void testFO() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        wait.until(ExpectedConditions.urlContains("fo"));
+        String url = driver.getCurrentUrl();
+        String[] urlfo = url.split("=");
+        numFO = String.valueOf(urlfo[2]);
+        System.out.println(numFO);
+
+
+    }
 }
 
 
