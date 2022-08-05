@@ -19,7 +19,9 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.time.Duration;
 
-public class TestBase {
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+
+                     public class TestBase {
     protected static WebDriver driver;
     protected static WebDriverWait wait;
     public static BD con = new BD();
@@ -29,6 +31,7 @@ public class TestBase {
     @BeforeEach
     public void setUp() throws SQLException, ClassNotFoundException {
         con.getConnection();
+
         System.setProperty("webdriver.chrome.driver","drivers\\chromedriver.exe");
 
         driver = new ChromeDriver();
