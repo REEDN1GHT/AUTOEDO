@@ -1,12 +1,10 @@
                      package Tests;
 
 
-import Tests.Form_Rio.Form_Rio_11.BD_Request_FormRIO;
+import Tests.Form_Rio.BD_Request_Header_FormRIO;
 import Tests.Report_form_documents.BD_Request_Monthly_Report_0503117;
 import org.apache.commons.io.FileUtils;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -26,7 +24,7 @@ import static org.junit.jupiter.api.Assumptions.assumeTrue;
     protected static WebDriverWait wait;
     public static BD con = new BD();
     public BD_Request_Monthly_Report_0503117 request = new BD_Request_Monthly_Report_0503117();
-    public BD_Request_FormRIO requestRIO = new BD_Request_FormRIO();
+    public BD_Request_Header_FormRIO requestRIO = new BD_Request_Header_FormRIO();
 
     @BeforeEach
     public void setUp() throws SQLException, ClassNotFoundException {

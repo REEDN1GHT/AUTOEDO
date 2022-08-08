@@ -1,12 +1,11 @@
 package Page;
 
-import Tests.Form_Rio.Form_Rio_11.BD_Request_FormRIO;
+import Tests.Form_Rio.BD_Request_Header_FormRIO;
 import Tests.TestBase;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import static Tests.Form_Rio.Form_Rio_11.BD_Request_FormRIO.DU_R;
+import static Tests.Form_Rio.BD_Request_Header_FormRIO.DU_R;
 
 public class Test1 extends TestBase {
 
@@ -26,8 +25,8 @@ public class Test1 extends TestBase {
 
     @Test
     public void testR(){
-        BD_Request_FormRIO bd_request_formRIO = new BD_Request_FormRIO();
-        bd_request_formRIO.CheckRequestGRBS();
+        BD_Request_Header_FormRIO bd_request_Header_formRIO = new BD_Request_Header_FormRIO();
+        bd_request_Header_formRIO.CheckRequestGRBS();
         System.out.println(DU_R);
 
 
@@ -63,7 +62,7 @@ public class Test1 extends TestBase {
     }
     //Парс номера fo из url
     @Test
-    public void testFO() throws InterruptedException {
+    public void testFO() throws InterruptedException {  //Номер формы ЭДО из домена
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
@@ -79,6 +78,16 @@ public class Test1 extends TestBase {
 
 
     }
+
+
+    @Test
+    public void testDBrequestRIO() throws InterruptedException {
+        BD_Request_Header_FormRIO BD = new BD_Request_Header_FormRIO();
+        System.out.println(BD.CheckListYEARformRIO());
+
+
+    }
+
 }
 
 

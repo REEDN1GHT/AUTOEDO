@@ -5,7 +5,9 @@ import Resources.ConfigBuilder;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.DisabledIf;
 import org.junit.jupiter.api.condition.EnabledIf;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.function.BooleanSupplier;
 
@@ -13,6 +15,7 @@ import static org.junit.jupiter.api.Assumptions.assumeFalse;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@ExtendWith(DisabledIfCondition.class)
 public class Document_Header_Rio extends Tests.TestBase {
 
     public static String yearFormRIO=ConfigBuilder.getproperty("yearFormRIO");
@@ -22,7 +25,7 @@ public class Document_Header_Rio extends Tests.TestBase {
     @Test
     @Order(1)
 
-    public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
+    public boolean interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
@@ -34,7 +37,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setStageFormRIO();
         interactiveDoc.modalWindow.click();
         Assertions.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
-
     }
 
 
@@ -42,7 +44,7 @@ public class Document_Header_Rio extends Tests.TestBase {
 
     @Test
     @Order(2)
-
+    @DisabledIf()
     public void interactivePage_CheckYearFormRIO_Successfull() throws InterruptedException {
    //     assumeFalse(interactivePage_CheckModalWindowNoKBK_Successful());
         AuthEDO authEDO = new AuthEDO(driver, wait);
