@@ -2,8 +2,9 @@ package Page;
 
 import Tests.Form_Rio.BD_Request_Header_FormRIO;
 import Tests.TestBase;
-import org.junit.jupiter.api.Test;
+
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.Test;
 
 import static Tests.Form_Rio.BD_Request_Header_FormRIO.DU_R;
 

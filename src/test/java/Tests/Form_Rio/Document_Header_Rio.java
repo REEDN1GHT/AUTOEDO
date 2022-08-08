@@ -4,28 +4,18 @@ import Page.AuthEDO;
 import Resources.ConfigBuilder;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.condition.DisabledIf;
-import org.junit.jupiter.api.condition.EnabledIf;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
-import java.util.function.BooleanSupplier;
 
-import static org.junit.jupiter.api.Assumptions.assumeFalse;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
-
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@ExtendWith(DisabledIfCondition.class)
 public class Document_Header_Rio extends Tests.TestBase {
 
     public static String yearFormRIO=ConfigBuilder.getproperty("yearFormRIO");
     public static String stageFormRIO=ConfigBuilder.getproperty("stageFormRIO");
 
 
-    @Test
-    @Order(1)
-
-    public boolean interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
+    @Test(priority = 1)
+    public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
@@ -36,15 +26,13 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setYearFormRio();
         interactiveDoc.setStageFormRIO();
         interactiveDoc.modalWindow.click();
-        Assertions.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
+        Assert.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
     }
 
 
 
 
-    @Test
-    @Order(2)
-    @DisabledIf()
+    @Test(priority = 2, dependsOnMethods = {"interactivePage_CheckModalWindowNoKBK_Successful"})
     public void interactivePage_CheckYearFormRIO_Successfull() throws InterruptedException {
    //     assumeFalse(interactivePage_CheckModalWindowNoKBK_Successful());
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -58,8 +46,8 @@ public class Document_Header_Rio extends Tests.TestBase {
 
 
     }
-    @Test
-    @Order(3)
+
+    @Test(priority = 3)
     public void interactivePage_CheckStageFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -74,8 +62,8 @@ public class Document_Header_Rio extends Tests.TestBase {
 
     }
 
-    @Test
-    @Order(4)
+
+    @Test(priority = 4)
     public void interactivePage_CheckKbkFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -91,8 +79,7 @@ public class Document_Header_Rio extends Tests.TestBase {
 
     }
 
-    @Test
-    @Order(5)
+    @Test(priority = 5)
     public void interactivePage_CheckVersionFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
