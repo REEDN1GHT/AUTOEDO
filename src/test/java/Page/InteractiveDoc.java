@@ -51,11 +51,17 @@ public class InteractiveDoc{
 WebElement viborElement;
 @FindBy(xpath = "//button[text()='ОК']")
 public WebElement modalWindow;
+
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
     {
         this.driver = driver;
         this.wait = wait;
         PageFactory.initElements(driver,this);
+    }
+
+    public boolean isElementPresented() {
+        List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show"));
+        return list.size() >0;
     }
 public void setPeriod()
 {
