@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static Page.InteractiveDoc.foFormRio;
 import static Page.InteractiveDoc.iNNGRBS;
 import static Tests.Form_Rio.Document_Header_Rio.*;
 
@@ -93,24 +92,24 @@ public class BD_Request_Header_FormRIO extends BD {
         List<String> RLkbk = new ArrayList<>();
         try {
             Statement statementKBK = getConnection().createStatement();
-            String sqlKBK = "Execute dbo.FO_Doc_List\n" +
-            "@FieldName='CPR_CCS_FULL_CVR',\n" +
-            "@GroupName='7830002430/1599',\n" +
-            "@DOCID=Null,\n" +
-            "@DOCID_Old=Null,\n" +
-            "@CPR_CCS_FULL_CVR=Null,\n" +
-            "@CUL_PARENT='7832000076',\n" +
-            "@FO='11',\n" +
-            "@STAGE='01',\n" +
-            "@VER_DP=Null,\n" +
-            "@CTD_SUB=Null,\n" +
-            "@CPR_CCS_FULL_CVR_Old=Null,\n" +
-            "@FIO=Null,\n" +
-            "@JOB=Null,\n" +
-            "@PHONE=Null,\n" +
-            "@FIO_CHIEF=Null,\n" +
-           " @JOB_CHIEF=Null,\n" +
-           " @YEAR='2023'";
+            String sqlKBK = "Execute dbo.FO_Doc_List \n" +
+                    "@FieldName='CPR_CCS_FULL_CVR', \n" +
+                    "@GroupName='7830002430/1599', \n" +
+                    "@DOCID=Null,\n" +
+                    "@DOCID_Old=Null, \n" +
+                    "@CPR_CCS_FULL_CVR=Null, \n" +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
+                    "@FO=\"" + foFormRIO + "\", \n" +
+                    "@STAGE=\"" + iNNGRBS + "\",, \n" +
+                    "@VER_DP=Null, \n" +
+                    "@CTD_SUB=Null, \n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null, \n" +
+                    "@FIO=Null, \n" +
+                    "@JOB=Null, \n" +
+                    "@PHONE=Null, \n" +
+                    "@FIO_CHIEF=Null, \n" +
+                    "@JOB_CHIEF=Null, \n" +
+                    "@YEAR=" + yearFormRIO;
             ResultSet ResultKBK = statementKBK.executeQuery(sqlKBK);
             while (ResultKBK.next()); {
                 String ListKBKformRIO = ResultKBK.getString(String.join("ПБК"));
@@ -131,10 +130,10 @@ public class BD_Request_Header_FormRIO extends BD {
                     "@GroupName='7830002430/1599', " +
                     "@DOCID=Null, " +
                     "@DOCID_Old=Null, " +
-                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\", " +
-                    "@CUL_PARENT=\"" +iNNGRBS+ "\", " +
-                    "@FO='11', " +
-                    "@STAGE=\"" +stageFormRIO+ "\", " +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", " +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\", " +
+                    "@FO=\"" + foFormRIO + "\", " +
+                    "@STAGE=\"" + stageFormRIO + "\", " +
                     "@VER_DP=Null, " +
                     "@CTD_SUB=Null, " +
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
@@ -143,7 +142,7 @@ public class BD_Request_Header_FormRIO extends BD {
                     "@PHONE=Null, " +
                     "@FIO_CHIEF=Null, " +
                     "@JOB_CHIEF=Null, " +
-                    "@YEAR=" +yearFormRIO;
+                    "@YEAR=" + yearFormRIO;
             ResultSet ResultVER = statementVER.executeQuery(sqlVER);
             while (ResultVER.next()) {
                 String ListVERforRIO = ResultVER.getString(String.join("Номер документа"));
@@ -165,9 +164,9 @@ public class BD_Request_Header_FormRIO extends BD {
                     "@GroupName='7830002430/1599', \n" +
                     "@DOCID=null, \n" +
                     "@DOCID_Old=null, \n" +
-                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\", \n" +
-                    "@CUL_PARENT=\"" +iNNGRBS+ "\", \n" +
-                    "@FO='11', \n" +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", \n" +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
+                    "@FO=\"" + foFormRIO + "\", \n" +
                     "@STAGE=\"" +stageFormRIO+ "\",\n" +
                     "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
                     "@CTD_SUB=Null, \n" +
@@ -177,16 +176,50 @@ public class BD_Request_Header_FormRIO extends BD {
                     "@PHONE=Null, \n" +
                     "@FIO_CHIEF=Null,\n" +
                     "@JOB_CHIEF=Null, \n" +
-                    "@YEAR=" +yearFormRIO;
+                    "@YEAR=" + yearFormRIO;
             ResultSet ResultVersionDP = statementVersionDP.executeQuery(sqlVersionDP);
             while (ResultVersionDP.next()) {
                 String ListVersionDP = ResultVersionDP.getString("Номер документа");
-                RLVersionDP.add(String.join(ListVersionDP));
+                RLVersionDP.add(String.join(ListVersionDP))
             }
         }catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLVersionDP.toString();
+    }
+
+    public String CheckListCTD_SUBformRIO() {
+        List<String> RLsub = new ArrayList<>();
+        try {
+            Statement statementSUB = getConnection().createStatement();
+            String sqlSUB ="Execute dbo.FO_Doc_List\n" +
+                    "@FieldName='CTD_SUB', \n" +
+                    "@GroupName='78320002430/1599', \n" +
+                    "@DOCID=Null, \n" +
+                    "@DOCID_Old=0, \n" +
+                    "@CPR_CCS_FULL_CVR=Null, \n" +
+                    "@CUL_PARENT=Null, \n" +
+                    "@FO=\"" + kbkFormRIO + "\", \n" +
+                    "@STAGE=Null, \n" +
+                    "@VER_DP=Null, \n" +
+                    "@CTD_SUB=Null, \n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null, \n" +
+                    "@FIO=Null, \n" +
+                    "@JOB=Null, \n" +
+                    "@PHONE=Null, \n" +
+                    "@FIO_CHIEF=Null,\n" +
+                    "@JOB_CHIEF=Null, \n" +
+                    "@YEAR=" + yearFormRIO;
+            ResultSet ResultSUB = statementSUB.executeQuery(sqlSUB);
+            while () {
+                String ListSUBkod = ResultSUB.getString("Код");
+                String ListSUBname = ResultSUB.getString("Наименование");
+                RLsub.add(String.join(" ", ListSUBkod, ListSUBname).trim());
+            }
+        }catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return RLsub.toString();
     }
 
 
