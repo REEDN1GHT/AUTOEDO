@@ -15,6 +15,8 @@ public class Document_Header_Rio extends Tests.TestBase {
 
     public static String yearFormRIO=ConfigBuilder.getproperty("yearFormRIO");
     public static String stageFormRIO=ConfigBuilder.getproperty("stageFormRIO");
+    public static String kbkFormRIO=ConfigBuilder.getproperty("kbkFormRIO");
+    public static String NUMBERdpFormRIO=ConfigBuilder.getproperty("NUMBERdpFormRIO");
 
 
     @Test()

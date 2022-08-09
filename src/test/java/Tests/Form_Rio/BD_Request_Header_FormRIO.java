@@ -10,17 +10,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static Tests.Form_Rio.Document_Header_Rio.yearFormRIO;
-import static Tests.Form_Rio.Document_Header_Rio.stageFormRIO;
 import static Page.InteractiveDoc.iNNGRBS;
+import static Tests.Form_Rio.Document_Header_Rio.*;
 
 
 public class BD_Request_Header_FormRIO extends BD {
 
     public static String DU_R;
     public String NDOCID;
-
-    public static String ListYEARformRIO;
 
     public String CheckListYEARformRIO() {
 
@@ -47,7 +44,7 @@ public class BD_Request_Header_FormRIO extends BD {
                     " @YEAR=Null;";
             ResultSet ResultYEAR = statementYEAR.executeQuery(sqlYEAR);
             while (ResultYEAR.next()) {
-                 ListYEARformRIO = ResultYEAR.getString("Год");
+                 String ListYEARformRIO = ResultYEAR.getString("Год");
                  RLyear.add(String.join(" ", ListYEARformRIO).trim());
                 Collections.sort(RLyear);
             }
@@ -103,7 +100,7 @@ public class BD_Request_Header_FormRIO extends BD {
                     "@CPR_CCS_FULL_CVR=Null, \n" +
                     "@CUL_PARENT=\"" +iNNGRBS+ "\", \n" +
                     "@FO='11', \n" +
-                    "@STAGE='01', \n" +
+                    "@STAGE=\"" +iNNGRBS+ "\",, \n" +
                     "@VER_DP=Null, \n" +
                     "@CTD_SUB=Null, \n" +
                     "@CPR_CCS_FULL_CVR_Old=Null, \n" +
@@ -122,6 +119,73 @@ public class BD_Request_Header_FormRIO extends BD {
             throwables.printStackTrace();
         }
         return RLkbk.toString();
+    }
+
+    public String CheckVERfromRIO() {
+        List<String> RLver =new ArrayList<>();
+        try {
+            Statement statementVER = getConnection().createStatement();
+            String sqlVER = "Execute dbo.FO_Doc_List " +
+                    "@FieldName='VER_DP', " +
+                    "@GroupName='7830002430/1599', " +
+                    "@DOCID=Null, " +
+                    "@DOCID_Old=Null, " +
+                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\", " +
+                    "@CUL_PARENT=\"" +iNNGRBS+ "\", " +
+                    "@FO='11', " +
+                    "@STAGE=\"" +stageFormRIO+ "\", " +
+                    "@VER_DP=Null, " +
+                    "@CTD_SUB=Null, " +
+                    "@CPR_CCS_FULL_CVR_Old=Null, " +
+                    "@FIO=Null, " +
+                    "@JOB=Null, " +
+                    "@PHONE=Null, " +
+                    "@FIO_CHIEF=Null, " +
+                    "@JOB_CHIEF=Null, " +
+                    "@YEAR=" +yearFormRIO;
+            ResultSet ResultVER = statementVER.executeQuery(sqlVER);
+            while (ResultVER.next()) {
+                String ListVERforRIO = ResultVER.getString(String.join("Номер документа"));
+                RLver.add(String.join(ListVERforRIO));
+            }
+
+        }catch (SQLException | ClassNotFoundException throwables){
+            throwables.printStackTrace();
+        }
+        return RLver.toString();
+    }
+
+    public String CheckVersionDPFormRIO() {
+        List<String> RLVersionDP = new ArrayList<>();
+        try {
+            Statement statementVersionDP = getConnection().createStatement();
+            String sqlVersionDP = "Execute dbo.FO_Doc_List \n" +
+                    "@FieldName='VAR_DP', \n" +
+                    "@GroupName='7830002430/1599', \n" +
+                    "@DOCID=null, \n" +
+                    "@DOCID_Old=null, \n" +
+                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\", \n" +
+                    "@CUL_PARENT=\"" +iNNGRBS+ "\", \n" +
+                    "@FO='11', \n" +
+                    "@STAGE=\"" +stageFormRIO+ "\",\n" +
+                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
+                    "@CTD_SUB=Null, \n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null, \n" +
+                    "@FIO=Null, \n" +
+                    "@JOB=Null, \n" +
+                    "@PHONE=Null, \n" +
+                    "@FIO_CHIEF=Null,\n" +
+                    "@JOB_CHIEF=Null, \n" +
+                    "@YEAR=" +yearFormRIO;
+            ResultSet ResultVersionDP = statementVersionDP.executeQuery(sqlVersionDP);
+            while (ResultVersionDP.next()) {
+                String ListVersionDP = ResultVersionDP.getString("Номер документа");
+                RLVersionDP.add(String.join(ListVersionDP))
+            }
+        }catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return RLVersionDP.toString();
     }
 
 
