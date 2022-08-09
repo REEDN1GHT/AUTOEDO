@@ -18,6 +18,8 @@ public class Document_Header_Rio extends Tests.TestBase {
     public static String kbkFormRIO=ConfigBuilder.getproperty("kbkFormRIO");
     public static String NUMBERdpFormRIO=ConfigBuilder.getproperty("NUMBERdpFormRIO");
 
+    public static String foFormRIO;
+
 
     @Test()
     public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
