@@ -56,8 +56,8 @@ public class Test1 extends TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setiNNGRBS();
 
+        interactiveDoc.setFoFormRIO();
 
 
     }

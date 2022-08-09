@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
 public class InteractiveDoc{
     private WebDriver driver;
     private WebDriverWait wait;
-
     public static String iNNGRBS;
+    public static String foFormRio;
     //Локаторы для периодички
    // @FindBy(id="gwt-uid-57")// присмотреться к локатору, возможно изменится
    // WebElement period;
@@ -36,21 +36,20 @@ public class InteractiveDoc{
 
     //РИО
 
-    @FindBy (id = "gwt-uid-27")
-    WebElement yearFormRio;
-    @FindBy (id="gwt-uid-29")
-    WebElement stageFormRIO;
+
     @FindBy (id = "gwt-uid-31")
     WebElement placeiNNGRBS;
 
-    @FindBy (id = "gwt-uid-33")
-    WebElement kbkFormRIO;
-    @FindBy(id = "gwt-uid-35")
-    WebElement versionDocument;
-@FindBy(css = ".gwt-MenuItem.gwt-MenuItem-selected")
-WebElement viborElement;
-@FindBy(xpath = "//button[text()='ОК']")
-public WebElement modalWindow;
+    @FindBy(xpath = "//button[text()='ОК']")
+    public WebElement modalWindow;
+    @FindBy(xpath = "//input[@id='gwt-uid-27']/following-sibling::div")
+    public WebElement buttonYearRio;
+    @FindBy (xpath="//input[@id='gwt-uid-29']/following-sibling::div")
+    public WebElement buttonStageFormRIO;
+    @FindBy(xpath = "//input[@id='gwt-uid-33']/following-sibling::div")
+    public WebElement buttonKbkFormRio;
+    @FindBy (xpath = "//input[@id='gwt-uid-35']/following-sibling::div")
+    WebElement buttonVersionDocument;
 
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
     {
@@ -84,38 +83,61 @@ public void setPeriod()
     {
         addString.click();
     }
+
     //Поле Год в шапке документа
     public void setYearFormRio() throws InterruptedException {
         wait_waitYearRIO();
-        yearFormRio.sendKeys(ConfigBuilder.getproperty("yearFormRIO"));
-        viborElement.click();
-        //yearFormRio.sendKeys(Keys.ENTER);
+        buttonYearRio.click();
+        String spisokYearFormRio = ConfigBuilder.getproperty("yearFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokYearFormRio+"']/parent::td"));
+        buttonENTER.click();
     }
 
     public void setStageFormRIO() throws InterruptedException {
         wait_waitStageRio();
-        stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
-        viborElement.click();
-       // stageFormRIO.sendKeys(Keys.ENTER);
+        buttonStageFormRIO.click();
+        String spisokStageFormRio = ConfigBuilder.getproperty("stageFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokStageFormRio+"']/parent::td"));
+        buttonENTER.click();
     }
 
     public void setKbkFormRIO() throws InterruptedException {
         wait_Kbk_Rio();
-        kbkFormRIO.sendKeys(ConfigBuilder.getproperty("kbkFormRIO"));
-        viborElement.click();
-       // kbkFormRIO.sendKeys(Keys.ENTER);
+        buttonKbkFormRio.click();
+        String spisokKbkFormRio = ConfigBuilder.getproperty("kbkFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
+        buttonENTER.click();
     }
 
     public void setiNNGRBS() {
         iNNGRBS = placeiNNGRBS.getAttribute("value");
     }
+    public String setFoFormRIO()
+    {
+        WebElement shadowHost = driver.findElement(By.tagName("interactive-top-panel"));
+        SearchContext shadowRoot = shadowHost.getShadowRoot();
+        WebElement shadowContent = shadowRoot.findElement(By.cssSelector(".text-dark.h4"));
+        return foFormRio = shadowContent.getText().replaceAll("\\D+","");
+    }
 
     public void setVersionDocument(String version) throws InterruptedException {
         wait_VersionDocumentRio();
-        versionDocument.sendKeys(version);
-        viborElement.click();
-        //versionDocument.sendKeys(Keys.ENTER);
+        buttonVersionDocument.click();
+        String spisokVersionFormRio = ConfigBuilder.getproperty("VERdpFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokVersionFormRio+"']/parent::td"));
+        buttonENTER.click();
     }
+
+    public String CheckListHeaderformRioEDO() {
+        List<String> myValuess = driver.findElements(By.cssSelector(".v-filterselect-suggestmenu td"))
+                .stream()
+                .map(option -> option.getAttribute("innerText").trim())
+                .collect(Collectors.toList());
+
+        return myValuess.toString();
+    }
+
+
     public List<String> valuesADM()
     {
         List<String> myValuess = driver.findElements(By.cssSelector("#period-table__row_0 [aria-colindex='3'] .multiselect__element .multiselect__option"))
@@ -125,6 +147,7 @@ public void setPeriod()
 
         return myValuess;
     }
+
     public List<String> kodDoxoda()
     {
         List<String> myValuess = driver.findElements(By.cssSelector("#period-table__row_0 [aria-colindex='4'] .multiselect__element .multiselect__option"))
@@ -186,7 +209,7 @@ public void setPeriod()
     {
         try {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            return yearFormRio.isDisplayed();
+            return buttonYearRio.isDisplayed();
         }
         catch (NoSuchElementException e){return false;}
         finally {
@@ -197,7 +220,7 @@ public void setPeriod()
     {
         try {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            return stageFormRIO.isDisplayed();
+            return buttonStageFormRIO.isDisplayed();
         }
         catch (NoSuchElementException e){return false;}
         finally {
@@ -208,7 +231,7 @@ public void setPeriod()
     {
         try {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            return kbkFormRIO.isDisplayed();
+            return buttonKbkFormRio.isDisplayed();
         }
         catch (NoSuchElementException e){return false;}
         finally {
@@ -219,7 +242,7 @@ public void setPeriod()
     {
         try {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            return versionDocument.isDisplayed();
+            return buttonVersionDocument.isDisplayed();
         }
         catch (NoSuchElementException e){return false;}
         finally {
@@ -233,12 +256,5 @@ public void setPeriod()
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#upload"));
         shadowContent.click();
    }
- //  public boolean checkModal()
-  // {
-  //     try {
-  //         driver.findElements(By.id("swal2-title"));
-    //   return true;
-     //  }
-      // catch ()
-  // }
+
 }
