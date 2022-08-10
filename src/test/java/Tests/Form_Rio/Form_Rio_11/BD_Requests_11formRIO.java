@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import static Tests.Form_Rio.Document_Header_Rio..*;
+import static Tests.Form_Rio.Document_Header_Rio.*;
 import static Page.InteractiveDoc.iNNGRBS;
 
 

@@ -83,8 +83,15 @@ public class Test1 extends TestBase {
 
     @Test
     public void testDBrequestRIO() throws InterruptedException {
-        BD_Request_Header_FormRIO BD = new BD_Request_Header_FormRIO();
-        System.out.println(BD.CheckListYEARformRIO());
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setiNNGRBS();
+        System.out.println(requestRIO.CheckKBKformRIO());
 
 
     }
