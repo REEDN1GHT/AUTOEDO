@@ -11,6 +11,8 @@ import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static Tests.Form_Rio.Document_Header_Rio.kbkFormRIO;
+
 public class InteractiveDoc{
     private WebDriver driver;
     private WebDriverWait wait;
@@ -34,9 +36,9 @@ public class InteractiveDoc{
     @FindBy (css=".swal2-actions.swal2-loading")
     private By loaderDoc = By.id("swal2-title");
 
+
+
     //РИО
-
-
     @FindBy (id = "gwt-uid-31")
     WebElement placeiNNGRBS;
 
@@ -49,8 +51,12 @@ public class InteractiveDoc{
     @FindBy(xpath = "//input[@id='gwt-uid-33']/following-sibling::div")
     public WebElement buttonKbkFormRio;
     @FindBy (xpath = "//input[@id='gwt-uid-35']/following-sibling::div")
-    WebElement buttonVersionDocument;
-
+    public WebElement buttonVersionDocument;
+    @FindBy(id = "gwt-uid-29")
+    public WebElement stageFormRIO;
+    @FindBy(css = ".gwt-MenuItem.gwt-MenuItem-selected")
+    public WebElement viborElement;
+    private By locator =By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show");
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
     {
         this.driver = driver;
@@ -59,9 +65,16 @@ public class InteractiveDoc{
     }
 
     public boolean isElementPresented() {
-        List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show"));
-        return list.size() >0;
+        //var newWait = new WebDriverWait(driver,Duration.ofSeconds(1));
+        //var element =newWait.until(driver -> driver.findElements(locator).isEmpty());
+        //List list = newWait.until(driver ->driver.findElements(locator).);
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+            List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show"));
+        //driver ->driver.findElements()
+        //return element;
+        return list.size()>0;
     }
+
 public void setPeriod()
 {
     clickPeriod.click();
@@ -93,12 +106,17 @@ public void setPeriod()
         buttonENTER.click();
     }
 
-    public void setStageFormRIO() throws InterruptedException {
+    //Старая реализация для поля Стадия. Только для поля "Стадия".
+    //Причина: В новой реализации, при раскрытии списка в ЭДО и конфиге раздичаются значения
+    public void setStageFormRio() throws InterruptedException {
         wait_waitStageRio();
-        buttonStageFormRIO.click();
-        String spisokStageFormRio = ConfigBuilder.getproperty("stageFormRIO");
-        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokStageFormRio+"']/parent::td"));
-        buttonENTER.click();
+        stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
+        viborElement.click();
+    }
+    public void setStageDPFormRio() throws InterruptedException {
+        wait_waitStageRio();
+        stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
+        viborElement.click();
     }
 
     public void setKbkFormRIO() throws InterruptedException {
@@ -120,13 +138,8 @@ public void setPeriod()
         return foFormRio = shadowContent.getText().replaceAll("\\D+","");
     }
 
-    public void setVersionDocument(String version) throws InterruptedException {
-        wait_VersionDocumentRio();
-        buttonVersionDocument.click();
-        String spisokVersionFormRio = ConfigBuilder.getproperty("VERdpFormRIO");
-        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokVersionFormRio+"']/parent::td"));
-        buttonENTER.click();
-    }
+
+
 
     public String CheckListHeaderformRioEDO() {
         List<String> myValuess = driver.findElements(By.cssSelector(".v-filterselect-suggestmenu td"))
@@ -137,6 +150,74 @@ public void setPeriod()
         return myValuess.toString();
     }
 
+    public void parsData()
+    {
+        setiNNGRBS();
+        setFoFormRIO();
+    }
+
+    public boolean wait_waitYearRIO()
+    {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+            return buttonYearRio.isDisplayed();
+        }
+        catch (NoSuchElementException e){return false;}
+        finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+    }
+    public boolean wait_waitStageRio()
+    {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+            return stageFormRIO.isDisplayed();
+        }
+        catch (NoSuchElementException e){return false;}
+        finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+    }
+    public boolean wait_Kbk_Rio()
+    {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
+            return buttonKbkFormRio.isDisplayed();
+        }
+        catch (NoSuchElementException e){return false;}
+        finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+    }
+    public boolean wait_VersionDocumentRio()
+    {
+        try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+            return buttonVersionDocument.isDisplayed();
+        }
+        catch (NoSuchElementException e){return false;}
+        finally {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        }
+    }
+
+
+
+
+
+
+
+
+
+/*
+
+    public void setVersionDocument(String version) throws InterruptedException {
+        wait_VersionDocumentRio();
+        buttonVersionDocument.click();
+        String spisokVersionFormRio = ConfigBuilder.getproperty("VERdpFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokVersionFormRio+"']/parent::td"));
+        buttonENTER.click();
+    }
 
     public List<String> valuesADM()
     {
@@ -205,50 +286,7 @@ public void setPeriod()
 
         return myValuess;
     }
-    public boolean wait_waitYearRIO()
-    {
-        try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            return buttonYearRio.isDisplayed();
-        }
-        catch (NoSuchElementException e){return false;}
-        finally {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        }
-    }
-    public boolean wait_waitStageRio()
-    {
-        try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            return buttonStageFormRIO.isDisplayed();
-        }
-        catch (NoSuchElementException e){return false;}
-        finally {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        }
-    }
-    public boolean wait_Kbk_Rio()
-    {
-        try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            return buttonKbkFormRio.isDisplayed();
-        }
-        catch (NoSuchElementException e){return false;}
-        finally {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        }
-    }
-    public boolean wait_VersionDocumentRio()
-    {
-        try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-            return buttonVersionDocument.isDisplayed();
-        }
-        catch (NoSuchElementException e){return false;}
-        finally {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        }
-    }
+
 
     public void createDocument()  {
         WebElement shadowHost = driver.findElement(By.tagName("left-nav-interactive"));
@@ -256,5 +294,5 @@ public void setPeriod()
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#upload"));
         shadowContent.click();
    }
-
+*/
 }

@@ -20,18 +20,6 @@ public class AuthEDO {
     String EDOurl = ConfigBuilder.getproperty("EDOurl");
     String EDOPROD = "https://edo.fincom.gov.spb.ru/#/";
 
-    public AuthEDO(WebDriver driver, WebDriverWait wait) {
-        this.driver = driver;
-        this.wait = wait;
-        PageFactory.initElements(driver, this);
-    }
-
-    private By cabinetRole = By.id("cabinet");
-
-    /*@FindAll(
-            {@FindBy (id = "login"),
-             @FindBy(id = "password")})
-    public WebElement logopas;*/
 
     @FindBy(css = ".btn.d-flex.mt-4.align-items-center.btn-primary.btn-huge")
     public WebElement buttonEnterMainPage;
@@ -47,9 +35,13 @@ public class AuthEDO {
     WebElement role;
     @FindBy(css = "#cabinet-modal___BV_modal_footer_ >button:nth-child(1)")
     public WebElement buttonSignInCabinet;
-    //@FindBy(id = "")
-    public By titleRoleText = By.id("no-target-role");
 
+
+    public AuthEDO(WebDriver driver, WebDriverWait wait) {
+        this.driver = driver;
+        this.wait = wait;
+        PageFactory.initElements(driver, this);
+    }
     public void open() {
         driver.navigate().to(ConfigBuilder.getproperty("EDOurl"));
     }
@@ -73,7 +65,6 @@ public class AuthEDO {
         var cabinetRole = new Select(role);
         cabinetRole.selectByVisibleText(ConfigBuilder.getproperty("EDOrole"));
 
-        //return new CabinetPage(driver,wait);
     }
 
     public void setButtonSignInCabinet() {
@@ -96,7 +87,6 @@ public class AuthEDO {
             setButtonEnterAuthorization();
             role();
             waitCabinet();
-            //Thread.sleep(500);
             setButtonSignInCabinet();
         }
     }

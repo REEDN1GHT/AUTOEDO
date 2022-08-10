@@ -17,7 +17,7 @@ public class Document_Header_Rio extends Tests.TestBase {
     public static String stageFormRIO=ConfigBuilder.getproperty("stageFormRIO");
     public static String kbkFormRIO=ConfigBuilder.getproperty("kbkFormRIO");
     public static String NUMBERdpFormRIO=ConfigBuilder.getproperty("NUMBERdpFormRIO");
-    public static String foFormRIO = "11";
+
 
     @Test()
     public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
@@ -29,7 +29,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageFormRIO();
+        interactiveDoc.setStageFormRio();
         checkAbsenceModalWindow();
         Assert.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
     }
@@ -61,7 +61,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
         interactiveDoc.buttonStageFormRIO.click();
-
         checkAppearanceModalWindow();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(),requestRIO.CheckListSTAGEformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
     }
@@ -76,16 +75,28 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageFormRIO();
-        interactiveDoc.setiNNGRBS();
+        interactiveDoc.parsData();
         interactiveDoc.setFoFormRIO();
         checkAppearanceModalWindow();
         interactiveDoc.buttonKbkFormRio.click();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(),requestRIO.CheckKBKformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
-
     }
-
-
+    @Test()
+    public void interactivePage_CheckKbkDPFormRio_Successfull() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setYearFormRio();
+        interactiveDoc.parsData();
+        interactiveDoc.setFoFormRIO();
+        checkAppearanceModalWindow();
+        interactiveDoc.buttonKbkFormRio.click();
+        Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(),1,"Справочник ЭДО не соответствует справочнику в БД");
+    }
 
     @Test()
     public void interactivePage_CheckVersionFormRio_Successfull() throws InterruptedException {
@@ -97,9 +108,30 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageFormRIO();
+        interactiveDoc.setStageFormRio();
+        interactiveDoc.parsData();
         checkAppearanceModalWindow();
         interactiveDoc.setKbkFormRIO();
+        interactiveDoc.buttonVersionDocument.click();
+        Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(),2,"Справочник ЭДО не соответствует справочнику в БД");
+
+        // interactiveDoc.setVersionDocument("01");
+    }
+    @Test()
+    public void interactivePage_CheckVersionDPFormRio_Successfull() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setYearFormRio();
+        interactiveDoc.setStageFormRio();
+        interactiveDoc.parsData();
+        checkAppearanceModalWindow();
+        interactiveDoc.setKbkFormRIO();
+        interactiveDoc.buttonVersionDocument.click();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(),requestRIO.CheckVersionDPFormRIO(),"Справочник ЭДО не соответствует справочнику в БД");
 
         // interactiveDoc.setVersionDocument("01");

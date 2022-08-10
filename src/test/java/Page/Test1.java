@@ -56,9 +56,12 @@ public class Test1 extends TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-
+        interactiveDoc.setYearFormRio();
+        interactiveDoc.setStageFormRio();
+        interactiveDoc.setiNNGRBS();
         interactiveDoc.setFoFormRIO();
-
+        interactiveDoc.setKbkFormRIO();
+System.out.println(requestRIO.CheckVERfromRIO());
 
     }
     //Парс номера fo из url

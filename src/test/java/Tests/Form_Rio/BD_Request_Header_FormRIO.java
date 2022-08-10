@@ -98,10 +98,10 @@ public class BD_Request_Header_FormRIO extends BD {
             "@GroupName='7830002430/1599',\n" +
             "@DOCID=Null,\n" +
             "@DOCID_Old=Null,\n" +
-            "@CPR_CCS_FULL_CVR=Null,\n" +
+            "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\",\n" +
             "@CUL_PARENT=\"" +iNNGRBS+ "\",\n" +
-            "@FO=\"" +foFormRIO+ "\",\n" +
-            "@STAGE='01',\n" +
+            "@FO=\"" +foFormRio+ "\",\n" +
+            "@STAGE=\"" +stageFormRIO+ "\", " +
             "@VER_DP=Null,\n" +
             "@CTD_SUB=Null,\n" +
             "@CPR_CCS_FULL_CVR_Old=Null,\n" +
@@ -121,7 +121,6 @@ public class BD_Request_Header_FormRIO extends BD {
         }
         return RLkbk.toString();
     }
-
     public String CheckVERfromRIO() {
         List<String> RLver =new ArrayList<>();
         try {
@@ -131,9 +130,9 @@ public class BD_Request_Header_FormRIO extends BD {
                     "@GroupName='7830002430/1599', " +
                     "@DOCID=Null, " +
                     "@DOCID_Old=Null, " +
-                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\", " +
+                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\"," +
                     "@CUL_PARENT=\"" +iNNGRBS+ "\", " +
-                    "@FO='11', " +
+                    "@FO=\"" +foFormRio+ "\"," +
                     "@STAGE=\"" +stageFormRIO+ "\", " +
                     "@VER_DP=Null, " +
                     "@CTD_SUB=Null, " +
@@ -147,7 +146,7 @@ public class BD_Request_Header_FormRIO extends BD {
             ResultSet ResultVER = statementVER.executeQuery(sqlVER);
             while (ResultVER.next()) {
                 String ListVERforRIO = ResultVER.getString("Номер документа");
-                RLver.add(String.join(ListVERforRIO));
+                RLver.add(ListVERforRIO);
             }
 
         }catch (SQLException | ClassNotFoundException throwables){
@@ -181,7 +180,7 @@ public class BD_Request_Header_FormRIO extends BD {
             ResultSet ResultVersionDP = statementVersionDP.executeQuery(sqlVersionDP);
             while (ResultVersionDP.next()) {
                 String ListVersionDP = ResultVersionDP.getString("Номер документа");
-                RLVersionDP.add(String.join(ListVersionDP));
+                RLVersionDP.add(ListVersionDP);
             }
         }catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
