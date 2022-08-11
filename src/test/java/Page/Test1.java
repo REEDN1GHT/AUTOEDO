@@ -99,6 +99,13 @@ System.out.println(requestRIO.CheckVERfromRIO());
 
     }
 
+    @Test
+    public void testBDrequestCheck1() {
+        BD_Request_Header_FormRIO bd = new BD_Request_Header_FormRIO();
+        System.out.println(bd.CheckDU_RETURN());
+
+    }
+
 }
 
 

@@ -18,7 +18,10 @@ import static Tests.Form_Rio.Document_Header_Rio.*;
 public class BD_Request_Header_FormRIO extends BD {
 
     public static String DU_R;
+    public static String DU_RETURN;
     public String NDOCID;
+
+    public String CheckDOCID;
 
     public String CheckListYEARformRIO() {
 
@@ -216,5 +219,34 @@ public class BD_Request_Header_FormRIO extends BD {
             throwables.printStackTrace();
         }
         return DU_R;
+    }
+
+    public String CheckDU_RETURN() {
+        try {
+            Statement statementCheckDOCID = getConnection().createStatement();
+            String sqlDOCID = "Execute dbo.FO_Doc_Check " +
+                    "@GroupName='7830002430/1599', " +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", " +
+                    "@CUL_PARENT='7809029013', " +
+                    "@FO=\"" + foFormRio + "\", " +
+                    "@STAGE=\"" + stageFormRIO + "\", " +
+                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", " +
+                    "@CPR_CCS_FULL_CVR_Old=Null, " +
+                    "@VAR_DP=Null, " +
+                    "@YEAR=" + yearFormRIO;
+            ResultSet ResultDOCID = statementCheckDOCID.executeQuery(sqlDOCID);
+            while (ResultDOCID.next()) {
+               CheckDOCID = ResultDOCID.getString("DOCID");
+            }
+            Statement statementDU_RETURN = getConnection().createStatement();
+            String sqlDU_RETURN = "SELECT DU_RETURN FROM DOC WHERE DOCID=" + CheckDOCID;
+            ResultSet ResultDU_RETURN = statementDU_RETURN.executeQuery(sqlDU_RETURN);
+            while (ResultDU_RETURN.next()) {
+                DU_RETURN = ResultDU_RETURN.getString("DU_RETURN");
+            }
+        }catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return DU_RETURN;
     }
 }
