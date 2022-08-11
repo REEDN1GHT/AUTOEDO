@@ -124,6 +124,39 @@ public class BD_Request_Header_FormRIO extends BD {
         }
         return RLkbk.toString();
     }
+    public String CheckKBKDPformRIO() {
+        List<String> RLkbk = new ArrayList<>();
+        try {
+            Statement statementKBK = getConnection().createStatement();
+            String sqlKBK = "Execute dbo.FO_Doc_List\n" +
+                    "@FieldName='CPR_CCS_FULL_CVR',\n" +
+                    "@GroupName='7830002430/1599',\n" +
+                    "@DOCID=Null,\n" +
+                    "@DOCID_Old=Null,\n" +
+                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\",\n" +
+                    "@CUL_PARENT=\"" +iNNGRBS+ "\",\n" +
+                    "@FO=\"" +foFormRio+ "\",\n" +
+                    "@STAGE=\"" +stageDPFormRIO+ "\", " +
+                    "@VER_DP=Null,\n" +
+                    "@CTD_SUB=Null,\n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null,\n" +
+                    "@FIO=Null,\n" +
+                    "@JOB=Null,\n" +
+                    "@PHONE=Null,\n" +
+                    "@FIO_CHIEF=Null,\n" +
+                    "@JOB_CHIEF=Null,\n" +
+                    "@YEAR=" +yearFormRIO;
+            ResultSet ResultKBK = statementKBK.executeQuery(sqlKBK);
+            while (ResultKBK.next()) {
+                String ListKBKformRIO = ResultKBK.getString("ПБК");
+                RLkbk.add(String.join(" ", ListKBKformRIO));
+            }
+        } catch (SQLException | ClassNotFoundException throwables){
+            throwables.printStackTrace();
+        }
+        return RLkbk.toString();
+    }
+
     public String CheckVERfromRIO() {
         List<String> RLver =new ArrayList<>();
         try {
@@ -157,6 +190,39 @@ public class BD_Request_Header_FormRIO extends BD {
         }
         return RLver.toString();
     }
+    public String CheckVERDPfromRIO() {
+        List<String> RLver =new ArrayList<>();
+        try {
+            Statement statementVER = getConnection().createStatement();
+            String sqlVER = "Execute dbo.FO_Doc_List " +
+                    "@FieldName='VER_DP', " +
+                    "@GroupName='7830002430/1599', " +
+                    "@DOCID=Null, " +
+                    "@DOCID_Old=Null, " +
+                    "@CPR_CCS_FULL_CVR=\"" +kbkDPFormRIO+ "\", \n" +
+                    "@CUL_PARENT=\"" +iNNGRBS+ "\", \n" +
+                    "@FO=\"" +foFormRio+ "\"," +
+                    "@STAGE=\"" +stageDPFormRIO+ "\",\n" +
+                    "@VER_DP=Null, " +
+                    "@CTD_SUB=Null, " +
+                    "@CPR_CCS_FULL_CVR_Old=Null, " +
+                    "@FIO=Null, " +
+                    "@JOB=Null, " +
+                    "@PHONE=Null, " +
+                    "@FIO_CHIEF=Null, " +
+                    "@JOB_CHIEF=Null, " +
+                    "@YEAR=" +yearFormRIO;
+            ResultSet ResultVER = statementVER.executeQuery(sqlVER);
+            while (ResultVER.next()) {
+                String ListVERforRIO = ResultVER.getString("Номер документа");
+                RLver.add(ListVERforRIO);
+            }
+
+        }catch (SQLException | ClassNotFoundException throwables){
+            throwables.printStackTrace();
+        }
+        return RLver.toString();
+    }
 
     public String CheckVersionDPFormRIO() {
         List<String> RLVersionDP = new ArrayList<>();
@@ -167,11 +233,11 @@ public class BD_Request_Header_FormRIO extends BD {
                     "@GroupName='7830002430/1599', \n" +
                     "@DOCID=null, \n" +
                     "@DOCID_Old=null, \n" +
-                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\", \n" +
+                    "@CPR_CCS_FULL_CVR=\"" +kbkDPFormRIO+ "\", \n" +
                     "@CUL_PARENT=\"" +iNNGRBS+ "\", \n" +
-                    "@FO='11', \n" +
-                    "@STAGE=\"" +stageFormRIO+ "\",\n" +
-                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
+                    "@FO=\"" +foFormRio+ "\"," +
+                    "@STAGE=\"" +stageDPFormRIO+ "\",\n" +
+                    "@VER_DP=Null," +
                     "@CTD_SUB=Null, \n" +
                     "@CPR_CCS_FULL_CVR_Old=Null, \n" +
                     "@FIO=Null, \n" +
@@ -226,10 +292,10 @@ public class BD_Request_Header_FormRIO extends BD {
             Statement statementCheckDOCID = getConnection().createStatement();
             String sqlDOCID = "Execute dbo.FO_Doc_Check " +
                     "@GroupName='7830002430/1599', " +
-                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", " +
-                    "@CUL_PARENT='7809029013', " +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkDPFormRIO + "\", " +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\"," +
                     "@FO=\"" + foFormRio + "\", " +
-                    "@STAGE=\"" + stageFormRIO + "\", " +
+                    "@STAGE=\"" + stageDPFormRIO + "\", " +
                     "@VER_DP=\"" + NUMBERdpFormRIO + "\", " +
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
                     "@VAR_DP=Null, " +
@@ -239,10 +305,10 @@ public class BD_Request_Header_FormRIO extends BD {
                CheckDOCID = ResultDOCID.getString("DOCID");
             }
             Statement statementDU_RETURN = getConnection().createStatement();
-            String sqlDU_RETURN = "SELECT DU_RETURN FROM DOC WHERE DOCID=" + CheckDOCID;
+            String sqlDU_RETURN = "SELECT D_RETURN FROM DOC WHERE DOCID=" + CheckDOCID;
             ResultSet ResultDU_RETURN = statementDU_RETURN.executeQuery(sqlDU_RETURN);
             while (ResultDU_RETURN.next()) {
-                DU_RETURN = ResultDU_RETURN.getString("DU_RETURN");
+                DU_RETURN = ResultDU_RETURN.getString("D_RETURN");
             }
         }catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();

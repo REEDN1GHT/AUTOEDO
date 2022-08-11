@@ -52,10 +52,13 @@ public class InteractiveDoc{
     public WebElement buttonKbkFormRio;
     @FindBy (xpath = "//input[@id='gwt-uid-35']/following-sibling::div")
     public WebElement buttonVersionDocument;
-    @FindBy(id = "gwt-uid-29")
+    @FindBy(xpath = "//div[@class='v-filterselect v-widget v-has-width v-required v-filterselect-required v-filterselect-focus']/input")
     public WebElement stageFormRIO;
     @FindBy(css = ".gwt-MenuItem.gwt-MenuItem-selected")
     public WebElement viborElement;
+    @FindBy(css=".v-filterselect-input.v-filterselect-input-readonly")
+    public WebElement versionDBFormRio;
+
     private By locator =By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show");
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
     {
@@ -99,7 +102,6 @@ public void setPeriod()
 
     //Поле Год в шапке документа
     public void setYearFormRio() throws InterruptedException {
-        wait_waitYearRIO();
         buttonYearRio.click();
         String spisokYearFormRio = ConfigBuilder.getproperty("yearFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokYearFormRio+"']/parent::td"));
@@ -109,13 +111,13 @@ public void setPeriod()
     //Старая реализация для поля Стадия. Только для поля "Стадия".
     //Причина: В новой реализации, при раскрытии списка в ЭДО и конфиге раздичаются значения
     public void setStageFormRio() throws InterruptedException {
-        wait_waitStageRio();
         stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
         viborElement.click();
     }
     public void setStageDPFormRio() throws InterruptedException {
-        wait_waitStageRio();
-        stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageDPFormRIO"));
+        //stageFormRIO.sendKeys(Keys.ENTER);
         viborElement.click();
     }
 
@@ -123,6 +125,20 @@ public void setPeriod()
         wait_Kbk_Rio();
         buttonKbkFormRio.click();
         String spisokKbkFormRio = ConfigBuilder.getproperty("kbkFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
+        buttonENTER.click();
+    }
+    public void setKbkDPFormRIO() throws InterruptedException {
+        wait_Kbk_Rio();
+        buttonKbkFormRio.click();
+        String spisokKbkFormRio = ConfigBuilder.getproperty("kbkDPFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
+        buttonENTER.click();
+    }
+    public void setNumberDBFormRio() throws InterruptedException {
+        wait_Kbk_Rio();
+        buttonVersionDocument.click();
+        String spisokKbkFormRio = ConfigBuilder.getproperty("NUMBERdpFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
         buttonENTER.click();
     }
@@ -167,17 +183,20 @@ public void setPeriod()
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         }
     }
-    public boolean wait_waitStageRio()
+    public void wait_waitStageRio()
     {
         try {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-            return stageFormRIO.isDisplayed();
         }
-        catch (NoSuchElementException e){return false;}
         finally {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         }
     }
+    public void setWait()
+    {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+    }
+
     public boolean wait_Kbk_Rio()
     {
         try {

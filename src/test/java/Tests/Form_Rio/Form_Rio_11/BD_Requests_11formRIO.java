@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static Page.InteractiveDoc.foFormRio;
 import static Tests.Form_Rio.Document_Header_Rio.*;
 import static Page.InteractiveDoc.iNNGRBS;
 
@@ -28,7 +29,7 @@ public class BD_Requests_11formRIO extends BD {
                     "@DOCID_Old=0, \n" +
                     "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\", \n" +
                     "@CUL_PARENT=\"" +iNNGRBS+ "\", \n" +
-                    "@FO=\"" +foFormRIO+ "\", \n" +
+                    "@FO=\"" +foFormRio+ "\", \n" +
                     "@STAGE=\"" + stageFormRIO + "\", \n" +
                     "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
                     "@FO_NAME2=Null, \n" +
