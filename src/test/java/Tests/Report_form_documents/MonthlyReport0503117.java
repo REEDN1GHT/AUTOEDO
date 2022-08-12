@@ -11,7 +11,7 @@ public class MonthlyReport0503117 extends TestBase {
     String message = "Справочник ЭДО не соответствует справочнику в БД";
     //BD con;
 
-
+/*
     //подотчет (0503117) Отчет об исполнении. Доходы
 
     //Справочник АДМ
@@ -195,5 +195,5 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.setAddString();
     //    Assert.assertEquals(docPage.kodDoxoda(),request.checkIsKodIstochnick(),message);
     }
-
+*/
 }

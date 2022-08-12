@@ -58,8 +58,33 @@ public class InteractiveDoc{
     public WebElement viborElement;
     @FindBy(css=".v-filterselect-input.v-filterselect-input-readonly")
     public WebElement versionDBFormRio;
+    @FindBy(css = ".swal2-confirm.swal2-styled")
+    public WebElement modalWindowButtonOK;
+    @FindBy(xpath = "//span[text()='Добавить строку']/ancestor::div[@role='button']")
+    public WebElement buttonAddNewString;
+    @FindBy(css = ".v-filterselect.v-widget.v-modified.v-has-width.missedField.v-filterselect-missedField .v-filterselect-button")
+    public WebElement subReport;
 
-    private By locator =By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show");
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][3]//input")
+    public WebElement field2021ManualInput;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][4]//input")
+    public WebElement field2022ManualInput;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][5]//input")
+    public WebElement field2023NotManualInput;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][7]//input")
+    public WebElement field2024NotManualInput;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][9]//input")
+    public WebElement field2025NotManualInput;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][6]//input")
+    public WebElement fieldTempRost1;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][8]//input")
+    public WebElement fieldTempRost2;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][10]//input")
+    public WebElement fieldTempRost3;
+
+    private By modalWindowNoDoc = By.id("swal2-content");
+    private By modal = By.xpath("//*[text()='Готовый документ не найден']");
+
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
     {
         this.driver = driver;
@@ -68,37 +93,11 @@ public class InteractiveDoc{
     }
 
     public boolean isElementPresented() {
-        //var newWait = new WebDriverWait(driver,Duration.ofSeconds(1));
-        //var element =newWait.until(driver -> driver.findElements(locator).isEmpty());
-        //List list = newWait.until(driver ->driver.findElements(locator).);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
             List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show"));
-        //driver ->driver.findElements()
-        //return element;
         return list.size()>0;
     }
 
-public void setPeriod()
-{
-    clickPeriod.click();
-    viborPeriod.click();
-
-}
-    public void setPodotchet_doxod(String podotchet) throws InterruptedException {
-        clickPod.click();
-        podotchet_doxod.sendKeys(podotchet);
-
-        podotchet_doxod_click.click();
-    }
-
-    public void loaderDoc()
-    {
-        wait.until(ExpectedConditions.invisibilityOfElementWithText(loaderDoc,"Ожидайте"));
-    }
-    public void setAddString()
-    {
-        addString.click();
-    }
 
     //Поле Год в шапке документа
     public void setYearFormRio() throws InterruptedException {
@@ -117,7 +116,6 @@ public void setPeriod()
     public void setStageDPFormRio() throws InterruptedException {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageDPFormRIO"));
-        //stageFormRIO.sendKeys(Keys.ENTER);
         viborElement.click();
     }
 
@@ -135,23 +133,34 @@ public void setPeriod()
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
         buttonENTER.click();
     }
+    public void setVersionDocument()
+    {
+        wait_Kbk_Rio();
+        buttonVersionDocument.click();
+        String spisokVersionFormRio = ConfigBuilder.getproperty("VERdpFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokVersionFormRio+"']/parent::td"));
+        buttonENTER.click();
+    }
     public void setNumberDBFormRio() throws InterruptedException {
         wait_Kbk_Rio();
         buttonVersionDocument.click();
-        String spisokKbkFormRio = ConfigBuilder.getproperty("NUMBERdpFormRIO");
-        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
+        String spisokNumberDBFormRio = ConfigBuilder.getproperty("NUMBERdpFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokNumberDBFormRio+"']/parent::td"));
         buttonENTER.click();
     }
-
-    public void setiNNGRBS() {
-        iNNGRBS = placeiNNGRBS.getAttribute("value");
-    }
-    public String setFoFormRIO()
-    {
-        WebElement shadowHost = driver.findElement(By.tagName("interactive-top-panel"));
+    public void buttonLoadDocumentInteractivePage()  {
+        WebElement shadowHost = driver.findElement(By.tagName("left-nav-interactive"));
         SearchContext shadowRoot = shadowHost.getShadowRoot();
-        WebElement shadowContent = shadowRoot.findElement(By.cssSelector(".text-dark.h4"));
-        return foFormRio = shadowContent.getText().replaceAll("\\D+","");
+        WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#upload"));
+        shadowContent.click();
+    }
+
+    public void setListSubReport()
+    {
+        subReport.click();
+        String listSubReportFormRio11 = ConfigBuilder.getproperty("subReportFormRio11");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
+        buttonENTER.click();
     }
 
 
@@ -165,13 +174,32 @@ public void setPeriod()
 
         return myValuess.toString();
     }
-
+    public void setiNNGRBS() {
+        iNNGRBS = placeiNNGRBS.getAttribute("value");
+    }
+    public String setFoFormRIO()
+    {
+        WebElement shadowHost = driver.findElement(By.tagName("interactive-top-panel"));
+        SearchContext shadowRoot = shadowHost.getShadowRoot();
+        WebElement shadowContent = shadowRoot.findElement(By.cssSelector(".text-dark.h4"));
+        return foFormRio = shadowContent.getText().replaceAll("\\D+","");
+    }
     public void parsData()
     {
         setiNNGRBS();
         setFoFormRIO();
     }
 
+    public void waitModalWindow()
+    {
+        var newWait = new WebDriverWait(driver,Duration.ofSeconds(16));
+        newWait.until(ExpectedConditions.visibilityOfElementLocated(modalWindowNoDoc));
+    }
+    public void waitSubformRio()
+    {
+        var newWait = new WebDriverWait(driver,Duration.ofSeconds(15));
+        newWait.until(ExpectedConditions.visibilityOfElementLocated(modal));
+    }
     public boolean wait_waitYearRIO()
     {
         try {
@@ -229,6 +257,27 @@ public void setPeriod()
 
 
 /*
+public void setPeriod()
+{
+    clickPeriod.click();
+    viborPeriod.click();
+
+}
+    public void setPodotchet_doxod(String podotchet) throws InterruptedException {
+        clickPod.click();
+        podotchet_doxod.sendKeys(podotchet);
+
+        podotchet_doxod_click.click();
+    }
+
+    public void loaderDoc()
+    {
+        wait.until(ExpectedConditions.invisibilityOfElementWithText(loaderDoc,"Ожидайте"));
+    }
+    public void setAddString()
+    {
+        addString.click();
+    }
 
     public void setVersionDocument(String version) throws InterruptedException {
         wait_VersionDocumentRio();
@@ -307,11 +356,6 @@ public void setPeriod()
     }
 
 
-    public void createDocument()  {
-        WebElement shadowHost = driver.findElement(By.tagName("left-nav-interactive"));
-        SearchContext shadowRoot = shadowHost.getShadowRoot();
-        WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#upload"));
-        shadowContent.click();
-   }
+
 */
 }
