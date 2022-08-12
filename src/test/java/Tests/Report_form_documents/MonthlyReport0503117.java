@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class MonthlyReport0503117 extends TestBase {
-    String message = "Справочник ЭДО не соответствует справочнику в БД";
+   /* String message = "Справочник ЭДО не соответствует справочнику в БД";
     //BD con;
 
 /*
@@ -175,9 +175,9 @@ public class MonthlyReport0503117 extends TestBase {
         docPage.setPodotchet_doxod("(0503117) Отчет об исполнении. Источники");
         docPage.setAddString();
      //   Assert.assertEquals(docPage.valuesADM(),request.checkIsADMIstochnick(),message);
-    }
+    }*/
 
-    //Справочник Код источника
+ /*   //Справочник Код источника
     @Test
     public void interactivePage_CheckGuideKodIstochnick_GuideAdmCorrect() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);

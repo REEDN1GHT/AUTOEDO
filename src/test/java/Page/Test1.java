@@ -1,6 +1,8 @@
 package Page;
 
+import Tests.Form_Rio.BD_Request_Footer_FormRio;
 import Tests.Form_Rio.BD_Request_Header_FormRIO;
+import Tests.Form_Rio.Form_Rio_11.BD_Requests_11formRIO;
 import Tests.TestBase;
 
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -61,7 +63,7 @@ public class Test1 extends TestBase {
         interactiveDoc.setiNNGRBS();
         interactiveDoc.setFoFormRIO();
         interactiveDoc.setKbkFormRIO();
-System.out.println(requestRIO.CheckVERfromRIO());
+System.out.println(request_header_RIO.CheckVERfromRIO());
 
     }
     //Парс номера fo из url
@@ -94,7 +96,7 @@ System.out.println(requestRIO.CheckVERfromRIO());
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setiNNGRBS();
-        System.out.println(requestRIO.CheckKBKformRIO());
+        System.out.println(request_header_RIO.CheckKBKformRIO());
 
 
     }
@@ -104,6 +106,24 @@ System.out.println(requestRIO.CheckVERfromRIO());
         BD_Request_Header_FormRIO bd = new BD_Request_Header_FormRIO();
         System.out.println(bd.CheckDU_RETURN());
 
+    }
+
+    @Test
+    public void test11formBody() {
+        BD_Requests_11formRIO DB = new BD_Requests_11formRIO();
+        System.out.println(DB.FO_DOC_Load());
+
+
+    }
+
+    @Test
+    public void testFOOTERrio() {
+        BD_Request_Footer_FormRio BD = new BD_Request_Footer_FormRio();
+        System.out.println(BD.CheckListFIO());
+        System.out.println(BD.ChecKListJOB());
+        System.out.println(BD.CheckListPHONE());
+        System.out.println(BD.CheckFIO_CHIEF());
+        System.out.println(BD.CheckListJOB_CHIEF());
     }
 
 }
