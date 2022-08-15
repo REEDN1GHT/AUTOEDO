@@ -1,6 +1,7 @@
 package Page;
 
 import Resources.ConfigBuilder;
+import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,10 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static Tests.Form_Rio.Document_Header_Rio.kbkFormRIO;
+import java.util.Arrays;
 
 public class InteractiveDoc{
     private WebDriver driver;
@@ -249,12 +251,112 @@ public class InteractiveDoc{
     }
 
 
+// Локаторы для футера формы РИО
+
+    public String CheckListFIOformRIO() throws InterruptedException {
+        List<String> ListFIO = new ArrayList<>();
+        int STRnumber = 0;
+        driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/div")).click();
+        WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
+        String Nstatus = Status.getAttribute("innerText");
+        int RNstatus = Integer.parseInt(Nstatus.substring(Nstatus.indexOf("/")+1));
+        while (RNstatus > STRnumber) {
+            WebElement dropdown = driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/input"));
+            dropdown.sendKeys(Keys.DOWN);
+            Thread.sleep(1000);
+            String ValueSTR = dropdown.getAttribute("value");
+            ListFIO.add(String.join(" , ", ValueSTR));
+            STRnumber = STRnumber + 1;
+        }
+        Collections.sort(ListFIO);
+        return ListFIO.toString();
+    }
+    public String CheckListJOBformRIO() throws InterruptedException {
+        List<String> ListJOB = new ArrayList<>();
+        int STRnumber = 0;
+        driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/div")).click();
+        WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
+        String Nstatus = Status.getAttribute("innerText");
+        int RNstatus = Integer.parseInt(Nstatus.substring(Nstatus.indexOf("/")+1));
+        while (RNstatus > STRnumber) {
+            WebElement dropdown = driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/input"));
+            dropdown.sendKeys(Keys.DOWN);
+            Thread.sleep(1000);
+            String ValueSTR = dropdown.getAttribute("value");
+            ListJOB.add(String.join(" , ", ValueSTR));
+            STRnumber = STRnumber + 1;
+        }
+        Collections.sort(ListJOB);
+        return ListJOB.toString();
+    }
+
+
+    public String CheckListPHONEformRIO() throws InterruptedException {
+        List<String> ListPHONE = new ArrayList<>();
+        int STRnumber = 0;
+        driver.findElement(By.xpath("//span[text()='Тел.']/parent::div/following-sibling::div/div")).click(); //Открытие выпадающего списка
+        WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']")); //Определение кол-ва строк
+        String Nstatus = Status.getAttribute("innerText");
+        int RNstatus = Integer.parseInt(Nstatus.substring(Nstatus.indexOf("/")+1));
+        while (RNstatus > STRnumber) {
+            WebElement dropdown = driver.findElement(By.xpath("//span[text()='Тел.']/parent::div/following-sibling::div/input"));
+            dropdown.sendKeys(Keys.DOWN);
+            Thread.sleep(1000);
+            String ValueSTR = dropdown.getAttribute("value");
+            ListPHONE.add(String.join(" , ", ValueSTR));
+            STRnumber = STRnumber + 1;
+        }
+        Collections.sort(ListPHONE);
+        return ListPHONE.toString();
+
+    }
+
+    public String CheckListFIO_CHIEFformRIO() throws InterruptedException {
+        List<String> ListFIO_CHIEF = new ArrayList<>();
+        int STRnumber = 0;
+        driver.findElement(By.xpath("//div[text()='Руководитель']/parent::div")).click(); //Переключение на вкладку "Руководитель"
+        driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/div")).click();
+        WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
+        String Nstatus = Status.getAttribute("innerText");
+        int RNstatus = Integer.parseInt(Nstatus.substring(Nstatus.indexOf("/")+1));
+        while (RNstatus > STRnumber) {
+            WebElement dropdown = driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/input"));
+            dropdown.sendKeys(Keys.DOWN);
+            Thread.sleep(1000);
+            String ValueSTR = dropdown.getAttribute("value");
+            ListFIO_CHIEF.add(String.join(" , ", ValueSTR));
+            STRnumber = STRnumber + 1;
+        }
+        Collections.sort(ListFIO_CHIEF);
+        return ListFIO_CHIEF.toString();
+    }
+
+    public String CheckListJOB_CHIEFformRIO() throws InterruptedException {
+        List<String> ListJOB_CHIEF = new ArrayList<>();
+        int STRnumber = 0;
+        driver.findElement(By.xpath("//div[text()='Руководитель']/parent::div")).click(); //Переключение на вкладку "Руководитель"
+        driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/div")).click();
+        WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
+        String Nstatus = Status.getAttribute("innerText");
+        int RNstatus = Integer.parseInt(Nstatus.substring(Nstatus.indexOf("/")+1));
+        while (RNstatus > STRnumber) {
+            WebElement dropdown = driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/input"));
+            dropdown.sendKeys(Keys.DOWN);
+            Thread.sleep(1000);
+            String ValueSTR = dropdown.getAttribute("value");
+            ListJOB_CHIEF.add(String.join(" , ", ValueSTR));
+            STRnumber = STRnumber + 1;
+        }
+        Collections.sort(ListJOB_CHIEF);
+        return ListJOB_CHIEF.toString();
+    }
 
 
 
 
-
-
+    public static Object[] removeLastElement(List<String>[] arr) {
+        return Arrays.stream(Arrays.copyOf(arr, arr.length - 1)).toArray();
+    }
 
 /*
 public void setPeriod()

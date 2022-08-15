@@ -7,15 +7,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
-import static Page.InteractiveDoc.foFormRio;
-import static Tests.Form_Rio.Document_Header_Rio.*;
-import static Page.InteractiveDoc.iNNGRBS;
 
-
-public class BD_Requests_11formRIO extends BD {
+public class BD_Requests_11formRIO_OLD extends BD {
 
     public static String SUMM12;
 
