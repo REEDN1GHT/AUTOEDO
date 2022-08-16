@@ -2,14 +2,15 @@ package Tests.Form_Rio;
 
 import Tests.BD;
 import com.google.errorprone.annotations.Var;
+import org.w3c.dom.ls.LSException;
 
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 import static Page.InteractiveDoc.foFormRio;
 import static Page.InteractiveDoc.iNNGRBS;
@@ -20,9 +21,12 @@ public class BD_Request_Main_FormRIO extends BD {
 
     public static String DU_R;
     public static String DU_RETURN;
+    public static String LastUpdate;
     public String NDOCID;
 
     public String CheckDOCID;
+
+
 
     public String CheckListYEARformRIO() {
 
@@ -303,10 +307,10 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@YEAR=" + yearFormRIO;
             ResultSet ResultDOCID = statementCheckDOCID.executeQuery(sqlDOCID);
             while (ResultDOCID.next()) {
-               CheckDOCID = ResultDOCID.getString("DOCID");
+               NDOCID = ResultDOCID.getString("DOCID");
             }
             Statement statementDU_RETURN = getConnection().createStatement();
-            String sqlDU_RETURN = "SELECT D_RETURN FROM DOC WHERE DOCID=" + CheckDOCID;
+            String sqlDU_RETURN = "SELECT D_RETURN FROM DOC WHERE DOCID=" + NDOCID;
             ResultSet ResultDU_RETURN = statementDU_RETURN.executeQuery(sqlDU_RETURN);
             while (ResultDU_RETURN.next()) {
                 DU_RETURN = ResultDU_RETURN.getString("D_RETURN");
@@ -489,5 +493,50 @@ public class BD_Request_Main_FormRIO extends BD {
             throwables.printStackTrace();
         }
         return RLjob_chief.toString();
+    }
+
+    public String CheckSaveDocuments() {
+        List<String> RLsaveDOC = new ArrayList<>();
+        try {
+            Statement statementDocCheck = getConnection().createStatement();
+            String sqlCheck = "Execute dbo.FO_Doc_Check \n" +
+                    "@GroupName='7830002430/1599', \n" +
+                    "@CPR_CCS_FULL_CVR='0113 1640099020 831', \n" +
+                    "@CUL_PARENT='7832000076', \n" +
+                    "@FO='10', \n" +
+                    "@STAGE='01', \n" +
+                    "@VER_DP='01', \n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null, \n" +
+                    "@VAR_DP=Null, \n" +
+                    "@YEAR='2023'";
+                    /*"Execute dbo.FO_Doc_Check \n" +
+                    "@GroupName='7830002430/1599', \n" +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", \n" +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
+                    "@FO=\"" + foFormRio + "\", \n" +
+                    "@STAGE=\"" + stageFormRIO + "\", \n" +
+                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null, \n" +
+                    "@VAR_DP=Null, \n" +
+                    "@YEAR=" + yearFormRIO;*/
+                ResultSet ResultCheck = statementDocCheck.executeQuery(sqlCheck);
+                while (ResultCheck.next()) {
+                    NDOCID = ResultCheck.getString("DOCID");
+                }
+                Statement statementDocSave = getConnection().createStatement();
+                String sqlDocSave = "Select CDOC, LastUpdate from DOC where DOCID="+ NDOCID;
+                ResultSet ResultSave = statementDocSave.executeQuery(sqlDocSave);
+                while (ResultSave.next()) {
+                    LastUpdate = (ResultSave.getString("LastUpdate"));
+                    Date format = new SimpleDateFormat("YYYY-MM-DD HH:mm:").parse((LastUpdate));
+                    LastUpdate = String.valueOf(format);
+                    RLsaveDOC.add(String.join(" ", LastUpdate));
+                }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+        return RLsaveDOC.toString();
     }
 }

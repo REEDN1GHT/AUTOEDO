@@ -7,7 +7,14 @@ import Tests.TestBase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import static Tests.Form_Rio.BD_Request_Main_FormRIO.DU_R;
 
@@ -118,13 +125,32 @@ System.out.println(requestRIO.CheckVERfromRIO());
     }
 
     @Test
-    public void testFOOTERrio() {
-        BD_Request_Main_FormRIO BD = new BD_Request_Main_FormRIO();
-        System.out.println(BD.CheckListFIO());
-        System.out.println(BD.ChecKListJOB());
-        System.out.println(BD.CheckListPHONE());
-        System.out.println(BD.CheckListFIO_CHIEF());
-        System.out.println(BD.CheckListJOB_CHIEF());
+    public void testFOOTERrio() throws InterruptedException, ParseException {
+        /*AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.parsData();*/
+        BD_Request_Main_FormRIO bd = new BD_Request_Main_FormRIO();
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:mm");
+        formatter.format(date);
+
+
+
+
+        String Kek = "2022-08-16 11:56:21.81";
+        Date RT = new SimpleDateFormat("YYYY-MM-DD HH:mm").parse(Kek);
+        String RRT = String.valueOf(RT);
+        List<String> RTR = new ArrayList<>();
+        RTR.add(String.join(" ", RRT));
+        System.out.println(date);
+        Assert.assertEquals(RTR, requestRIO.CheckSaveDocuments(), "rtr");
+
+
     }
 
 
@@ -145,6 +171,7 @@ System.out.println(requestRIO.CheckVERfromRIO());
         driver.findElement(By.xpath("//div[@class='v-filterselect v-widget v-has-width v-required v-filterselect-required v-filterselect-focus']/child::input")).sendKeys(Keys.DOWN);
         driver.findElement(By.xpath("//div[@class='v-filterselect v-widget v-has-width v-required v-filterselect-required v-filterselect-focus']/child::input")).sendKeys(Keys.DOWN);
         Thread.sleep(5000);
+
 
     }
 
