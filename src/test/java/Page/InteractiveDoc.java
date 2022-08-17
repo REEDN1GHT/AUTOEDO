@@ -8,6 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -20,6 +22,7 @@ public class InteractiveDoc{
     private WebDriverWait wait;
     public static String iNNGRBS;
     public static String foFormRio;
+    public  BigDecimal data2023Subform1;
     //Локаторы для периодички
    // @FindBy(id="gwt-uid-57")// присмотреться к локатору, возможно изменится
    // WebElement period;
@@ -84,8 +87,24 @@ public class InteractiveDoc{
     @FindBy(xpath = "//td[@class='v-table-cell-content'][10]//input")
     public WebElement fieldTempRost3;
 
+    @FindBy(xpath = "//tr[@class='v-table-row-odd'][12]//td[@class='v-table-cell-content'][3]//input")
+    public WebElement field2023Number10;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][10]//input")
+    public WebElement field1QuarterSubform3_1;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][15]//input")
+    public WebElement fieldExpensesSubForm3_1;
+    @FindBy (xpath = "//tr[@class='v-table-row'][14]/td[@class='v-table-cell-content'][3]//input")
+    public WebElement field2023Number11;
+    @FindBy (xpath = "//tr[@class='v-table-row']//div[@class='v-filterselect-button']")
+    public WebElement numeIndicatorSubForm1;
+
+    @FindBy (xpath = "//div[@class='v-scrollable v-table-body-wrapper v-table-body']")
+    public WebElement scrollTable;
+
     private By modalWindowNoDoc = By.id("swal2-content");
     private By modal = By.xpath("//*[text()='Готовый документ не найден']");
+
+
 
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
     {
@@ -103,6 +122,7 @@ public class InteractiveDoc{
 
     //Поле Год в шапке документа
     public void setYearFormRio() throws InterruptedException {
+        Thread.sleep(300);
         buttonYearRio.click();
         String spisokYearFormRio = ConfigBuilder.getproperty("yearFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokYearFormRio+"']/parent::td"));
@@ -156,8 +176,7 @@ public class InteractiveDoc{
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#upload"));
         shadowContent.click();
     }
-
-    public void setListSubReport()
+    public void setListSubReport1()
     {
         subReport.click();
         String listSubReportFormRio11 = ConfigBuilder.getproperty("subReportFormRio11");
@@ -165,9 +184,57 @@ public class InteractiveDoc{
         buttonENTER.click();
     }
 
+    public void setListSubReport2()
+    {
+        subReport.click();
+        String listSubReportFormRio11 = ConfigBuilder.getproperty("subReport1FormRio11");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
+        buttonENTER.click();
+    }
+    public void setListSubReport3_1()
+    {
+        subReport.click();
+        String listSubReportFormRio11 = ConfigBuilder.getproperty("subReport3_1FormRio11");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
+        buttonENTER.click();
+    }
+    public void setFieldIndictorSubForm1()
+    {
+        numeIndicatorSubForm1.click();
+        String listSubReportFormRio11 = ConfigBuilder.getproperty("nameIndicatorSubForm1");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
+        buttonENTER.click();
+    }
+    public void setFieldIndictorPaymentLandTaxSubForm1()
+    {
+        numeIndicatorSubForm1.click();
+        String listSubReportFormRio11 = ConfigBuilder.getproperty("nameIndicatorPaymentLandTaxSubForm1");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
+        buttonENTER.click();
+    }
+    public void setField2023Number10()
+    {
+        field2023Number10.sendKeys("4 457");
+        field2023Number10.sendKeys(Keys.ENTER);
+    }
+    public void setfield1QuarterSubform3_1()
+    {
+        field1QuarterSubform3_1.sendKeys("8 457");
+        field1QuarterSubform3_1.sendKeys(Keys.ENTER);
+    }
 
+    public void getValuefield2023Subform2()
+    {
+        float data2023Subform2 = Float.parseFloat(field2023Number11.getAttribute("value").replace(',','.'));
+        data2023Subform1 = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
 
+    }
+    public void getValueFieldEpensesSubform3_1()
+    {
+        float data2023Subform2 = Float.parseFloat(fieldExpensesSubForm3_1.getAttribute("value").replace(',','.'));
+        data2023Subform1 = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
 
+    }
     public String CheckListHeaderformRioEDO() {
         List<String> myValuess = driver.findElements(By.cssSelector(".v-filterselect-suggestmenu td"))
                 .stream()
@@ -186,45 +253,43 @@ public class InteractiveDoc{
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector(".text-dark.h4"));
         return foFormRio = shadowContent.getText().replaceAll("\\D+","");
     }
+
+
     public void parsData()
     {
         setiNNGRBS();
         setFoFormRIO();
     }
 
-    public void waitModalWindow()
+    public void setHeaderFieldFormRIO() throws InterruptedException
     {
-        var newWait = new WebDriverWait(driver,Duration.ofSeconds(16));
-        newWait.until(ExpectedConditions.visibilityOfElementLocated(modalWindowNoDoc));
+        setYearFormRio();
+        setStageFormRio();
+        setKbkFormRIO();
+        setVersionDocument();
     }
+    public void scrollTableSubForm2()
+    {
+        for(var i = 0;i<10;i++)
+            scrollTable.sendKeys(Keys.ARROW_DOWN);
+    }
+
     public void waitSubformRio()
     {
         var newWait = new WebDriverWait(driver,Duration.ofSeconds(15));
         newWait.until(ExpectedConditions.visibilityOfElementLocated(modal));
     }
-    public boolean wait_waitYearRIO()
+
+    public boolean wait_waitfield2023SubForm1()
     {
         try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));
-            return buttonYearRio.isDisplayed();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+            return field2023NotManualInput.isDisplayed();
         }
         catch (NoSuchElementException e){return false;}
         finally {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         }
-    }
-    public void wait_waitStageRio()
-    {
-        try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-        }
-        finally {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        }
-    }
-    public void setWait()
-    {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
     }
 
     public boolean wait_Kbk_Rio()
@@ -238,16 +303,11 @@ public class InteractiveDoc{
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         }
     }
-    public boolean wait_VersionDocumentRio()
+
+    public void waitTablePresent()
     {
-        try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-            return buttonVersionDocument.isDisplayed();
-        }
-        catch (NoSuchElementException e){return false;}
-        finally {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        }
+        WebDriverWait driverWait = new WebDriverWait(driver,Duration.ofSeconds(3));
+        driverWait.until(driver1 -> driver.findElements(By.xpath("//div[@class='v-table-body-noselection']//tr")).size()>1);
     }
 
 
@@ -350,6 +410,7 @@ public class InteractiveDoc{
         Collections.sort(ListJOB_CHIEF);
         return ListJOB_CHIEF.toString();
     }
+
 
 
 

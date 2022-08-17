@@ -29,7 +29,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-        interactiveDoc.wait_waitStageRio();
+       // interactiveDoc.wait_waitStageRio();
         interactiveDoc.setStageFormRio();
         checkAbsenceModalWindow();
         Assert.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
@@ -76,7 +76,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-        interactiveDoc.wait_waitStageRio();
+       // interactiveDoc.wait_waitStageRio();
         interactiveDoc.setStageFormRio();
         interactiveDoc.parsData();
         checkAppearanceModalWindow();
@@ -93,7 +93,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-        interactiveDoc.wait_waitStageRio();
+      //  interactiveDoc.wait_waitStageRio();
         interactiveDoc.parsData();
         interactiveDoc.setStageDPFormRio();
         checkAppearanceModalWindow();
@@ -111,7 +111,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-        interactiveDoc.wait_waitStageRio();
+      //  interactiveDoc.wait_waitStageRio();
         interactiveDoc.setStageFormRio();
 
         interactiveDoc.parsData();

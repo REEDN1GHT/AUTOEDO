@@ -9,8 +9,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,7 +23,7 @@ import java.time.Duration;
     public static BD con = new BD();
     public BD_Request_Monthly_Report_0503117 request = new BD_Request_Monthly_Report_0503117();
     public BD_Request_Main_FormRIO requestRIO = new BD_Request_Main_FormRIO();
-    @BeforeMethod
+    @BeforeClass
     public void setUp() throws SQLException, ClassNotFoundException {
         con.getConnection();
 
@@ -39,7 +38,7 @@ import java.time.Duration;
     }
 
 
-    @AfterMethod
+    @AfterClass
     public void tearDown() throws IOException, SQLException {
         var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(sourceFile,new File("C:\\creen\\screenshot.png"));

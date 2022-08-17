@@ -148,7 +148,7 @@ System.out.println(requestRIO.CheckVERfromRIO());
         List<String> RTR = new ArrayList<>();
         RTR.add(String.join(" ", RRT));
         System.out.println(date);
-        Assert.assertEquals(RTR, requestRIO.CheckSaveDocuments(), "rtr");
+        Assert.assertEquals(RTR.toString(), requestRIO.CheckSaveDocuments(), "rtr");
 
 
     }
@@ -175,6 +175,22 @@ System.out.println(requestRIO.CheckVERfromRIO());
 
     }
 
+    @Test
+    public void testtest() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setYearFormRio();
+      //  interactiveDoc.wait_waitStageRio();
+        interactiveDoc.setStageFormRio();
+        interactiveDoc.parsData();
+     //   BD_Request_Footer_FormRio bd = new BD_Request_Footer_FormRio();
+    //    System.out.println(bd.CheckListPHONE());
+    }
 }
 
 

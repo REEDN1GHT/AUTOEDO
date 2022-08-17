@@ -49,7 +49,11 @@ shadowContent.click();
     public void clickCreate()
     {
         buttonUpload.click();
-
+    }
+    public void openInteractiveFormDocument() throws InterruptedException {
+        createDocument();
+        setSelect();
+        clickCreate();
     }
 
 }

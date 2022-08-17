@@ -1,6 +1,7 @@
 package Page;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,6 +11,8 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import Resources.ConfigBuilder;
 
+import java.time.Duration;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -17,8 +20,8 @@ public class AuthEDO {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    String EDOurl = ConfigBuilder.getproperty("EDOurl");
-    String EDOPROD = "https://edo.fincom.gov.spb.ru/#/";
+   public static String EDOurl = ConfigBuilder.getproperty("EDOurl");
+   public static String EDOPROD = "https://edo.fincom.gov.spb.ru/#/";
 
 
     @FindBy(css = ".btn.d-flex.mt-4.align-items-center.btn-primary.btn-huge")
@@ -41,6 +44,11 @@ public class AuthEDO {
         this.driver = driver;
         this.wait = wait;
         PageFactory.initElements(driver, this);
+    }
+    public int isElementPresented() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        List list = driver.findElements(By.xpath("//div[@class='mt-5 d-flex align-items-center flex-column justify-content-center']//button"));
+        return list.size();
     }
     public void open() {
         driver.navigate().to(ConfigBuilder.getproperty("EDOurl"));
@@ -74,13 +82,37 @@ public class AuthEDO {
     public void waitCabinet() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSignInCabinet));
     }
-
     public void authorization() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.open();
+        if(authEDO.isElementPresented()==1 )
+        {
+            Auth_through_the_admin_panel authADM = new Auth_through_the_admin_panel(driver, wait);
+            if (Objects.equals(EDOurl, EDOPROD)) {
+                authADM.ADMINauthorization();
+            }
+            authEDO.setButtonEnterMainPage();
+            authEDO.setLoginField();
+            authEDO.setPasswordField();
+            authEDO.setButtonEnterAuthorization();
+            authEDO.role();
+            authEDO.waitCabinet();
+            authEDO.setButtonSignInCabinet();
+
+        }else if(authEDO.isElementPresented()>1)
+        {
+
+            driver.navigate().to("http://172.31.1.149/edo/main");
+
+        }
+
+    }
+
+   /* public void authorization() throws InterruptedException {
         Auth_through_the_admin_panel authADM = new Auth_through_the_admin_panel(driver, wait);
         if (Objects.equals(EDOurl, EDOPROD)) {
             authADM.ADMINauthorization();
         } else {
-            open();
             setButtonEnterMainPage();
             setLoginField();
             setPasswordField();
@@ -90,4 +122,5 @@ public class AuthEDO {
             setButtonSignInCabinet();
         }
     }
+    */
 }
