@@ -91,6 +91,7 @@ public class Document_Footer_Rio extends TestBase {
         Assert.assertEquals(interactiveDoc.CheckListFIO_CHIEFformRIO(), requestRIO.CheckListFIO_CHIEF(), "Справочник ЭДО не соответствует справочнику в БД");
     }
 
+    @Test
     public void interactivePage_CheckJOB_CHIEFformRIO_successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();

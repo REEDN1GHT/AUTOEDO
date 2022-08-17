@@ -3,25 +3,27 @@ package Page;
 import Resources.ConfigBuilder;
 import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.*;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.xml.xpath.XPath;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.security.cert.X509Certificate;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.Arrays;
 
 public class InteractiveDoc{
     private WebDriver driver;
     private WebDriverWait wait;
     public static String iNNGRBS;
     public static String foFormRio;
+    public static List<String> actualDate = new ArrayList<>();
     public  BigDecimal data2023Subform1;
     //Локаторы для периодички
    // @FindBy(id="gwt-uid-57")// присмотреться к локатору, возможно изменится
@@ -97,12 +99,15 @@ public class InteractiveDoc{
     public WebElement field2023Number11;
     @FindBy (xpath = "//tr[@class='v-table-row']//div[@class='v-filterselect-button']")
     public WebElement numeIndicatorSubForm1;
+    @FindBy(xpath = "//div[text()='Руководитель']/parent::div")
+    public WebElement switchPlacementtoChiefformRIO;
 
     @FindBy (xpath = "//div[@class='v-scrollable v-table-body-wrapper v-table-body']")
     public WebElement scrollTable;
 
     private By modalWindowNoDoc = By.id("swal2-content");
     private By modal = By.xpath("//*[text()='Готовый документ не найден']");
+    private By swalSuccessfulSave = By.xpath("//*[text()='Документ успешно сохранен']");
 
 
 
@@ -175,6 +180,18 @@ public class InteractiveDoc{
         SearchContext shadowRoot = shadowHost.getShadowRoot();
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#upload"));
         shadowContent.click();
+    }
+    public void buttonSaveDocumentInteractivePage() throws InterruptedException{
+        WebElement shadowHost = driver.findElement(By.tagName("left-nav-interactive"));
+        SearchContext shadowRoot = shadowHost.getShadowRoot();
+        WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#save"));
+        shadowContent.click();
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:mm");
+        formatter.format(date);
+        String Date1 = String.valueOf(date);
+        actualDate.add(String.join(Date1));
+
     }
     public void setListSubReport1()
     {
@@ -280,6 +297,13 @@ public class InteractiveDoc{
         newWait.until(ExpectedConditions.visibilityOfElementLocated(modal));
     }
 
+    public void waitDocSaveformRio()
+    {
+        var newWait = new WebDriverWait(driver,Duration.ofSeconds(30));
+        newWait.until(ExpectedConditions.visibilityOfElementLocated(swalSuccessfulSave));
+    }
+
+
     public boolean wait_waitfield2023SubForm1()
     {
         try {
@@ -374,7 +398,7 @@ public class InteractiveDoc{
     public String CheckListFIO_CHIEFformRIO() throws InterruptedException {
         List<String> ListFIO_CHIEF = new ArrayList<>();
         int STRnumber = 0;
-        driver.findElement(By.xpath("//div[text()='Руководитель']/parent::div")).click(); //Переключение на вкладку "Руководитель"
+        switchPlacementtoChiefformRIO.click(); //Переключение на вкладку "Руководитель"
         driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/div")).click();
         WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
         String Nstatus = Status.getAttribute("innerText");
@@ -394,7 +418,7 @@ public class InteractiveDoc{
     public String CheckListJOB_CHIEFformRIO() throws InterruptedException {
         List<String> ListJOB_CHIEF = new ArrayList<>();
         int STRnumber = 0;
-        driver.findElement(By.xpath("//div[text()='Руководитель']/parent::div")).click(); //Переключение на вкладку "Руководитель"
+        switchPlacementtoChiefformRIO.click(); //Переключение на вкладку "Руководитель"
         driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/div")).click();
         WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
         String Nstatus = Status.getAttribute("innerText");
@@ -410,10 +434,53 @@ public class InteractiveDoc{
         Collections.sort(ListJOB_CHIEF);
         return ListJOB_CHIEF.toString();
     }
+    public void setFIOformRIO() {
+        WebElement field = driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/input"));
+        field.clear();
+        field.sendKeys("Авто тест тестович");
+        field.sendKeys(Keys.ENTER);
+    }
+    public void setJOBformRIO() {
+        WebElement field = driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/input"));
+        field.clear();
+        field.sendKeys("Автотестер");
+        field.sendKeys(Keys.ENTER);
+    }
+    public void setPHONEformRIO() {
+        WebElement field = driver.findElement(By.xpath("//span[text()='Тел.']/parent::div/following-sibling::div/input"));
+        field.clear();
+        field.sendKeys("89283866775");
+        field.sendKeys(Keys.ENTER);
+    }
 
+    public void setFIO_ChiefformRIO() {
+        WebElement field = driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/input"));
+                field.clear();
+        field.sendKeys("Авто Тест Руководович");
+        field.sendKeys(Keys.ENTER);
+    }
 
+    public void setJOB_ChiefformRIO() {
 
+        WebElement field = driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/input"));
+                field.clear();
+        field.sendKeys("Автотестер руководитель");
+        field.sendKeys(Keys.ENTER);
+    }
 
+    public void setFOOTERformRIO() throws InterruptedException {
+        setFIOformRIO();
+        Thread.sleep(300);
+        setJOBformRIO();
+        Thread.sleep(300);
+        setPHONEformRIO();
+        Thread.sleep(300);
+        driver.findElement(By.xpath("//div[text()='Руководитель']/parent::div")).click();
+        Thread.sleep(300);
+        setFIO_ChiefformRIO();
+        Thread.sleep(300);
+        setJOB_ChiefformRIO();
+    }
 
     public static Object[] removeLastElement(List<String>[] arr) {
         return Arrays.stream(Arrays.copyOf(arr, arr.length - 1)).toArray();

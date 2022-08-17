@@ -499,7 +499,7 @@ public class BD_Request_Main_FormRIO extends BD {
         List<String> RLsaveDOC = new ArrayList<>();
         try {
             Statement statementDocCheck = getConnection().createStatement();
-            String sqlCheck = "Execute dbo.FO_Doc_Check \n" +
+            String sqlCheck = /*"Execute dbo.FO_Doc_Check \n" +
                     "@GroupName='7830002430/1599', \n" +
                     "@CPR_CCS_FULL_CVR='0113 1640099020 831', \n" +
                     "@CUL_PARENT='7832000076', \n" +
@@ -508,8 +508,8 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@VER_DP='01', \n" +
                     "@CPR_CCS_FULL_CVR_Old=Null, \n" +
                     "@VAR_DP=Null, \n" +
-                    "@YEAR='2023'";
-                    /*"Execute dbo.FO_Doc_Check \n" +
+                    "@YEAR='2023'";*/
+                    "Execute dbo.FO_Doc_Check \n" +
                     "@GroupName='7830002430/1599', \n" +
                     "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", \n" +
                     "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
@@ -518,7 +518,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
                     "@CPR_CCS_FULL_CVR_Old=Null, \n" +
                     "@VAR_DP=Null, \n" +
-                    "@YEAR=" + yearFormRIO;*/
+                    "@YEAR=" + yearFormRIO;
                 ResultSet ResultCheck = statementDocCheck.executeQuery(sqlCheck);
                 while (ResultCheck.next()) {
                     NDOCID = ResultCheck.getString("DOCID");

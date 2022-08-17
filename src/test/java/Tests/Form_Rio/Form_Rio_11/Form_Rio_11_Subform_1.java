@@ -10,7 +10,10 @@ import org.testng.annotations.Test;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
+
 
 public class Form_Rio_11_Subform_1 extends TestBase {
     @Test()
@@ -170,6 +173,21 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.wait_waitfield2023SubForm1();
         Assert.assertEquals(interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.data2023Subform1.toString(),"Сумма в полях различается");
     }
-
+    @Test()
+    public void interactivePage_Check_DOC_SAVE_Successful() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.openInteractiveFormDocument();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.buttonLoadDocumentInteractivePage();
+        interactiveDoc.waitSubformRio();
+        interactiveDoc.modalWindowButtonOK.click();
+        interactiveDoc.setFOOTERformRIO();
+        interactiveDoc.buttonSaveDocumentInteractivePage();
+        interactiveDoc.waitDocSaveformRio();
+        Assert.assertEquals(interactiveDoc.actualDate.toString(), requestRIO.CheckSaveDocuments(), "Ошибка сохранения документа в АИС БП");
+    }
 
 }
