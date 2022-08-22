@@ -51,13 +51,13 @@ public class InteractiveDoc{
 
     @FindBy(xpath = "//button[text()='ОК']")
     public WebElement modalWindow;
-    @FindBy(xpath = "//span[text()='№']/parent::div/parent::td//parent::tr/child::td[3]/child::div/child::div")
+    @FindBy(xpath = "//div[@class='v-expand']/div[@class='v-slot'][1]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
     public WebElement buttonYearRio;
-    @FindBy (xpath="//input[@id='gwt-uid-29']/following-sibling::div")
+    @FindBy (xpath="//div[@class='v-expand']/div[@class='v-slot'][2]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
     public WebElement buttonStageFormRIO;
-    @FindBy(xpath = "//input[@id='gwt-uid-33']/following-sibling::div")
+    @FindBy(xpath = "//div[@class='v-expand']/div[@class='v-slot'][4]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
     public WebElement buttonKbkFormRio;
-    @FindBy (xpath = "//input[@id='gwt-uid-35']/following-sibling::div")
+    @FindBy (xpath = "//div[@class='v-expand']/div[@class='v-slot'][5]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
     public WebElement buttonVersionDocument;
     @FindBy(xpath = "//div[@class='v-filterselect v-widget v-has-width v-required v-filterselect-required v-filterselect-focus']/input")
     public WebElement stageFormRIO;
@@ -127,7 +127,7 @@ public class InteractiveDoc{
 
     //Поле Год в шапке документа
     public void setYearFormRio() throws InterruptedException {
-        Thread.sleep(300);
+        Thread.sleep(2000);
         buttonYearRio.click();
         String spisokYearFormRio = ConfigBuilder.getproperty("yearFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokYearFormRio+"']/parent::td"));

@@ -48,6 +48,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        Thread.sleep(2000);
         interactiveDoc.buttonYearRio.click();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(), requestRIO.CheckListYEARformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
     }
@@ -62,6 +63,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
+        Thread.sleep(2000);
         interactiveDoc.buttonStageFormRIO.click();
         checkAppearanceModalWindow();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(), requestRIO.CheckListSTAGEformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
@@ -114,7 +116,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setYearFormRio();
       //  interactiveDoc.wait_waitStageRio();
         interactiveDoc.setStageFormRio();
-
         interactiveDoc.parsData();
         checkAppearanceModalWindow();
         interactiveDoc.setKbkFormRIO();
