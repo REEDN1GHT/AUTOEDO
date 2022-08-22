@@ -51,7 +51,7 @@ public class InteractiveDoc{
 
     @FindBy(xpath = "//button[text()='ОК']")
     public WebElement modalWindow;
-    @FindBy(xpath = "//input[@id='gwt-uid-27']/following-sibling::div")
+    @FindBy(xpath = "//span[text()='№']/parent::div/parent::td//parent::tr/child::td[3]/child::div/child::div")
     public WebElement buttonYearRio;
     @FindBy (xpath="//input[@id='gwt-uid-29']/following-sibling::div")
     public WebElement buttonStageFormRIO;

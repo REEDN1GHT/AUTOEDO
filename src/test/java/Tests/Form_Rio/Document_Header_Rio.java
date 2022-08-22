@@ -4,6 +4,7 @@ import Page.AuthEDO;
 import Resources.ConfigBuilder;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
