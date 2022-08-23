@@ -191,6 +191,11 @@ System.out.println(requestRIO.CheckVERfromRIO());
      //   BD_Request_Footer_FormRio bd = new BD_Request_Footer_FormRio();
     //    System.out.println(bd.CheckListPHONE());
     }
+    @Test
+    public void sum()
+    {
+        System.out.println(requests_11formRIO_tableOne.CheckStringTotalSumm2022());
+    }
 }
 
 

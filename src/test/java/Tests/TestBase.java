@@ -42,7 +42,7 @@ import java.time.Duration;
     public void tearDown() throws IOException, SQLException {
         var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(sourceFile,new File("C:\\creen\\screenshot.png"));
-        //BD con = new BD();
+
         con.closeConnect();
         driver.quit();
 
