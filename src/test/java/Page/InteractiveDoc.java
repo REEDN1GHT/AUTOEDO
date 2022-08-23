@@ -24,7 +24,7 @@ public class InteractiveDoc{
     public static String iNNGRBS;
     public static String foFormRio;
     public static List<String> actualDate = new ArrayList<>();
-    public  BigDecimal data2023Subform1;
+    public  BigDecimal dataField;
     //Локаторы для периодички
    // @FindBy(id="gwt-uid-57")// присмотреться к локатору, возможно изменится
    // WebElement period;
@@ -71,7 +71,8 @@ public class InteractiveDoc{
     public WebElement buttonAddNewString;
     @FindBy(css = ".v-filterselect.v-widget.v-modified.v-has-width.missedField.v-filterselect-missedField .v-filterselect-button")
     public WebElement subReport;
-
+    @FindBy(xpath = "//div[@class='v-slot v-slot-missedField']//input[@class='v-filterselect-input']")
+    public WebElement subReport2;
     @FindBy(xpath = "//td[@class='v-table-cell-content'][3]//input")
     public WebElement field2021ManualInput;
     @FindBy(xpath = "//td[@class='v-table-cell-content'][4]//input")
@@ -89,26 +90,42 @@ public class InteractiveDoc{
     @FindBy(xpath = "//td[@class='v-table-cell-content'][10]//input")
     public WebElement fieldTempRost3;
 
-    @FindBy(xpath = "//tr[@class='v-table-row-odd'][12]//td[@class='v-table-cell-content'][3]//input")
+    @FindBy(xpath = "//tr[@class='v-table-row-odd'][13]//td[@class='v-table-cell-content'][3]//input")
     public WebElement field2023Number10;
+    @FindBy(xpath = "//tr[@class='v-table-row-odd'][12]//td[@class='v-table-cell-content'][4]//input")
+    public WebElement field2024Number8_3;
+    @FindBy(xpath = "//tr[@class='v-table-row-odd'][12]//td[@class='v-table-cell-content'][5]//input")
+    public WebElement field2025Number8_3;
     @FindBy(xpath = "//td[@class='v-table-cell-content'][10]//input")
     public WebElement field1QuarterSubform3_1;
-    @FindBy(xpath = "//td[@class='v-table-cell-content'][15]//input")
-    public WebElement fieldExpensesSubForm3_1;
+    @FindBy(xpath = "//td[@class='v-table-cell-content'][last()]//input")
+    public WebElement fieldExpensesSubFormLast;
     @FindBy (xpath = "//tr[@class='v-table-row'][14]/td[@class='v-table-cell-content'][3]//input")
     public WebElement field2023Number11;
+    @FindBy (xpath = "//tr[@class='v-table-row'][14]/td[@class='v-table-cell-content'][4]//input")
+    public WebElement field2024Number11;
+    @FindBy (xpath = "//tr[@class='v-table-row'][14]/td[@class='v-table-cell-content'][5]//input")
+    public WebElement field2025Number11;
     @FindBy (xpath = "//tr[@class='v-table-row']//div[@class='v-filterselect-button']")
     public WebElement numeIndicatorSubForm1;
     @FindBy(xpath = "//div[text()='Руководитель']/parent::div")
     public WebElement switchPlacementtoChiefformRIO;
-
+    @FindBy(xpath = "//div[@class='v-table-footer']//td[4]//span[@class='row_any'][2]")
+    public WebElement stringTotal2022;
+    @FindBy(xpath = "//div[@class='v-table-footer']//td[5]//span[@class='row_any'][2]")
+    public WebElement stringTotal2023;
+    @FindBy(xpath = "//div[@class='v-table-footer']//td[7]//span[@class='row_any'][2]")
+    public WebElement stringTotal2024;
+    @FindBy(xpath = "//div[@class='v-table-footer']//td[9]//span[@class='row_any'][2]")
+    public WebElement stringTotal2025;
+    @FindBy(xpath = "//div[@class='v-table-footer']//td[6]//span[@class='row_any'][2]")
+    public WebElement stringTotalGrowthRate1;
     @FindBy (xpath = "//div[@class='v-scrollable v-table-body-wrapper v-table-body']")
     public WebElement scrollTable;
 
     private By modalWindowNoDoc = By.id("swal2-content");
     private By modal = By.xpath("//*[text()='Готовый документ не найден']");
     private By swalSuccessfulSave = By.xpath("//*[text()='Документ успешно сохранен']");
-
 
 
     public InteractiveDoc(WebDriver driver, WebDriverWait wait)
@@ -119,15 +136,15 @@ public class InteractiveDoc{
     }
 
     public boolean isElementPresented() {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
-            List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show"));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show"));
         return list.size()>0;
     }
 
 
     //Поле Год в шапке документа
     public void setYearFormRio() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         buttonYearRio.click();
         String spisokYearFormRio = ConfigBuilder.getproperty("yearFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokYearFormRio+"']/parent::td"));
@@ -193,13 +210,17 @@ public class InteractiveDoc{
         actualDate.add(String.join(Date1));
 
     }
-    public void setListSubReport1()
-    {
+    public void setListSubReport(String str) throws InterruptedException {
         subReport.click();
-        String listSubReportFormRio11 = ConfigBuilder.getproperty("subReportFormRio11");
-        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
-        buttonENTER.click();
+        subReport2.sendKeys(str);
+        Thread.sleep(1000);
+        subReport2.sendKeys(Keys.ENTER);
+        //String listSubReportFormRio11 = ConfigBuilder.getproperty("subReportFormRio11");
+        // WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
+        // buttonENTER.click();
     }
+
+
 
     public void setListSubReport2()
     {
@@ -208,13 +229,17 @@ public class InteractiveDoc{
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
         buttonENTER.click();
     }
-    public void setListSubReport3_1()
+    public void setListSubReport3_()
     {
         subReport.click();
         String listSubReportFormRio11 = ConfigBuilder.getproperty("subReport3_1FormRio11");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
         buttonENTER.click();
     }
+
+
+
+
     public void setFieldIndictorSubForm1()
     {
         numeIndicatorSubForm1.click();
@@ -231,27 +256,71 @@ public class InteractiveDoc{
     }
     public void setField2023Number10()
     {
-        field2023Number10.sendKeys("4 457");
+        field2023Number10.sendKeys("457457");
         field2023Number10.sendKeys(Keys.ENTER);
     }
+    public void setField2024Number8_3()
+    {
+        field2024Number8_3.sendKeys("445732");
+        field2024Number8_3.sendKeys(Keys.ENTER);
+    }
+    public void setField2025Number10()
+    {
+        field2025Number8_3.sendKeys("5436654");
+        field2025Number8_3.sendKeys(Keys.ENTER);
+    }
+
     public void setfield1QuarterSubform3_1()
     {
-        field1QuarterSubform3_1.sendKeys("8 457");
-        field1QuarterSubform3_1.sendKeys(Keys.ENTER);
+        try {
+            field1QuarterSubform3_1.sendKeys("857864");
+            field1QuarterSubform3_1.sendKeys(Keys.ENTER);
+        }
+        catch (org.openqa.selenium.StaleElementReferenceException ex){
+            field1QuarterSubform3_1.sendKeys("857864");
+            field1QuarterSubform3_1.sendKeys(Keys.ENTER);  }
     }
+
+    public String raschetZnach(float str, float str2)
+    {
+        var raschet = str/str2*100;
+        dataField = new BigDecimal(raschet).setScale(1, RoundingMode.HALF_UP);
+        return dataField.toString();
+    }
+
 
     public void getValuefield2023Subform2()
     {
         float data2023Subform2 = Float.parseFloat(field2023Number11.getAttribute("value").replace(',','.'));
-        data2023Subform1 = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
+        dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
 
     }
-    public void getValueFieldEpensesSubform3_1()
+    public void getValuefield2024Subform2()
     {
-        float data2023Subform2 = Float.parseFloat(fieldExpensesSubForm3_1.getAttribute("value").replace(',','.'));
-        data2023Subform1 = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
+        float data2023Subform2 = Float.parseFloat(field2024Number11.getAttribute("value").replace(',','.'));
+        dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
 
     }
+    public void getValuefield2025Subform2()
+    {
+        float data2023Subform2 = Float.parseFloat(field2025Number11.getAttribute("value").replace(',','.'));
+        dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
+
+    }
+
+    public void getValueFieldEpensesSubform()
+    {
+        float data2023Subform2 = Float.parseFloat(fieldExpensesSubFormLast.getAttribute("value").replace(',','.'));
+        dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
+
+    }
+    public String okryglenie(float str)
+    {
+        dataField = new BigDecimal(str).setScale(1, RoundingMode.HALF_UP);
+        return dataField.toString();
+    }
+
+
     public String CheckListHeaderformRioEDO() {
         List<String> myValuess = driver.findElements(By.cssSelector(".v-filterselect-suggestmenu td"))
                 .stream()
@@ -293,7 +362,7 @@ public class InteractiveDoc{
 
     public void waitSubformRio()
     {
-        var newWait = new WebDriverWait(driver,Duration.ofSeconds(15));
+        var newWait = new WebDriverWait(driver,Duration.ofSeconds(30));
         newWait.until(ExpectedConditions.visibilityOfElementLocated(modal));
     }
 
@@ -455,7 +524,7 @@ public class InteractiveDoc{
 
     public void setFIO_ChiefformRIO() {
         WebElement field = driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/input"));
-                field.clear();
+        field.clear();
         field.sendKeys("Авто Тест Руководович");
         field.sendKeys(Keys.ENTER);
     }
@@ -463,7 +532,7 @@ public class InteractiveDoc{
     public void setJOB_ChiefformRIO() {
 
         WebElement field = driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/input"));
-                field.clear();
+        field.clear();
         field.sendKeys("Автотестер руководитель");
         field.sendKeys(Keys.ENTER);
     }

@@ -1,6 +1,7 @@
 package Tests;
 
 import Tests.Form_Rio.BD_Request_Main_FormRIO;
+import Tests.Form_Rio.Form_Rio_11.BD_Requests_11formRIO_TableOne;
 import Tests.Report_form_documents.BD_Request_Monthly_Report_0503117;
 import org.apache.commons.io.FileUtils;
 
@@ -23,6 +24,7 @@ import java.time.Duration;
     public static BD con = new BD();
     public BD_Request_Monthly_Report_0503117 request = new BD_Request_Monthly_Report_0503117();
     public BD_Request_Main_FormRIO requestRIO = new BD_Request_Main_FormRIO();
+    public BD_Requests_11formRIO_TableOne requests_11formRIO_tableOne = new BD_Requests_11formRIO_TableOne();
     @BeforeClass
     public void setUp() throws SQLException, ClassNotFoundException {
         con.getConnection();

@@ -194,7 +194,7 @@ System.out.println(requestRIO.CheckVERfromRIO());
     @Test
     public void sum()
     {
-        System.out.println(requests_11formRIO_tableOne.CheckStringTotalSumm2022());
+        System.out.println(requests_11formRIO_tableOne.CheckStringTotalSumm2025());
     }
 }
 

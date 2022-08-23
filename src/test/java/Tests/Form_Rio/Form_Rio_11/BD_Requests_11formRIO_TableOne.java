@@ -180,6 +180,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
                     "Group by [DOC].[DU_R], [K_VR].[CVR], [K_PS].[CPS], [DOC].[CDOC], [K_UL].[CUL], [K_PR].[CPR], [K_CS].[CCS_FULL]\n" +
                     "Order by 1\n";
             ResultSet ResultNAME = statementNAME.executeQuery(sqlNAME);
+            System.out.println(sqlNAME);
             while (ResultNAME.next()) {
                 Sum2025 = ResultNAME.getString("3 год (ЗР)");
                 RLname.add(Sum2025);
