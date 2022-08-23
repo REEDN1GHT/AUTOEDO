@@ -21,6 +21,7 @@ import static Tests.Form_Rio.BD_Request_Main_FormRIO.DU_R;
 public class Test1 extends TestBase {
 
     public static String numFO;
+
     @Test
     public void testauth() throws InterruptedException {
         AuthKazna authKazna = new AuthKazna(driver, wait);
@@ -32,10 +33,8 @@ public class Test1 extends TestBase {
     }
 
 
-
-
     @Test
-    public void testR(){
+    public void testR() {
         BD_Request_Main_FormRIO bd_request_Main_formRIO = new BD_Request_Main_FormRIO();
         bd_request_Main_formRIO.CheckRequestGRBS();
         System.out.println(DU_R);
@@ -52,9 +51,9 @@ public class Test1 extends TestBase {
     }
 
     @Test
-    public void testAYHTcofn() throws InterruptedException{
-    AuthEDO authEDO = new AuthEDO(driver, wait);
-    authEDO.authorization();
+    public void testAYHTcofn() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
     }
 
     @Test
@@ -65,15 +64,16 @@ public class Test1 extends TestBase {
         cabinetPage.createDocument();
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver, wait);
         interactiveDoc.setYearFormRio();
         interactiveDoc.setStageFormRio();
         interactiveDoc.setiNNGRBS();
         interactiveDoc.setFoFormRIO();
         interactiveDoc.setKbkFormRIO();
-System.out.println(requestRIO.CheckVERfromRIO());
+        System.out.println(requestRIO.CheckVERfromRIO());
 
     }
+
     //Парс номера fo из url
     @Test
     public void testFO() throws InterruptedException {  //Номер формы ЭДО из домена
@@ -83,7 +83,7 @@ System.out.println(requestRIO.CheckVERfromRIO());
         cabinetPage.createDocument();
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver, wait);
         wait.until(ExpectedConditions.urlContains("fo"));
         String url = driver.getCurrentUrl();
         String[] urlfo = url.split("=");
@@ -102,7 +102,7 @@ System.out.println(requestRIO.CheckVERfromRIO());
         cabinetPage.createDocument();
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver, wait);
         interactiveDoc.setiNNGRBS();
         System.out.println(requestRIO.CheckKBKformRIO());
 
@@ -140,8 +140,6 @@ System.out.println(requestRIO.CheckVERfromRIO());
         formatter.format(date);
 
 
-
-
         String Kek = "2022-08-16 11:56:21.81";
         Date RT = new SimpleDateFormat("YYYY-MM-DD HH:mm").parse(Kek);
         String RRT = String.valueOf(RT);
@@ -162,7 +160,7 @@ System.out.println(requestRIO.CheckVERfromRIO());
         cabinetPage.createDocument();
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver, wait);
         interactiveDoc.setYearFormRio();
         interactiveDoc.setStageFormRio();
         interactiveDoc.wait_Kbk_Rio();
@@ -183,19 +181,20 @@ System.out.println(requestRIO.CheckVERfromRIO());
         cabinetPage.createDocument();
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver, wait);
         interactiveDoc.setYearFormRio();
-      //  interactiveDoc.wait_waitStageRio();
+        //  interactiveDoc.wait_waitStageRio();
         interactiveDoc.setStageFormRio();
         interactiveDoc.parsData();
-     //   BD_Request_Footer_FormRio bd = new BD_Request_Footer_FormRio();
-    //    System.out.println(bd.CheckListPHONE());
+        //   BD_Request_Footer_FormRio bd = new BD_Request_Footer_FormRio();
+        //    System.out.println(bd.CheckListPHONE());
     }
+
     @Test
-    public void sum()
-    {
+    public void sum() {
         System.out.println(requests_11formRIO_tableOne.CheckStringTotalSumm2025());
     }
 }
+
 
 

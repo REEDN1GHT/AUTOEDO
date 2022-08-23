@@ -1,8 +1,6 @@
 package Tests.Form_Rio;
 
 import Tests.BD;
-import com.google.errorprone.annotations.Var;
-import org.w3c.dom.ls.LSException;
 
 
 import java.sql.ResultSet;
@@ -27,12 +25,11 @@ public class BD_Request_Main_FormRIO extends BD {
     public String CheckDOCID;
 
 
-
     public String CheckListYEARformRIO() {
 
         List<String> RLyear = new ArrayList<>();
         try {
-            Statement statementYEAR = getConnection().createStatement();
+            Statement statementYEAR = getConnectionBudget22().createStatement();
             String sqlYEAR = "Execute dbo.FO_Doc_List\n" +
                     " @FieldName='YEAR', \n" +
                     " @GroupName='7830002430/1599', \n" +
@@ -53,8 +50,8 @@ public class BD_Request_Main_FormRIO extends BD {
                     " @YEAR=Null;";
             ResultSet ResultYEAR = statementYEAR.executeQuery(sqlYEAR);
             while (ResultYEAR.next()) {
-                 String ListYEARformRIO = ResultYEAR.getString("Год");
-                 RLyear.add(String.join(" ", ListYEARformRIO).trim());
+                String ListYEARformRIO = ResultYEAR.getString("Год");
+                RLyear.add(String.join(" ", ListYEARformRIO).trim());
                 Collections.sort(RLyear);
             }
         } catch (SQLException | ClassNotFoundException throwables) {
@@ -66,32 +63,32 @@ public class BD_Request_Main_FormRIO extends BD {
     public String CheckListSTAGEformRIO() {
         List<String> RLstage = new ArrayList<>();
         try {
-        Statement statementSTAGE = getConnection().createStatement();
-        String sqlSTAGE = "Execute dbo.FO_Doc_List \n" +
-                "@FieldName='STAGE', \n" +
-                "@GroupName='7830002430/1599', \n" +
-                "@DOCID=Null, \n" +
-                "@DOCID_Old=Null, \n" +
-                "@CPR_CCS_FULL_CVR=Null, \n" +
-                "@CUL_PARENT=Null, \n" +
-                "@FO=Null, \n" +
-                "@STAGE=Null, \n" +
-                "@VER_DP=Null, \n" +
-                "@CTD_SUB=Null, \n" +
-                "@CPR_CCS_FULL_CVR_Old=Null, \n" +
-                "@FIO=Null, \n" +
-                "@JOB=Null, \n" +
-                "@PHONE=Null, \n" +
-                "@FIO_CHIEF=Null, \n" +
-                "@JOB_CHIEF=Null, \n" +
-                "@YEAR=" + yearFormRIO;
-        ResultSet ResultSTAGE = statementSTAGE.executeQuery(sqlSTAGE);
-        while (ResultSTAGE.next()) {
-            String ListSTAGEkod = ResultSTAGE.getString("Код");
-            String ListSTAGEname = ResultSTAGE.getString("Наименование");
-            RLstage.add(String.join(" - ", ListSTAGEkod, ListSTAGEname).trim());
-        }
-    }catch (SQLException | ClassNotFoundException throwables) {
+            Statement statementSTAGE = getConnectionBudget22().createStatement();
+            String sqlSTAGE = "Execute dbo.FO_Doc_List \n" +
+                    "@FieldName='STAGE', \n" +
+                    "@GroupName='7830002430/1599', \n" +
+                    "@DOCID=Null, \n" +
+                    "@DOCID_Old=Null, \n" +
+                    "@CPR_CCS_FULL_CVR=Null, \n" +
+                    "@CUL_PARENT=Null, \n" +
+                    "@FO=Null, \n" +
+                    "@STAGE=Null, \n" +
+                    "@VER_DP=Null, \n" +
+                    "@CTD_SUB=Null, \n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null, \n" +
+                    "@FIO=Null, \n" +
+                    "@JOB=Null, \n" +
+                    "@PHONE=Null, \n" +
+                    "@FIO_CHIEF=Null, \n" +
+                    "@JOB_CHIEF=Null, \n" +
+                    "@YEAR=" + yearFormRIO;
+            ResultSet ResultSTAGE = statementSTAGE.executeQuery(sqlSTAGE);
+            while (ResultSTAGE.next()) {
+                String ListSTAGEkod = ResultSTAGE.getString("Код");
+                String ListSTAGEname = ResultSTAGE.getString("Наименование");
+                RLstage.add(String.join(" - ", ListSTAGEkod, ListSTAGEname).trim());
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLstage.toString();
@@ -100,48 +97,16 @@ public class BD_Request_Main_FormRIO extends BD {
     public String CheckKBKformRIO() {
         List<String> RLkbk = new ArrayList<>();
         try {
-            Statement statementKBK = getConnection().createStatement();
-            String sqlKBK = "Execute dbo.FO_Doc_List\n" +
-            "@FieldName='CPR_CCS_FULL_CVR',\n" +
-            "@GroupName='7830002430/1599',\n" +
-            "@DOCID=Null,\n" +
-            "@DOCID_Old=Null,\n" +
-            "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\",\n" +
-            "@CUL_PARENT=\"" +iNNGRBS+ "\",\n" +
-            "@FO=\"" +foFormRio+ "\",\n" +
-            "@STAGE=\"" +stageFormRIO+ "\", " +
-            "@VER_DP=Null,\n" +
-            "@CTD_SUB=Null,\n" +
-            "@CPR_CCS_FULL_CVR_Old=Null,\n" +
-            "@FIO=Null,\n" +
-            "@JOB=Null,\n" +
-            "@PHONE=Null,\n" +
-            "@FIO_CHIEF=Null,\n" +
-            "@JOB_CHIEF=Null,\n" +
-            "@YEAR=" +yearFormRIO;
-            ResultSet ResultKBK = statementKBK.executeQuery(sqlKBK);
-            while (ResultKBK.next()) {
-                String ListKBKformRIO = ResultKBK.getString("ПБК");
-                RLkbk.add(String.join(" ", ListKBKformRIO));
-            }
-        } catch (SQLException | ClassNotFoundException throwables){
-            throwables.printStackTrace();
-        }
-        return RLkbk.toString();
-    }
-    public String CheckKBKDPformRIO() {
-        List<String> RLkbk = new ArrayList<>();
-        try {
-            Statement statementKBK = getConnection().createStatement();
+            Statement statementKBK = getConnectionBudget22().createStatement();
             String sqlKBK = "Execute dbo.FO_Doc_List\n" +
                     "@FieldName='CPR_CCS_FULL_CVR',\n" +
                     "@GroupName='7830002430/1599',\n" +
                     "@DOCID=Null,\n" +
                     "@DOCID_Old=Null,\n" +
-                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\",\n" +
-                    "@CUL_PARENT=\"" +iNNGRBS+ "\",\n" +
-                    "@FO=\"" +foFormRio+ "\",\n" +
-                    "@STAGE=\"" +stageDPFormRIO+ "\", " +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\",\n" +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\",\n" +
+                    "@FO=\"" + foFormRio + "\",\n" +
+                    "@STAGE=\"" + stageFormRIO + "\", " +
                     "@VER_DP=Null,\n" +
                     "@CTD_SUB=Null,\n" +
                     "@CPR_CCS_FULL_CVR_Old=Null,\n" +
@@ -150,31 +115,64 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@PHONE=Null,\n" +
                     "@FIO_CHIEF=Null,\n" +
                     "@JOB_CHIEF=Null,\n" +
-                    "@YEAR=" +yearFormRIO;
+                    "@YEAR=" + yearFormRIO;
             ResultSet ResultKBK = statementKBK.executeQuery(sqlKBK);
             while (ResultKBK.next()) {
                 String ListKBKformRIO = ResultKBK.getString("ПБК");
                 RLkbk.add(String.join(" ", ListKBKformRIO));
             }
-        } catch (SQLException | ClassNotFoundException throwables){
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return RLkbk.toString();
+    }
+
+    public String CheckKBKDPformRIO() {
+        List<String> RLkbk = new ArrayList<>();
+        try {
+            Statement statementKBK = getConnectionBudget22().createStatement();
+            String sqlKBK = "Execute dbo.FO_Doc_List\n" +
+                    "@FieldName='CPR_CCS_FULL_CVR',\n" +
+                    "@GroupName='7830002430/1599',\n" +
+                    "@DOCID=Null,\n" +
+                    "@DOCID_Old=Null,\n" +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\",\n" +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\",\n" +
+                    "@FO=\"" + foFormRio + "\",\n" +
+                    "@STAGE=\"" + stageDPFormRIO + "\", " +
+                    "@VER_DP=Null,\n" +
+                    "@CTD_SUB=Null,\n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null,\n" +
+                    "@FIO=Null,\n" +
+                    "@JOB=Null,\n" +
+                    "@PHONE=Null,\n" +
+                    "@FIO_CHIEF=Null,\n" +
+                    "@JOB_CHIEF=Null,\n" +
+                    "@YEAR=" + yearFormRIO;
+            ResultSet ResultKBK = statementKBK.executeQuery(sqlKBK);
+            while (ResultKBK.next()) {
+                String ListKBKformRIO = ResultKBK.getString("ПБК");
+                RLkbk.add(String.join(" ", ListKBKformRIO));
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLkbk.toString();
     }
 
     public String CheckVERfromRIO() {
-        List<String> RLver =new ArrayList<>();
+        List<String> RLver = new ArrayList<>();
         try {
-            Statement statementVER = getConnection().createStatement();
+            Statement statementVER = getConnectionBudget22().createStatement();
             String sqlVER = "Execute dbo.FO_Doc_List " +
                     "@FieldName='VER_DP', " +
                     "@GroupName='7830002430/1599', " +
                     "@DOCID=Null, " +
                     "@DOCID_Old=Null, " +
-                    "@CPR_CCS_FULL_CVR=\"" +kbkFormRIO+ "\"," +
-                    "@CUL_PARENT=\"" +iNNGRBS+ "\", " +
-                    "@FO=\"" +foFormRio+ "\"," +
-                    "@STAGE=\"" +stageFormRIO+ "\", " +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\"," +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\", " +
+                    "@FO=\"" + foFormRio + "\"," +
+                    "@STAGE=\"" + stageFormRIO + "\", " +
                     "@VER_DP=Null, " +
                     "@CTD_SUB=Null, " +
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
@@ -183,31 +181,32 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@PHONE=Null, " +
                     "@FIO_CHIEF=Null, " +
                     "@JOB_CHIEF=Null, " +
-                    "@YEAR=" +yearFormRIO;
+                    "@YEAR=" + yearFormRIO;
             ResultSet ResultVER = statementVER.executeQuery(sqlVER);
             while (ResultVER.next()) {
                 String ListVERforRIO = ResultVER.getString("Номер документа");
                 RLver.add(ListVERforRIO);
             }
 
-        }catch (SQLException | ClassNotFoundException throwables){
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLver.toString();
     }
+
     public String CheckVERDPfromRIO() {
-        List<String> RLver =new ArrayList<>();
+        List<String> RLver = new ArrayList<>();
         try {
-            Statement statementVER = getConnection().createStatement();
+            Statement statementVER = getConnectionBudget22().createStatement();
             String sqlVER = "Execute dbo.FO_Doc_List " +
                     "@FieldName='VER_DP', " +
                     "@GroupName='7830002430/1599', " +
                     "@DOCID=Null, " +
                     "@DOCID_Old=Null, " +
-                    "@CPR_CCS_FULL_CVR=\"" +kbkDPFormRIO+ "\", \n" +
-                    "@CUL_PARENT=\"" +iNNGRBS+ "\", \n" +
-                    "@FO=\"" +foFormRio+ "\"," +
-                    "@STAGE=\"" +stageDPFormRIO+ "\",\n" +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkDPFormRIO + "\", \n" +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
+                    "@FO=\"" + foFormRio + "\"," +
+                    "@STAGE=\"" + stageDPFormRIO + "\",\n" +
                     "@VER_DP=Null, " +
                     "@CTD_SUB=Null, " +
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
@@ -216,14 +215,14 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@PHONE=Null, " +
                     "@FIO_CHIEF=Null, " +
                     "@JOB_CHIEF=Null, " +
-                    "@YEAR=" +yearFormRIO;
+                    "@YEAR=" + yearFormRIO;
             ResultSet ResultVER = statementVER.executeQuery(sqlVER);
             while (ResultVER.next()) {
                 String ListVERforRIO = ResultVER.getString("Номер документа");
                 RLver.add(ListVERforRIO);
             }
 
-        }catch (SQLException | ClassNotFoundException throwables){
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLver.toString();
@@ -232,16 +231,16 @@ public class BD_Request_Main_FormRIO extends BD {
     public String CheckVersionDPFormRIO() {
         List<String> RLVersionDP = new ArrayList<>();
         try {
-            Statement statementVersionDP = getConnection().createStatement();
+            Statement statementVersionDP = getConnectionBudget22().createStatement();
             String sqlVersionDP = "Execute dbo.FO_Doc_List \n" +
                     "@FieldName='VAR_DP', \n" +
                     "@GroupName='7830002430/1599', \n" +
                     "@DOCID=null, \n" +
                     "@DOCID_Old=null, \n" +
-                    "@CPR_CCS_FULL_CVR=\"" +kbkDPFormRIO+ "\", \n" +
-                    "@CUL_PARENT=\"" +iNNGRBS+ "\", \n" +
-                    "@FO=\"" +foFormRio+ "\"," +
-                    "@STAGE=\"" +stageDPFormRIO+ "\",\n" +
+                    "@CPR_CCS_FULL_CVR=\"" + kbkDPFormRIO + "\", \n" +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
+                    "@FO=\"" + foFormRio + "\"," +
+                    "@STAGE=\"" + stageDPFormRIO + "\",\n" +
                     "@VER_DP=Null," +
                     "@CTD_SUB=Null, \n" +
                     "@CPR_CCS_FULL_CVR_Old=Null, \n" +
@@ -250,13 +249,13 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@PHONE=Null, \n" +
                     "@FIO_CHIEF=Null,\n" +
                     "@JOB_CHIEF=Null, \n" +
-                    "@YEAR=" +yearFormRIO;
+                    "@YEAR=" + yearFormRIO;
             ResultSet ResultVersionDP = statementVersionDP.executeQuery(sqlVersionDP);
             while (ResultVersionDP.next()) {
                 String ListVersionDP = ResultVersionDP.getString("Номер документа");
                 RLVersionDP.add(ListVersionDP);
             }
-        }catch (SQLException | ClassNotFoundException throwables) {
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLVersionDP.toString();
@@ -267,7 +266,7 @@ public class BD_Request_Main_FormRIO extends BD {
 
         List<String> RDOCID = new ArrayList<>();
         try {
-            Statement statement1 = getConnection().createStatement();
+            Statement statement1 = getConnectionBudget22().createStatement();
             String sql = "Execute dbo.PRB_R_ZR_Doc_Check" +
                     " @GroupName='7830002430/1599', " +
                     "@CUL=\"" + iNNGRBS + "\"," +
@@ -277,7 +276,7 @@ public class BD_Request_Main_FormRIO extends BD {
             while (Result1.next()) {
                 NDOCID = Result1.getString("DOCID");
             }
-            Statement statement2 = getConnection().createStatement();
+            Statement statement2 = getConnectionBudget22().createStatement();
             String sql2 = "select * from DOC where docid=" + NDOCID;
 
             ResultSet Result2 = statement2.executeQuery(sql2);
@@ -294,7 +293,7 @@ public class BD_Request_Main_FormRIO extends BD {
 
     public String CheckDU_RETURN() {
         try {
-            Statement statementCheckDOCID = getConnection().createStatement();
+            Statement statementCheckDOCID = getConnectionBudget22().createStatement();
             String sqlDOCID = "Execute dbo.FO_Doc_Check " +
                     "@GroupName='7830002430/1599', " +
                     "@CPR_CCS_FULL_CVR=\"" + kbkDPFormRIO + "\", " +
@@ -307,15 +306,15 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@YEAR=" + yearFormRIO;
             ResultSet ResultDOCID = statementCheckDOCID.executeQuery(sqlDOCID);
             while (ResultDOCID.next()) {
-               NDOCID = ResultDOCID.getString("DOCID");
+                NDOCID = ResultDOCID.getString("DOCID");
             }
-            Statement statementDU_RETURN = getConnection().createStatement();
+            Statement statementDU_RETURN = getConnectionBudget22().createStatement();
             String sqlDU_RETURN = "SELECT D_RETURN FROM DOC WHERE DOCID=" + NDOCID;
             ResultSet ResultDU_RETURN = statementDU_RETURN.executeQuery(sqlDU_RETURN);
             while (ResultDU_RETURN.next()) {
                 DU_RETURN = ResultDU_RETURN.getString("D_RETURN");
             }
-        }catch (SQLException | ClassNotFoundException throwables) {
+        } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return DU_RETURN;
@@ -326,7 +325,7 @@ public class BD_Request_Main_FormRIO extends BD {
     public String CheckListFIO() {
         List<String> RLfio = new ArrayList<>();
         try {
-            Statement statementFIO = getConnection().createStatement();
+            Statement statementFIO = getConnectionBudget22().createStatement();
             String sqlFIO = "Execute dbo.FO_Doc_List " +
                     "@FieldName='FIO', " +
                     "@GroupName='7830002430/1599', " +
@@ -361,7 +360,7 @@ public class BD_Request_Main_FormRIO extends BD {
     public String ChecKListJOB() {
         List<String> RLjob = new ArrayList<>();
         try {
-            Statement statementJOB = getConnection().createStatement();
+            Statement statementJOB = getConnectionBudget22().createStatement();
             String sqlJOB = "Execute dbo.FO_Doc_List " +
                     "@FieldName='JOB', " +
                     "@GroupName='7830002430/1599', " +
@@ -392,10 +391,10 @@ public class BD_Request_Main_FormRIO extends BD {
         return RLjob.toString();
     }
 
-    public String CheckListPHONE(){
+    public String CheckListPHONE() {
         List<String> RLphone = new ArrayList<>();
         try {
-            Statement statementPHONE = getConnection().createStatement();
+            Statement statementPHONE = getConnectionBudget22().createStatement();
             String sqlPHONE = "Execute dbo.FO_Doc_List " +
                     "@FieldName='PHONE', " +
                     "@GroupName='7830002430/1599', " +
@@ -430,7 +429,7 @@ public class BD_Request_Main_FormRIO extends BD {
     public String CheckListFIO_CHIEF() {
         List<String> RLfio_chief = new ArrayList<>();
         try {
-            Statement statementFIO_CHIEF = getConnection().createStatement();
+            Statement statementFIO_CHIEF = getConnectionBudget22().createStatement();
             String sqlFIO_CHIEF = "Execute dbo.FO_Doc_List \n" +
                     "@FieldName='FIO_CHIEF', \n" +
                     "@GroupName='7830002430/1599', \n" +
@@ -464,7 +463,7 @@ public class BD_Request_Main_FormRIO extends BD {
     public String CheckListJOB_CHIEF() {
         List<String> RLjob_chief = new ArrayList<>();
         try {
-            Statement statementJOB_CHIEF = getConnection().createStatement();
+            Statement statementJOB_CHIEF = getConnectionBudget22().createStatement();
             String sqlJOB_CHIEF = "Execute dbo.FO_Doc_List \n" +
                     "@FieldName='JOB_CHIEF', \n" +
                     "@GroupName='7830002430/1599', \n" +
@@ -498,7 +497,7 @@ public class BD_Request_Main_FormRIO extends BD {
     public String CheckSaveDocuments() {
         List<String> RLsaveDOC = new ArrayList<>();
         try {
-            Statement statementDocCheck = getConnection().createStatement();
+            Statement statementDocCheck = getConnectionBudget22().createStatement();
             String sqlCheck = /*"Execute dbo.FO_Doc_Check \n" +
                     "@GroupName='7830002430/1599', \n" +
                     "@CPR_CCS_FULL_CVR='0113 1640099020 831', \n" +
@@ -510,28 +509,28 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@VAR_DP=Null, \n" +
                     "@YEAR='2023'";*/
                     "Execute dbo.FO_Doc_Check \n" +
-                    "@GroupName='7830002430/1599', \n" +
-                    "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", \n" +
-                    "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
-                    "@FO=\"" + foFormRio + "\", \n" +
-                    "@STAGE=\"" + stageFormRIO + "\", \n" +
-                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
-                    "@CPR_CCS_FULL_CVR_Old=Null, \n" +
-                    "@VAR_DP=Null, \n" +
-                    "@YEAR=" + yearFormRIO;
-                ResultSet ResultCheck = statementDocCheck.executeQuery(sqlCheck);
-                while (ResultCheck.next()) {
-                    NDOCID = ResultCheck.getString("DOCID");
-                }
-                Statement statementDocSave = getConnection().createStatement();
-                String sqlDocSave = "Select CDOC, LastUpdate from DOC where DOCID="+ NDOCID;
-                ResultSet ResultSave = statementDocSave.executeQuery(sqlDocSave);
-                while (ResultSave.next()) {
-                    LastUpdate = (ResultSave.getString("LastUpdate"));
-                    Date format = new SimpleDateFormat("YYYY-MM-DD HH:mm:").parse((LastUpdate));
-                    LastUpdate = String.valueOf(format);
-                    RLsaveDOC.add(String.join(" ", LastUpdate));
-                }
+                            "@GroupName='7830002430/1599', \n" +
+                            "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", \n" +
+                            "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
+                            "@FO=\"" + foFormRio + "\", \n" +
+                            "@STAGE=\"" + stageFormRIO + "\", \n" +
+                            "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
+                            "@CPR_CCS_FULL_CVR_Old=Null, \n" +
+                            "@VAR_DP=Null, \n" +
+                            "@YEAR=" + yearFormRIO;
+            ResultSet ResultCheck = statementDocCheck.executeQuery(sqlCheck);
+            while (ResultCheck.next()) {
+                NDOCID = ResultCheck.getString("DOCID");
+            }
+            Statement statementDocSave = getConnectionBudget22().createStatement();
+            String sqlDocSave = "Select CDOC, LastUpdate from DOC where DOCID=" + NDOCID;
+            ResultSet ResultSave = statementDocSave.executeQuery(sqlDocSave);
+            while (ResultSave.next()) {
+                LastUpdate = (ResultSave.getString("LastUpdate"));
+                Date format = new SimpleDateFormat("YYYY-MM-DD HH:mm:").parse((LastUpdate));
+                LastUpdate = String.valueOf(format);
+                RLsaveDOC.add(String.join(" ", LastUpdate));
+            }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         } catch (ParseException e) {
@@ -539,4 +538,5 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLsaveDOC.toString();
     }
+
 }

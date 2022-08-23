@@ -146,7 +146,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         Assert.assertTrue(Boolean.parseBoolean(interactiveDoc.fieldTempRost3.getAttribute("readonly")),"Поле доступно для ввода");
     }
 
-    /*@Test()
+    @Test()
     public void interactivePage_Check_DOC_SAVE_Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -161,7 +161,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonSaveDocumentInteractivePage();
         interactiveDoc.waitDocSaveformRio();
         Assert.assertEquals(interactiveDoc.actualDate.toString(), requestRIO.CheckSaveDocuments(), "Ошибка сохранения документа в АИС БП");
-    }*/
+    }
     @Test()
     public void interactivePage_field2023PaymentСorporatePropertyTax_fieldDataLoadedSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);

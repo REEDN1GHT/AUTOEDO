@@ -15,7 +15,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Select\n" +
                     "CPR As [Подраздел],\n" +
                     "NPR As [Наименование]\n" +
@@ -45,7 +45,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Execute dbo.REP_Doc_List\n" +
                     "@FieldName='ADM',\n" +
                     "@GroupName='7830002430/1599',\n" +
@@ -79,7 +79,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Execute dbo.REP_Doc_List" +
                     " @FieldName='CVRnot000'," +
                     " @GroupName='7801108440/КН'," +
@@ -111,7 +111,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Execute dbo.REP_Doc_List" +
                     " @FieldName='CCS_FULL_MO', " +
                     "@GroupName='7801108440/КН', " +
@@ -145,7 +145,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Select CCS_FULL As [Целевая статья],\n" +
                     "NCS As [Наименование],\n" +
                     "K_CSID As [ID]\n" +
@@ -177,7 +177,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Select\n" +
                     "K_PS.CPS As [КОСГУ], Max(K_PS.NPS) As [Наименование], Max(K_PS.K_PSID) As [ID]\n" +
                     "From K_PS\n" +
@@ -216,7 +216,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Select\n" +
                     "Max(K_UL.ADM) As [Администратор],\n" +
                     "Max(K_UL.CUL) As [Учреждение],\n" +
@@ -255,7 +255,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Execute dbo.REP_Doc_List\n" +
                     "    @FieldName='ADM',\n" +
                     "    @GroupName='7804042349/КН',\n" +
@@ -289,7 +289,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Execute dbo.REP_Doc_List " +
                     "@FieldName='CODE5'," +
                     " @GroupName='7801108440/КН', " +
@@ -325,7 +325,7 @@ public class BD_Request_Monthly_Report_0503117 extends BD {
         List <String> list = new ArrayList<>();
         try {
 
-            Statement statement = getConnection().createStatement();
+            Statement statement = getConnectionBudget22().createStatement();
             String sql = "Select\n" +
                     "Max(K_D.CDS) As [Код дохода],\n" +
                     "Max(K_D.NS) As [Наименование],\n" +

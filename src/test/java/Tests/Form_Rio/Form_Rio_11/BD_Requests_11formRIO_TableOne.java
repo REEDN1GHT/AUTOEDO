@@ -21,7 +21,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
     public String CheckHandbookNAMEPOKAZATEL() {
         List<String> RLname = new ArrayList<>();
         try {
-            Statement statementNAME = getConnection().createStatement();
+            Statement statementNAME = getConnectionBudget22().createStatement();
             String sqlNAME ="Execute dbo.FO_Doc_List \n" +
                     "@FieldName='FO_NAME2', \n" +
                     "@GroupName='7801042446/ЭДО', \n" +
@@ -56,7 +56,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
     {
         List<String> RLname = new ArrayList<>();
         try {
-            Statement statementNAME = getConnection().createStatement();
+            Statement statementNAME = getConnectionBudget22().createStatement();
             String sqlNAME ="Select  Sum([R_R].[SUMM])/1000 As [Сумма в тысячах]\n" +
                     "From ((((((([R_R] With (NoLock)\n" +
                     "    Inner Join [K_LSR] With (NoLock) On ([R_R].[K_LSRID]=[K_LSR].[K_LSRID]))\n" +
@@ -87,7 +87,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
     {
         List<String> RLname = new ArrayList<>();
         try {
-            Statement statementNAME = getConnection().createStatement();
+            Statement statementNAME = getConnectionBudget22().createStatement();
             String sqlNAME ="Select  Sum(Sign(Floor(([PRB_R_ZR].[SUMM_TYPE]+1)/1) % 2) *\n" +
                     "           Abs(Sign(Floor(([PRB_R_ZR].[SUMM_TYPE]+1)/2) % 2)-1) * [PRB_R_ZR].[SUMM_1] *\n" +
                     "           Sign(Right([K_TD].[CTD],1)))/1000 As [1 год (ЗР)]\n" +
@@ -121,7 +121,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
     {
         List<String> RLname = new ArrayList<>();
         try {
-            Statement statementNAME = getConnection().createStatement();
+            Statement statementNAME = getConnectionBudget22().createStatement();
             String sqlNAME ="Select\n" +
                     "       Sum(Sign(Floor(([PRB_R_ZR].[SUMM_TYPE]+1)/1) % 2) *\n" +
                     "           Abs(Sign(Floor(([PRB_R_ZR].[SUMM_TYPE]+1)/2) % 2)-1) * [PRB_R_ZR].[SUMM_2] *\n" +
@@ -157,7 +157,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
     {
         List<String> RLname = new ArrayList<>();
         try {
-            Statement statementNAME = getConnection().createStatement();
+            Statement statementNAME = getConnectionBudget22().createStatement();
             String sqlNAME ="Select\n" +
                     "       Sum(Sign(Floor(([PRB_R_ZR].[SUMM_TYPE]+1)/1) % 2) *\n" +
                     "           Abs(Sign(Floor(([PRB_R_ZR].[SUMM_TYPE]+1)/2) % 2)-1) * [PRB_R_ZR].[SUMM_2] *\n" +

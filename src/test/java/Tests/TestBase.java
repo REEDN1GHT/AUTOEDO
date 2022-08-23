@@ -27,7 +27,8 @@ import java.time.Duration;
     public BD_Requests_11formRIO_TableOne requests_11formRIO_tableOne = new BD_Requests_11formRIO_TableOne();
     @BeforeClass
     public void setUp() throws SQLException, ClassNotFoundException {
-        con.getConnection();
+        con.getConnectionBudget22();
+        con.getConnectionBudget21();
 
         System.setProperty("webdriver.chrome.driver","drivers\\chromedriver.exe");
 
@@ -45,7 +46,8 @@ import java.time.Duration;
         var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(sourceFile,new File("C:\\creen\\screenshot.png"));
 
-        con.closeConnect();
+        con.closeConnectBudget22();
+        con.closeConnectBudget21();
         driver.quit();
 
     }

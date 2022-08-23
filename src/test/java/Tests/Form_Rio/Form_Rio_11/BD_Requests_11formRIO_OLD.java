@@ -17,7 +17,7 @@ public class BD_Requests_11formRIO_OLD extends BD {
     public String FO_DOC_Load() {
         List<String> RLoad = new ArrayList<>();
         try {
-            Statement statementFO_DOC_Load = getConnection().createStatement();
+            Statement statementFO_DOC_Load = getConnectionBudget22().createStatement();
             String sqlFO_DOC_Load ="Execute dbo.FO_Doc_Load " +
                     "@GroupName='7830002430/1599', " +
                     "@CPR_CCS_FULL_CVR='0505 0920083140 851', " +
@@ -50,7 +50,7 @@ public class BD_Requests_11formRIO_OLD extends BD {
 
     public String RequestSUMMfromBODYdocFormRIO() {
         try {
-            Statement statementSUMM = getConnection().createStatement();
+            Statement statementSUMM = getConnectionBudget22().createStatement();
             String sqlSUMM12 ="select round(sum(SUMM_12), 1) as [113] from FO_DATA_Work with (Nolock) WHERE CTD_SUB ='113'";
             ResultSet resultSetSUMM12 = statementSUMM.executeQuery(sqlSUMM12);
             while (resultSetSUMM12.next()) {
@@ -64,7 +64,7 @@ public class BD_Requests_11formRIO_OLD extends BD {
 
     public void WorkDelete () {
         try {
-            Statement statementWorkDelete = getConnection().createStatement();
+            Statement statementWorkDelete = getConnectionBudget22().createStatement();
             String sqlWorkDelete = "Execute dbo.WorkDelete @TableName='FO_DATA_Work'";
             ResultSet ResultWorkDelete = statementWorkDelete.executeQuery(sqlWorkDelete);
         }catch (SQLException | ClassNotFoundException throwables) {
