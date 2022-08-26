@@ -146,7 +146,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         Assert.assertTrue(Boolean.parseBoolean(interactiveDoc.fieldTempRost3.getAttribute("readonly")),"Поле доступно для ввода");
     }
 
-    @Test()
+    /*@Test()
     public void interactivePage_Check_DOC_SAVE_Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -161,7 +161,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonSaveDocumentInteractivePage();
         interactiveDoc.waitDocSaveformRio();
         Assert.assertEquals(interactiveDoc.actualDate.toString(), requestRIO.CheckSaveDocuments(), "Ошибка сохранения документа в АИС БП");
-    }
+    }*/
     @Test()
     public void interactivePage_field2023PaymentСorporatePropertyTax_fieldDataLoadedSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -177,12 +177,12 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.waitTablePresent();
         interactiveDoc.scrollTableSubForm2();
         interactiveDoc.setField2023Number10();
-        Thread.sleep(400);
+        interactiveDoc.waitTextElement2023SubForm2Field11();
         interactiveDoc.getValuefield2023Subform2();
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorSubForm1();
-        interactiveDoc.wait_waitfield2023SubForm1();
+        interactiveDoc.waitTextElementSubForm1Field2023();
         Assert.assertEquals(interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
     @Test()
@@ -204,7 +204,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorPaymentLandTaxSubForm1();
-        interactiveDoc.wait_waitfield2023SubForm1();
+        Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
     @Test()
@@ -219,7 +219,6 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
         interactiveDoc.setListSubReport("2. Расчет объема бюджетных ассигнований на уплату налога на имущество организаций");
-
         interactiveDoc.waitTablePresent();
         interactiveDoc.scrollTableSubForm2();
         interactiveDoc.setField2024Number8_3();
@@ -228,7 +227,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorSubForm1();
-        interactiveDoc.wait_waitfield2023SubForm1();
+        Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
     @Test()
@@ -246,12 +245,12 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setListSubReport("3.2 Расчет объема бюджетных ассигнований на уплату земельного налога на первый год планового периода");
         interactiveDoc.setfield1QuarterSubform3_1();
-        Thread.sleep(400);
         interactiveDoc.getValueFieldEpensesSubform();
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorPaymentLandTaxSubForm1();
-        interactiveDoc.wait_waitfield2023SubForm1();
+       Thread.sleep(200);
+        //interactiveDoc.wait_waitfield2023SubForm1();
         Assert.assertEquals(interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
 
@@ -275,7 +274,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorSubForm1();
-        interactiveDoc.wait_waitfield2023SubForm1();
+        Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2025NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
     @Test()
@@ -293,12 +292,12 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setListSubReport("3.3  Расчет объема бюджетных ассигнований на уплату земельного налога на второй год планового периода");
         interactiveDoc.setfield1QuarterSubform3_1();
-        Thread.sleep(400);
+        interactiveDoc.waitForElementToBeRefreshed2();
         interactiveDoc.getValueFieldEpensesSubform();
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorPaymentLandTaxSubForm1();
-        interactiveDoc.wait_waitfield2023SubForm1();
+        Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2025NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
     @Test()
@@ -320,8 +319,8 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorSubForm1();
         interactiveDoc.field2022ManualInput.sendKeys("4214");
-        var dataField2022 = Float.parseFloat(interactiveDoc.field2022ManualInput.getAttribute("value").replace(',','.'));
-        var dataField2023 = Float.parseFloat(interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.'));
+        var dataField2022 = interactiveDoc.field2022ManualInput.getAttribute("value").replace(',','.');
+        var dataField2023 = interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.');
 
         Assert.assertEquals(interactiveDoc.raschetZnach(dataField2023,dataField2022),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
@@ -344,8 +343,9 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorSubForm1();
-        var dataField2023 = Float.parseFloat(interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.'));
-        var dataField2024 = Float.parseFloat(interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.'));
+        Thread.sleep(200);
+        var dataField2023 = interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.');
+        var dataField2024 = interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.');
         Assert.assertEquals(interactiveDoc.raschetZnach(dataField2023,dataField2024),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
     @Test()
@@ -367,11 +367,27 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorSubForm1();
-        var dataField2024 = Float.parseFloat(interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.'));
-        var dataField2025 = Float.parseFloat(interactiveDoc.field2025NotManualInput.getAttribute("value").replace(',','.'));
+        Thread.sleep(200);
+        var dataField2024 = interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.');
+        var dataField2025 = interactiveDoc.field2025NotManualInput.getAttribute("value").replace(',','.');
         Assert.assertEquals(interactiveDoc.raschetZnach(dataField2024,dataField2025),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
 
+   /* @Test()
+    public void interactivePage_checkSumStringTotal2021_SumStringTotal2021Successful() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.openInteractiveFormDocument();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.buttonLoadDocumentInteractivePage();
+        interactiveDoc.waitSubformRio();
+        interactiveDoc.modalWindowButtonOK.click();
+        var edoSumTotal = interactiveDoc.stringTotal2021.getText().replace(',','.');
+        var bdSumTotal = requests_11formRIO_tableOne.CheckStringTotalSumm2022();
+        Assert.assertEquals(edoSumTotal.replaceAll("\\s+",""),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
+    }*/
     @Test()
     public void interactivePage_checkSumStringTotal2022_SumStringTotal2022Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -433,6 +449,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         var bdSumTotal = requests_11formRIO_tableOne.CheckStringTotalSumm2025();
         Assert.assertEquals(edoSumTotal.replaceAll("\\s+",""),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
     }
+
     @Test()
     public void interactivePage_checkTotalGrowthRate1_SumStringTotalGrowthRate1Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -444,9 +461,43 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
-        var edoSumTotal1 = Float.parseFloat(interactiveDoc.stringTotal2023.getAttribute("value").replace(',','.'));
-        var edoSumTotal2 = Float.parseFloat(interactiveDoc.stringTotal2022.getAttribute("value").replace(',','.'));
+        var edoSumTotal = interactiveDoc.stringTotal2023.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
 
-        //Assert.assertEquals(interactiveDoc.raschetZnach(edoSumTotal1,edoSumTotal2),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
+        var edoSumTotal2 = interactiveDoc.stringTotal2022.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
+        var bdSumTotal = interactiveDoc.stringTotalGrowthRate1.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
+
+       Assert.assertEquals(interactiveDoc.raschetZnach(edoSumTotal,edoSumTotal2),bdSumTotal,"Сумма не сходится");
+    }
+    @Test()
+    public void interactivePage_checkTotalGrowthRate2_SumStringTotalGrowthRate1Successful() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.openInteractiveFormDocument();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.buttonLoadDocumentInteractivePage();
+        interactiveDoc.waitSubformRio();
+        interactiveDoc.modalWindowButtonOK.click();
+        var edoSumTotal = interactiveDoc.stringTotal2024.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
+        var edoSumTotal2 = interactiveDoc.stringTotal2023.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
+        var bdSumTotal = interactiveDoc.stringTotalGrowthRate2.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
+        Assert.assertEquals(interactiveDoc.raschetZnach(edoSumTotal,edoSumTotal2),bdSumTotal,"Сумма не сходится");
+    }
+    @Test()
+    public void interactivePage_checkTotalGrowthRate3_SumStringTotalGrowthRate1Successful() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.openInteractiveFormDocument();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.buttonLoadDocumentInteractivePage();
+        interactiveDoc.waitSubformRio();
+        interactiveDoc.modalWindowButtonOK.click();
+        var edoSumTotal = interactiveDoc.stringTotal2025.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
+        var edoSumTotal2 = interactiveDoc.stringTotal2024.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
+        var bdSumTotal = interactiveDoc.stringTotalGrowthRate3.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
+        Assert.assertEquals(interactiveDoc.raschetZnach(edoSumTotal,edoSumTotal2),bdSumTotal,"Сумма не сходится");
     }
 }

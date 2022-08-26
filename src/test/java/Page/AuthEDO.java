@@ -75,6 +75,7 @@ public class AuthEDO {
 
     }
 
+
     public void setButtonSignInCabinet() {
         buttonSignInCabinet.click();
     }
@@ -95,8 +96,8 @@ public class AuthEDO {
             authEDO.setLoginField();
             authEDO.setPasswordField();
             authEDO.setButtonEnterAuthorization();
-            authEDO.role();
             authEDO.waitCabinet();
+            authEDO.role();
             authEDO.setButtonSignInCabinet();
 
         }else if(authEDO.isElementPresented()>1)

@@ -110,16 +110,23 @@ public class InteractiveDoc{
     public WebElement numeIndicatorSubForm1;
     @FindBy(xpath = "//div[text()='Руководитель']/parent::div")
     public WebElement switchPlacementtoChiefformRIO;
+    @FindBy(xpath = "//div[@class='v-table-footer']//td[3]//span[@class='row_any'][2]")
+    public WebElement stringTotal2021;
     @FindBy(xpath = "//div[@class='v-table-footer']//td[4]//span[@class='row_any'][2]")
     public WebElement stringTotal2022;
     @FindBy(xpath = "//div[@class='v-table-footer']//td[5]//span[@class='row_any'][2]")
     public WebElement stringTotal2023;
+
     @FindBy(xpath = "//div[@class='v-table-footer']//td[7]//span[@class='row_any'][2]")
     public WebElement stringTotal2024;
     @FindBy(xpath = "//div[@class='v-table-footer']//td[9]//span[@class='row_any'][2]")
     public WebElement stringTotal2025;
     @FindBy(xpath = "//div[@class='v-table-footer']//td[6]//span[@class='row_any'][2]")
     public WebElement stringTotalGrowthRate1;
+    @FindBy(xpath = "//div[@class='v-table-footer']//td[8]//span[@class='row_any'][2]")
+    public WebElement stringTotalGrowthRate2;
+    @FindBy(xpath = "//div[@class='v-table-footer']//td[10]//span[@class='row_any'][2]")
+    public WebElement stringTotalGrowthRate3;
     @FindBy (xpath = "//div[@class='v-scrollable v-table-body-wrapper v-table-body']")
     public WebElement scrollTable;
 
@@ -141,10 +148,15 @@ public class InteractiveDoc{
         return list.size()>0;
     }
 
+    public void waitForElementToBeRefreshed()
+    {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        newWait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(buttonYearRio)));
+    }
 
     //Поле Год в шапке документа
     public void setYearFormRio() throws InterruptedException {
-        Thread.sleep(3000);
+
         buttonYearRio.click();
         String spisokYearFormRio = ConfigBuilder.getproperty("yearFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokYearFormRio+"']/parent::td"));
@@ -210,34 +222,16 @@ public class InteractiveDoc{
         actualDate.add(String.join(Date1));
 
     }
+
     public void setListSubReport(String str) throws InterruptedException {
         subReport.click();
-        subReport2.sendKeys(str);
-        Thread.sleep(1000);
-        subReport2.sendKeys(Keys.ENTER);
+       // subReport2.sendKeys(str);
+        Thread.sleep(600);
+        //subReport2.sendKeys(Keys.ENTER);
         //String listSubReportFormRio11 = ConfigBuilder.getproperty("subReportFormRio11");
-        // WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
-        // buttonENTER.click();
+         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+str+"']/parent::td"));
+         buttonENTER.click();
     }
-
-
-
-    public void setListSubReport2()
-    {
-        subReport.click();
-        String listSubReportFormRio11 = ConfigBuilder.getproperty("subReport1FormRio11");
-        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
-        buttonENTER.click();
-    }
-    public void setListSubReport3_()
-    {
-        subReport.click();
-        String listSubReportFormRio11 = ConfigBuilder.getproperty("subReport3_1FormRio11");
-        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+listSubReportFormRio11+"']/parent::td"));
-        buttonENTER.click();
-    }
-
-
 
 
     public void setFieldIndictorSubForm1()
@@ -270,21 +264,18 @@ public class InteractiveDoc{
         field2025Number8_3.sendKeys(Keys.ENTER);
     }
 
-    public void setfield1QuarterSubform3_1()
-    {
-        try {
+    public void setfield1QuarterSubform3_1() throws InterruptedException {
+       // Thread.sleep(700);
+
             field1QuarterSubform3_1.sendKeys("857864");
             field1QuarterSubform3_1.sendKeys(Keys.ENTER);
-        }
-        catch (org.openqa.selenium.StaleElementReferenceException ex){
-            field1QuarterSubform3_1.sendKeys("857864");
-            field1QuarterSubform3_1.sendKeys(Keys.ENTER);  }
+
     }
 
-    public String raschetZnach(float str, float str2)
+    public String raschetZnach(String str, String str2)
     {
-        var raschet = str/str2*100;
-        dataField = new BigDecimal(raschet).setScale(1, RoundingMode.HALF_UP);
+        var raschet = Float.parseFloat(str)/Float.parseFloat(str2)*100;
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
         return dataField.toString();
     }
 
@@ -292,25 +283,26 @@ public class InteractiveDoc{
     public void getValuefield2023Subform2()
     {
         float data2023Subform2 = Float.parseFloat(field2023Number11.getAttribute("value").replace(',','.'));
-        dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
-
+        dataField = new BigDecimal(data2023Subform2).setScale(2, RoundingMode.HALF_UP).setScale(1, RoundingMode.HALF_UP);
+    System.out.println(dataField);
     }
     public void getValuefield2024Subform2()
     {
         float data2023Subform2 = Float.parseFloat(field2024Number11.getAttribute("value").replace(',','.'));
-        dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
+        dataField = new BigDecimal(data2023Subform2).setScale(2, RoundingMode.HALF_UP).setScale(1, RoundingMode.HALF_UP);
 
     }
     public void getValuefield2025Subform2()
     {
         float data2023Subform2 = Float.parseFloat(field2025Number11.getAttribute("value").replace(',','.'));
-        dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
+        dataField = new BigDecimal(data2023Subform2).setScale(2, RoundingMode.HALF_UP).setScale(1, RoundingMode.HALF_UP);
 
     }
 
-    public void getValueFieldEpensesSubform()
-    {
+    public void getValueFieldEpensesSubform() throws InterruptedException {
+        //Thread.sleep(400);
         float data2023Subform2 = Float.parseFloat(fieldExpensesSubFormLast.getAttribute("value").replace(',','.'));
+        System.out.println(data2023Subform2);
         dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
 
     }
@@ -349,6 +341,7 @@ public class InteractiveDoc{
 
     public void setHeaderFieldFormRIO() throws InterruptedException
     {
+        waitForElementToBeRefreshed();
         setYearFormRio();
         setStageFormRio();
         setKbkFormRIO();
@@ -373,16 +366,18 @@ public class InteractiveDoc{
     }
 
 
-    public boolean wait_waitfield2023SubForm1()
+    public void wait_waitfield2023SubForm1()
     {
-        try {
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(4));
+        newWait.until(driver->driver.findElements(By.xpath("//tr[@class='v-table-row']")).size()==1);
+     /*   try {
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
             return field2023NotManualInput.isDisplayed();
         }
         catch (NoSuchElementException e){return false;}
         finally {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        }
+        }*/
     }
 
     public boolean wait_Kbk_Rio()
@@ -555,6 +550,47 @@ public class InteractiveDoc{
         return Arrays.stream(Arrays.copyOf(arr, arr.length - 1)).toArray();
     }
 
+
+    public void waitForElementToBeRefreshed2()
+    {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        newWait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(field1QuarterSubform3_1)));
+    }
+    public void waitTextElement2023SubForm2Field11()
+    {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        newWait.until(driver->driver.findElement(By.xpath("//tr[@class='v-table-row'][14]/td[@class='v-table-cell-content'][3]//input"))
+                .getAttribute("value")
+                .length()!=0);
+    }
+    public void waitTextElement2024SubForm2Field11()
+    {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        newWait.until(driver->driver.findElement(By.xpath("//tr[@class='v-table-row'][14]/td[@class='v-table-cell-content'][4]//input"))
+                .getAttribute("value")
+                .length()!=0);
+    }
+    public void waitTextElement2025SubForm2Field11()
+    {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        newWait.until(driver->driver.findElement(By.xpath("//tr[@class='v-table-row'][14]/td[@class='v-table-cell-content'][5]//input"))
+                .getAttribute("value")
+                .length()!=0);
+    }
+    public void waitTextElementSubForm1Field2023()
+    {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        newWait.until(driver->driver.findElement(By.xpath("//td[@class='v-table-cell-content'][5]//input"))
+                .getAttribute("value")
+                .length()!=0);
+    }
+    public void waitTextElementLastField()
+    {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        newWait.until(driver->driver.findElement(By.xpath("//td[@class='v-table-cell-content'][last()]//input"))
+                .getAttribute("value")
+                .length()!=0);
+    }
 /*
 public void setPeriod()
 {
