@@ -10,7 +10,6 @@ public class BD {
             String dbURLBudget22 = "jdbc:sqlserver://172.31.2.101:1433;database=budget22";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connectionBudget22 = DriverManager.getConnection(dbURLBudget22, "Autotest", "Autotest111");
-
         } catch (Exception ex22) {
             System.out.println("Подключиться к базе данных не удалось");
             System.out.println(ex22);
@@ -18,13 +17,11 @@ public class BD {
         }
         return connectionBudget22;
     }
-
     public Connection getConnectionBudget21() throws ClassNotFoundException, SQLException {
         try {
             String dbURLBudget21 = "jdbc:sqlserver://172.31.2.101:1433;database=budget21";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connectionBudget21 = DriverManager.getConnection(dbURLBudget21, "Autotest", "Autotest111");
-
         } catch (Exception ex21) {
             System.out.println("Подключиться к базе данных не удалось");
             System.out.println(ex21);
@@ -32,9 +29,6 @@ public class BD {
         }
         return connectionBudget21;
     }
-
-
-
     public void closeConnectBudget22() throws SQLException {
         if (connectionBudget22 != null && !connectionBudget22.isClosed()) {
             connectionBudget22.close();

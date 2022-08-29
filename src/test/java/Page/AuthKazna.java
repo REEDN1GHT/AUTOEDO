@@ -14,23 +14,9 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 import Resources.ConfigBuilder;
 
-
-
 public class AuthKazna {
-
     private WebDriver driver;
-
     private WebDriverWait wait;
-
-    String url;
-    //String orgLS;
-
-    public AuthKazna(WebDriver driver, WebDriverWait wait)
-    {
-        this.driver = driver;
-        this.wait = wait;
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(id="login")
     public WebElement Loginfield;
@@ -38,51 +24,36 @@ public class AuthKazna {
     public WebElement Passwordfield;
     @FindBy(css=".btn.flex-grow-1.w-25.btn-huge.btn-primary")
     public WebElement buttonSignIn;
-
-    //public By CheckLSbyBTN= By.cssSelector(".list-group-item.list-elements__item.list-group-item-action");
-    /*@FindBy(xpath = "//div[contains(text(),'0806003')]")
-    WebElement clickCardAuth;*/
-
-
-
     @FindBy(xpath = "//button[text()=' Перейти в ЛК ']")
     WebElement buttonClickLK;
 
-
+    public AuthKazna(WebDriver driver, WebDriverWait wait) {
+        this.driver = driver;
+        this.wait = wait;
+        PageFactory.initElements(driver, this);
+    }
     protected boolean isElementPresent() {
         List list = driver.findElements(By.cssSelector(".personal-account.d-flex.flex-column"));
         return list.size() >0;
     }
-
-    public void openulr()
-    {
+    public void openulr() {
         driver.navigate().to(ConfigBuilder.getproperty("KAZNAurl"));
     }
-
-   public void setLoginfield()
-    {
+    public void setLoginfield() {
         Loginfield.sendKeys(ConfigBuilder.getproperty("KAZNAlogin"));
     }
-
-    public void setPasswordfield()
-    {
+    public void setPasswordfield() {
         Passwordfield.sendKeys(ConfigBuilder.getproperty("KAZNApassword"));
     }
-
-    public void setButtonSignIn()
-    {
+    public void setButtonSignIn() {
         buttonSignIn.click();
     }
-    public void setClickCardAuth()
-    {
+    public void setClickCardAuth() {
         String orgLS = ConfigBuilder.getproperty("KAZNAorgLS");
         WebElement SwitchLS = driver.findElement(By.xpath("//div[contains(text(),'"+orgLS+"')]"));
         SwitchLS.click();
-        //clickCardAuth.click();
     }
-
-    public void kaznaAuthor()
-    {
+    public void kaznaAuthor() {
         setLoginfield();
         setPasswordfield();
         setButtonSignIn();
@@ -90,7 +61,6 @@ public class AuthKazna {
         {
             setClickCardAuth();
         }
-
     }
 
 
@@ -106,8 +76,6 @@ public class AuthKazna {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         }
     }
-
-
     //Пример кастомного явного ожидания
     public void wait_ButtonPassLK_ModalWindow()
     {

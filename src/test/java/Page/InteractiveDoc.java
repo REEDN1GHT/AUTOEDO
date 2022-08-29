@@ -25,6 +25,7 @@ public class InteractiveDoc{
     public static String foFormRio;
     public static List<String> actualDate = new ArrayList<>();
     public  BigDecimal dataField;
+
     //Локаторы для периодички
    // @FindBy(id="gwt-uid-57")// присмотреться к локатору, возможно изменится
    // WebElement period;
@@ -48,7 +49,6 @@ public class InteractiveDoc{
     //РИО
     @FindBy (id = "gwt-uid-31")
     WebElement placeiNNGRBS;
-
     @FindBy(xpath = "//button[text()='ОК']")
     public WebElement modalWindow;
     @FindBy(xpath = "//div[@class='v-expand']/div[@class='v-slot'][1]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
@@ -71,8 +71,6 @@ public class InteractiveDoc{
     public WebElement buttonAddNewString;
     @FindBy(css = ".v-filterselect.v-widget.v-modified.v-has-width.missedField.v-filterselect-missedField .v-filterselect-button")
     public WebElement subReport;
-    @FindBy(xpath = "//div[@class='v-slot v-slot-missedField']//input[@class='v-filterselect-input']")
-    public WebElement subReport2;
     @FindBy(xpath = "//td[@class='v-table-cell-content'][3]//input")
     public WebElement field2021ManualInput;
     @FindBy(xpath = "//td[@class='v-table-cell-content'][4]//input")
@@ -89,7 +87,6 @@ public class InteractiveDoc{
     public WebElement fieldTempRost2;
     @FindBy(xpath = "//td[@class='v-table-cell-content'][10]//input")
     public WebElement fieldTempRost3;
-
     @FindBy(xpath = "//tr[@class='v-table-row-odd'][13]//td[@class='v-table-cell-content'][3]//input")
     public WebElement field2023Number10;
     @FindBy(xpath = "//tr[@class='v-table-row-odd'][12]//td[@class='v-table-cell-content'][4]//input")
@@ -116,7 +113,6 @@ public class InteractiveDoc{
     public WebElement stringTotal2022;
     @FindBy(xpath = "//div[@class='v-table-footer']//td[5]//span[@class='row_any'][2]")
     public WebElement stringTotal2023;
-
     @FindBy(xpath = "//div[@class='v-table-footer']//td[7]//span[@class='row_any'][2]")
     public WebElement stringTotal2024;
     @FindBy(xpath = "//div[@class='v-table-footer']//td[9]//span[@class='row_any'][2]")
@@ -135,69 +131,62 @@ public class InteractiveDoc{
     private By swalSuccessfulSave = By.xpath("//*[text()='Документ успешно сохранен']");
 
 
-    public InteractiveDoc(WebDriver driver, WebDriverWait wait)
-    {
+    public InteractiveDoc(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
         PageFactory.initElements(driver,this);
     }
-
     public boolean isElementPresented() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-icon-warning.swal2-show"));
         return list.size()>0;
     }
-
-    public void waitForElementToBeRefreshed()
-    {
-        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+    public void waitForElementToBeRefreshed() {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(30));
         newWait.until(ExpectedConditions.refreshed(ExpectedConditions.elementToBeClickable(buttonYearRio)));
     }
 
     //Поле Год в шапке документа
-    public void setYearFormRio() throws InterruptedException {
-
+    public void setYearFormRio() {
+        waitForElementToBeRefreshed();
         buttonYearRio.click();
         String spisokYearFormRio = ConfigBuilder.getproperty("yearFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokYearFormRio+"']/parent::td"));
         buttonENTER.click();
     }
-
     //Старая реализация для поля Стадия. Только для поля "Стадия".
-    //Причина: В новой реализации, при раскрытии списка в ЭДО и конфиге раздичаются значения
-    public void setStageFormRio() throws InterruptedException {
+    //Причина: В новой реализации, при раскрытии списка в ЭДО и конфиге различаются значения
+    public void setStageFormRio() {
         stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
         viborElement.click();
     }
-    public void setStageDPFormRio() throws InterruptedException {
+    public void setStageDPFormRio() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         stageFormRIO.sendKeys(ConfigBuilder.getproperty("stageDPFormRIO"));
         viborElement.click();
     }
-
-    public void setKbkFormRIO() throws InterruptedException {
+    public void setKbkFormRIO() {
         wait_Kbk_Rio();
         buttonKbkFormRio.click();
         String spisokKbkFormRio = ConfigBuilder.getproperty("kbkFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
         buttonENTER.click();
     }
-    public void setKbkDPFormRIO() throws InterruptedException {
+    public void setKbkDPFormRIO() {
         wait_Kbk_Rio();
         buttonKbkFormRio.click();
         String spisokKbkFormRio = ConfigBuilder.getproperty("kbkDPFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
         buttonENTER.click();
     }
-    public void setVersionDocument()
-    {
+    public void setVersionDocument() {
         wait_Kbk_Rio();
         buttonVersionDocument.click();
         String spisokVersionFormRio = ConfigBuilder.getproperty("VERdpFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokVersionFormRio+"']/parent::td"));
         buttonENTER.click();
     }
-    public void setNumberDBFormRio() throws InterruptedException {
+    public void setNumberDBFormRio() {
         wait_Kbk_Rio();
         buttonVersionDocument.click();
         String spisokNumberDBFormRio = ConfigBuilder.getproperty("NUMBERdpFormRIO");
@@ -210,7 +199,7 @@ public class InteractiveDoc{
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#upload"));
         shadowContent.click();
     }
-    public void buttonSaveDocumentInteractivePage() throws InterruptedException{
+    public void buttonSaveDocumentInteractivePage() {
         WebElement shadowHost = driver.findElement(By.tagName("left-nav-interactive"));
         SearchContext shadowRoot = shadowHost.getShadowRoot();
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#save"));
@@ -341,7 +330,6 @@ public class InteractiveDoc{
 
     public void setHeaderFieldFormRIO() throws InterruptedException
     {
-        waitForElementToBeRefreshed();
         setYearFormRio();
         setStageFormRio();
         setKbkFormRIO();

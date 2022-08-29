@@ -11,14 +11,12 @@ import org.testng.annotations.Test;
 
 
 public class Document_Header_Rio extends Tests.TestBase {
-
     public static String yearFormRIO=ConfigBuilder.getproperty("yearFormRIO");
     public static String stageFormRIO=ConfigBuilder.getproperty("stageFormRIO");
     public static String stageDPFormRIO=ConfigBuilder.getproperty("stageDPFormRIO");
     public static String kbkFormRIO=ConfigBuilder.getproperty("kbkFormRIO");
     public static String kbkDPFormRIO=ConfigBuilder.getproperty("kbkDPFormRIO");
     public static String NUMBERdpFormRIO=ConfigBuilder.getproperty("NUMBERdpFormRIO");
-
 
     @Test()
     public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
@@ -30,15 +28,10 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-       // interactiveDoc.wait_waitStageRio();
         interactiveDoc.setStageFormRio();
         checkAbsenceModalWindow();
         Assert.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
     }
-
-
-
-
     @Test()
     public void interactivePage_CheckYearFormRIO_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -52,7 +45,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.buttonYearRio.click();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(), requestRIO.CheckListYEARformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
     }
-
     @Test()
     public void interactivePage_CheckStageFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -68,7 +60,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         checkAppearanceModalWindow();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(), requestRIO.CheckListSTAGEformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
     }
-
     @Test()
     public void interactivePage_CheckKbkFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -79,7 +70,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-       // interactiveDoc.wait_waitStageRio();
         interactiveDoc.setStageFormRio();
         interactiveDoc.parsData();
         checkAppearanceModalWindow();
@@ -96,7 +86,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-      //  interactiveDoc.wait_waitStageRio();
         interactiveDoc.parsData();
         interactiveDoc.setStageDPFormRio();
         checkAppearanceModalWindow();
@@ -114,15 +103,12 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-      //  interactiveDoc.wait_waitStageRio();
         interactiveDoc.setStageFormRio();
         interactiveDoc.parsData();
         checkAppearanceModalWindow();
         interactiveDoc.setKbkFormRIO();
         interactiveDoc.buttonVersionDocument.click();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(), requestRIO.CheckVERfromRIO(),"Справочник ЭДО не соответствует справочнику в БД");
-
-        // interactiveDoc.setVersionDocument("01");
     }
     @Test()
     public void interactivePage_CheckNumberDPFormRio_Successfull() throws InterruptedException {
@@ -140,10 +126,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setKbkDPFormRIO();
         interactiveDoc.buttonVersionDocument.click();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(), requestRIO.CheckVERDPfromRIO(),"Справочник ЭДО не соответствует справочнику в БД");
-
-        // interactiveDoc.setVersionDocument("01");
     }
-
     @Test()
     public void interactivePage_VersionDPFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -160,24 +143,19 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setKbkDPFormRIO();
         interactiveDoc.setNumberDBFormRio();
         checkDisabledVersionDPFormRIO();
-        //Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(),requestRIO.CheckVERDPfromRIO(),"Справочник ЭДО не соответствует справочнику в БД");
-
         // interactiveDoc.setVersionDocument("01");
+        //Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(),requestRIO.CheckVERDPfromRIO(),"Справочник ЭДО не соответствует справочнику в БД");
     }
-
-
-
-    public void checkAppearanceModalWindow()
-    {
+    public void checkAppearanceModalWindow() {
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         if (interactiveDoc.isElementPresented() & requestRIO.CheckRequestGRBS() ==null) {
-            System.out.println("Заявка утверждена, тест будет проигнорирован");
-            throw new SkipException("Заявка утверждена, тест будет проигнорирован");
+            System.out.println("Заявка не утверждена, тест будет проигнорирован");
+            throw new SkipException(" ");
         }
         else if (interactiveDoc.isElementPresented() & requestRIO.CheckRequestGRBS() !=null)
         {
-            System.out.println("Заявка существует, ЭДО поломалося");
-            throw new SkipException("Заявка существует, ЭДО поломалося");
+            System.out.println("Заявка существует, ЭДО сломалось");
+            throw new SkipException(" ");
         }
     }
 
@@ -185,12 +163,11 @@ public class Document_Header_Rio extends Tests.TestBase {
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         if (!interactiveDoc.isElementPresented()) {
             System.out.println("Модальное окно не появилось, тест будет проигнорирован");
-            throw new SkipException("Модальное окно не появилось, тест будет проигнорирован");
+            throw new SkipException(" ");
         }
     }
 
-    public void checkDisabledVersionDPFormRIO()
-    {
+    public void checkDisabledVersionDPFormRIO() {
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         if(interactiveDoc.versionDBFormRio.isDisplayed())
             Assert.assertNull(requestRIO.CheckDU_RETURN(),"Есть отклоненные документы");

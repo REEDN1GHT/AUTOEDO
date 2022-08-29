@@ -17,30 +17,21 @@ public class CabinetPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-
-
     @FindBy(id="uploadForm")
     WebElement docSelect;
-
     @FindBy(id="upload")
     public WebElement buttonUpload;
-
-    public CabinetPage(WebDriver driver,WebDriverWait wait)
-    {
+    public CabinetPage(WebDriver driver,WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
         PageFactory.initElements(driver,this);
     }
-
     public void createDocument()  {
-
         WebElement shadowHost = driver.findElement(By.tagName("left-nav"));
         SearchContext shadowRoot = shadowHost.getShadowRoot();
-  WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#createDocumentButton"));
-shadowContent.click();
-
+        WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#createDocumentButton"));
+        shadowContent.click();
     }
-
     public void setSelect() throws InterruptedException {
         var viborDoc = new Select(docSelect);
         Thread.sleep(1000);

@@ -22,11 +22,8 @@ public class BD_Request_Main_FormRIO extends BD {
     public static String LastUpdate;
     public String NDOCID;
 
-    public String CheckDOCID;
-
 
     public String CheckListYEARformRIO() {
-
         List<String> RLyear = new ArrayList<>();
         try {
             Statement statementYEAR = getConnectionBudget22().createStatement();
@@ -59,7 +56,6 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLyear.toString();
     }
-
     public String CheckListSTAGEformRIO() {
         List<String> RLstage = new ArrayList<>();
         try {
@@ -93,7 +89,6 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLstage.toString();
     }
-
     public String CheckKBKformRIO() {
         List<String> RLkbk = new ArrayList<>();
         try {
@@ -126,7 +121,6 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLkbk.toString();
     }
-
     public String CheckKBKDPformRIO() {
         List<String> RLkbk = new ArrayList<>();
         try {
@@ -159,7 +153,6 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLkbk.toString();
     }
-
     public String CheckVERfromRIO() {
         List<String> RLver = new ArrayList<>();
         try {
@@ -187,13 +180,11 @@ public class BD_Request_Main_FormRIO extends BD {
                 String ListVERforRIO = ResultVER.getString("Номер документа");
                 RLver.add(ListVERforRIO);
             }
-
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLver.toString();
     }
-
     public String CheckVERDPfromRIO() {
         List<String> RLver = new ArrayList<>();
         try {
@@ -221,13 +212,11 @@ public class BD_Request_Main_FormRIO extends BD {
                 String ListVERforRIO = ResultVER.getString("Номер документа");
                 RLver.add(ListVERforRIO);
             }
-
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLver.toString();
     }
-
     public String CheckVersionDPFormRIO() {
         List<String> RLVersionDP = new ArrayList<>();
         try {
@@ -260,10 +249,7 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLVersionDP.toString();
     }
-
-
     public String CheckRequestGRBS() {
-
         List<String> RDOCID = new ArrayList<>();
         try {
             Statement statement1 = getConnectionBudget22().createStatement();
@@ -283,14 +269,12 @@ public class BD_Request_Main_FormRIO extends BD {
             while (Result2.next()) {
                 DU_R = Result2.getString("DU_R");
                 RDOCID.add(String.join(" ", DU_R));
-
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return DU_R;
     }
-
     public String CheckDU_RETURN() {
         try {
             Statement statementCheckDOCID = getConnectionBudget22().createStatement();
@@ -320,7 +304,6 @@ public class BD_Request_Main_FormRIO extends BD {
         return DU_RETURN;
     }
 
-
     //БД реквесты для футера формы
     public String CheckListFIO() {
         List<String> RLfio = new ArrayList<>();
@@ -349,14 +332,12 @@ public class BD_Request_Main_FormRIO extends BD {
                 String FIO = ResultFIO.getString("ФИО");
                 RLfio.add(String.join(" ", FIO));
                 Collections.sort(RLfio);
-
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
         }
         return RLfio.toString();
     }
-
     public String ChecKListJOB() {
         List<String> RLjob = new ArrayList<>();
         try {
@@ -390,7 +371,6 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLjob.toString();
     }
-
     public String CheckListPHONE() {
         List<String> RLphone = new ArrayList<>();
         try {
@@ -425,7 +405,6 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLphone.toString();
     }
-
     public String CheckListFIO_CHIEF() {
         List<String> RLfio_chief = new ArrayList<>();
         try {
@@ -459,7 +438,6 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLfio_chief.toString();
     }
-
     public String CheckListJOB_CHIEF() {
         List<String> RLjob_chief = new ArrayList<>();
         try {
@@ -493,22 +471,11 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLjob_chief.toString();
     }
-
     public String CheckSaveDocuments() {
         List<String> RLsaveDOC = new ArrayList<>();
         try {
             Statement statementDocCheck = getConnectionBudget22().createStatement();
-            String sqlCheck = /*"Execute dbo.FO_Doc_Check \n" +
-                    "@GroupName='7830002430/1599', \n" +
-                    "@CPR_CCS_FULL_CVR='0113 1640099020 831', \n" +
-                    "@CUL_PARENT='7832000076', \n" +
-                    "@FO='10', \n" +
-                    "@STAGE='01', \n" +
-                    "@VER_DP='01', \n" +
-                    "@CPR_CCS_FULL_CVR_Old=Null, \n" +
-                    "@VAR_DP=Null, \n" +
-                    "@YEAR='2023'";*/
-                    "Execute dbo.FO_Doc_Check \n" +
+            String sqlCheck ="Execute dbo.FO_Doc_Check \n" +
                             "@GroupName='7830002430/1599', \n" +
                             "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", \n" +
                             "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +

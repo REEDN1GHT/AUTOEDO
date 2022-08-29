@@ -1,19 +1,15 @@
 package Tests.Form_Rio.Form_Rio_11;
 
 import Tests.BD;
-
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class BD_Requests_11formRIO_OLD extends BD {
 
     public static String SUMM12;
-
     public String FO_DOC_Load() {
         List<String> RLoad = new ArrayList<>();
         try {

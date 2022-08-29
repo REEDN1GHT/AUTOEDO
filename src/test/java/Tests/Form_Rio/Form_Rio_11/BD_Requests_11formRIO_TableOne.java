@@ -15,9 +15,7 @@ import static Page.InteractiveDoc.iNNGRBS;
 
 
 public class BD_Requests_11formRIO_TableOne extends BD {
-
     String Sum2022,Sum2023,Sum2024,Sum2025;
-
     public String CheckHandbookNAMEPOKAZATEL() {
         List<String> RLname = new ArrayList<>();
         try {
@@ -51,8 +49,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
         }
         return RLname.toString();
     }
-    public float CheckStringTotalSumm2021()
-    {
+    public float CheckStringTotalSumm2021() {
         List<String> RLname = new ArrayList<>();
         try {
             Statement statementNAME = getConnectionBudget21().createStatement();
@@ -82,9 +79,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
         }
         return Float.parseFloat(Sum2022);
     }
-
-    public float CheckStringTotalSumm2022()
-    {
+    public float CheckStringTotalSumm2022() {
         List<String> RLname = new ArrayList<>();
         try {
             Statement statementNAME = getConnectionBudget22().createStatement();
@@ -114,8 +109,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
         }
         return Float.parseFloat(Sum2022);
     }
-    public float CheckStringTotalSumm2023()
-    {
+    public float CheckStringTotalSumm2023() {
         List<String> RLname = new ArrayList<>();
         try {
             Statement statementNAME = getConnectionBudget22().createStatement();
@@ -148,8 +142,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
         }
         return Float.parseFloat(Sum2023);
     }
-    public float CheckStringTotalSumm2024()
-    {
+    public float CheckStringTotalSumm2024() {
         List<String> RLname = new ArrayList<>();
         try {
             Statement statementNAME = getConnectionBudget22().createStatement();
@@ -184,8 +177,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
         }
         return Float.parseFloat(Sum2024);
     }
-    public float CheckStringTotalSumm2025()
-    {
+    public float CheckStringTotalSumm2025() {
         List<String> RLname = new ArrayList<>();
         try {
             Statement statementNAME = getConnectionBudget22().createStatement();

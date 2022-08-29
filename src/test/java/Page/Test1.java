@@ -53,7 +53,8 @@ public class Test1 extends TestBase {
     @Test
     public void testAYHTcofn() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
+        //authEDO.authorization();
+        System.out.println(authEDO.buttonEnterMainPage);
     }
 
     @Test

@@ -19,7 +19,6 @@ import java.util.Objects;
 public class AuthEDO {
     private WebDriver driver;
     private WebDriverWait wait;
-
    public static String EDOurl = ConfigBuilder.getproperty("EDOurl");
    public static String EDOPROD = "https://edo.fincom.gov.spb.ru/#/";
 
@@ -32,13 +31,10 @@ public class AuthEDO {
     private WebElement passwordField;
     @FindBy(css = ".btn.flex-grow-1.btn-primary.btn-huge")
     private WebElement buttonEnterAuthorization;
-    @FindBy(css = ".btn.flex-grow-1.btn-primary.btn-huge")
-    public WebElement buttonSubmit;
     @FindBy(id = "cabinet")
     WebElement role;
     @FindBy(css = "#cabinet-modal___BV_modal_footer_ >button:nth-child(1)")
     public WebElement buttonSignInCabinet;
-
 
     public AuthEDO(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
@@ -53,33 +49,25 @@ public class AuthEDO {
     public void open() {
         driver.navigate().to(ConfigBuilder.getproperty("EDOurl"));
     }
-
     public void setButtonEnterMainPage(){
         buttonEnterMainPage.click();
     }
     public void setLoginField() {
         loginField.sendKeys(ConfigBuilder.getproperty("EDOlogin"));
     }
-
     public void setPasswordField() {
         passwordField.sendKeys(ConfigBuilder.getproperty("EDOpassword"));
     }
-
     public void setButtonEnterAuthorization() {
         buttonEnterAuthorization.click();
     }
-
     public void role() {
         var cabinetRole = new Select(role);
         cabinetRole.selectByVisibleText(ConfigBuilder.getproperty("EDOrole"));
-
     }
-
-
     public void setButtonSignInCabinet() {
         buttonSignInCabinet.click();
     }
-
     public void waitCabinet() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSignInCabinet));
     }
@@ -88,10 +76,6 @@ public class AuthEDO {
         authEDO.open();
         if(authEDO.isElementPresented()==1 )
         {
-            Auth_through_the_admin_panel authADM = new Auth_through_the_admin_panel(driver, wait);
-            if (Objects.equals(EDOurl, EDOPROD)) {
-                authADM.ADMINauthorization();
-            }
             authEDO.setButtonEnterMainPage();
             authEDO.setLoginField();
             authEDO.setPasswordField();
@@ -99,29 +83,31 @@ public class AuthEDO {
             authEDO.waitCabinet();
             authEDO.role();
             authEDO.setButtonSignInCabinet();
-
-        }else if(authEDO.isElementPresented()>1)
-        {
-
+        } else if(authEDO.isElementPresented()>1) {
             driver.navigate().to("http://172.31.1.149/edo/main");
-
         }
-
     }
-
-   /* public void authorization() throws InterruptedException {
+    /*public void authorization1() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
         Auth_through_the_admin_panel authADM = new Auth_through_the_admin_panel(driver, wait);
         if (Objects.equals(EDOurl, EDOPROD)) {
             authADM.ADMINauthorization();
-        } else {
-            setButtonEnterMainPage();
-            setLoginField();
-            setPasswordField();
-            setButtonEnterAuthorization();
-            role();
-            waitCabinet();
-            setButtonSignInCabinet();
         }
-    }
-    */
+            else {
+            authEDO.open();
+            if (authEDO.isElementPresented() == 1) {
+                authEDO.setButtonEnterMainPage();
+                authEDO.setLoginField();
+                authEDO.setPasswordField();
+                authEDO.setButtonEnterAuthorization();
+                authEDO.waitCabinet();
+                authEDO.role();
+                authEDO.setButtonSignInCabinet();
+            } else if(authEDO.isElementPresented()>1) {
+            driver.navigate().to("http://172.31.1.149/edo/main");
+            }
+            }else {
+            driver.navigate().to("http://172.31.1.149/edo/main");
+        }
+    }*/
 }

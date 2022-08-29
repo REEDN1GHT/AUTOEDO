@@ -29,26 +29,19 @@ import java.time.Duration;
     public void setUp() throws SQLException, ClassNotFoundException {
         con.getConnectionBudget22();
         con.getConnectionBudget21();
-
         System.setProperty("webdriver.chrome.driver","drivers\\chromedriver.exe");
-
         driver = new ChromeDriver();
-
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
     }
-
-
     @AfterClass
     public void tearDown() throws IOException, SQLException {
         var sourceFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFile(sourceFile,new File("C:\\creen\\screenshot.png"));
-
         con.closeConnectBudget22();
         con.closeConnectBudget21();
         driver.quit();
-
     }
 }

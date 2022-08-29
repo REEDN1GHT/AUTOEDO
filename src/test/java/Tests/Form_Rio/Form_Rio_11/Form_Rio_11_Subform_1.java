@@ -4,19 +4,11 @@ import Page.AuthEDO;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
 import Tests.TestBase;
-import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.util.Date;
-
-
 public class Form_Rio_11_Subform_1 extends TestBase {
-    @Test()
+    @Test(priority = 1)
     public void interactivePage_fieldGuideIndicatorNameSubform1_fieldGuideIndicatorNameSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -31,7 +23,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.numeIndicatorSubForm1.click();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(),requests_11formRIO_tableOne.CheckHandbookNAMEPOKAZATEL(),"Справочник Эдо не соответствует справочнику в БД");
     }
-    @Test()
+    @Test(priority = 2)
     public void interactivePage_field2021Subform1_fieldAvailableManualInput() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -45,7 +37,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         Assert.assertNull(interactiveDoc.field2021ManualInput.getAttribute("readonly"),"Поле доступно для ввода");
     }
-    @Test()
+    @Test(priority = 3)
     public void interactivePage_field2022Subform1_fieldAvailableManualInput() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -59,7 +51,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         Assert.assertNull(interactiveDoc.field2022ManualInput.getAttribute("readonly"),"Поле доступно для ввода");
     }
-    @Test()
+    @Test(priority = 4)
     public void interactivePage_field2023Subform1_fieldNotAvailableManualInput() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -73,8 +65,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         Assert.assertTrue(Boolean.parseBoolean(interactiveDoc.field2023NotManualInput.getAttribute("readonly")),"Поле доступно для ввода");
     }
-
-    @Test()
+    @Test(priority = 5)
     public void interactivePage_field2024Subform1_fieldNotAvailableManualInput() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -88,7 +79,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         Assert.assertTrue(Boolean.parseBoolean(interactiveDoc.field2024NotManualInput.getAttribute("readonly")),"Поле доступно для ввода");
     }
-    @Test()
+    @Test(priority = 6)
     public void interactivePage_field2025Subform1_fieldNotAvailableManualInput() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -102,7 +93,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         Assert.assertTrue(Boolean.parseBoolean(interactiveDoc.field2025NotManualInput.getAttribute("readonly")),"Поле доступно для ввода");
     }
-    @Test()
+    @Test(priority = 7)
     public void interactivePage_fieldTempRostSubform1_fieldNotAvailableManualInput() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -116,7 +107,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         Assert.assertTrue(Boolean.parseBoolean(interactiveDoc.fieldTempRost1.getAttribute("readonly")),"Поле доступно для ввода");
     }
-    @Test()
+    @Test(priority = 8)
     public void interactivePage_fieldTempRost2_fieldNotAvailableManualInput() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -130,8 +121,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonAddNewString.click();
         Assert.assertTrue(Boolean.parseBoolean(interactiveDoc.fieldTempRost2.getAttribute("readonly")),"Поле доступно для ввода");
     }
-
-    @Test()
+    @Test(priority = 9)
     public void interactivePage_fieldTempRost3_fieldNotAvailableManualInput() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -146,7 +136,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         Assert.assertTrue(Boolean.parseBoolean(interactiveDoc.fieldTempRost3.getAttribute("readonly")),"Поле доступно для ввода");
     }
 
-    /*@Test()
+    @Test(priority = 26)
     public void interactivePage_Check_DOC_SAVE_Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -161,8 +151,8 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.buttonSaveDocumentInteractivePage();
         interactiveDoc.waitDocSaveformRio();
         Assert.assertEquals(interactiveDoc.actualDate.toString(), requestRIO.CheckSaveDocuments(), "Ошибка сохранения документа в АИС БП");
-    }*/
-    @Test()
+    }
+    @Test(priority = 10)
     public void interactivePage_field2023PaymentСorporatePropertyTax_fieldDataLoadedSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -185,7 +175,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.waitTextElementSubForm1Field2023();
         Assert.assertEquals(interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
-    @Test()
+    @Test(priority = 11)
     public void interactivePage_field2023PaymentLandTax_fieldDataLoadedSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -207,7 +197,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
-    @Test()
+    @Test(priority = 12)
     public void interactivePage_field2024PaymentСorporatePropertyTax_fieldDataLoadedSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -230,7 +220,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
-    @Test()
+    @Test(priority = 13)
     public void interactivePage_field2024PaymentLandTax_fieldDataLoadedSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -249,12 +239,10 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorPaymentLandTaxSubForm1();
-       Thread.sleep(200);
-        //interactiveDoc.wait_waitfield2023SubForm1();
+        Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
-
-    @Test()
+    @Test(priority = 14)
     public void interactivePage_field2025PaymentСorporatePropertyTax_fieldDataLoadedSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -277,7 +265,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2025NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
-    @Test()
+    @Test(priority = 15)
     public void interactivePage_field2025PaymentLandTax_fieldDataLoadedSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -300,7 +288,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         Thread.sleep(200);
         Assert.assertEquals(interactiveDoc.field2025NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
-    @Test()
+    @Test(priority = 16)
     public void interactivePage_fieldGrowthRateCalculate_fielGrowthRateSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -324,7 +312,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
 
         Assert.assertEquals(interactiveDoc.raschetZnach(dataField2023,dataField2022),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
-    @Test()
+    @Test(priority = 17)
     public void interactivePage_fieldGrowthRate2Calculate_fielGrowthRateSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -348,7 +336,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         var dataField2024 = interactiveDoc.field2024NotManualInput.getAttribute("value").replace(',','.');
         Assert.assertEquals(interactiveDoc.raschetZnach(dataField2023,dataField2024),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
-    @Test()
+    @Test(priority = 18)
     public void interactivePage_fieldGrowthRate3Calculate_fielGrowthRateSuccessful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -388,7 +376,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         var bdSumTotal = requests_11formRIO_tableOne.CheckStringTotalSumm2022();
         Assert.assertEquals(edoSumTotal.replaceAll("\\s+",""),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
     }*/
-    @Test()
+    @Test(priority = 19)
     public void interactivePage_checkSumStringTotal2022_SumStringTotal2022Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -403,7 +391,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         var bdSumTotal = requests_11formRIO_tableOne.CheckStringTotalSumm2022();
         Assert.assertEquals(edoSumTotal.replaceAll("\\s+",""),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
     }
-    @Test()
+    @Test(priority = 20)
     public void interactivePage_checkSumStringTotal2023_SumStringTotal2023Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -416,10 +404,9 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.modalWindowButtonOK.click();
         var edoSumTotal = interactiveDoc.stringTotal2023.getText().replace(',','.');
         var bdSumTotal = requests_11formRIO_tableOne.CheckStringTotalSumm2023();
-
         Assert.assertEquals(edoSumTotal.replaceAll("\\s+",""),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
     }
-    @Test()
+    @Test(priority = 21)
     public void interactivePage_checkSumStringTotal2024_SumStringTotal2024Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -434,7 +421,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         var bdSumTotal = requests_11formRIO_tableOne.CheckStringTotalSumm2024();
         Assert.assertEquals(edoSumTotal.replaceAll("\\s+",""),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
     }
-    @Test()
+    @Test(priority = 22)
     public void interactivePage_checkSumStringTotal2025_SumStringTotal2025Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -449,8 +436,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         var bdSumTotal = requests_11formRIO_tableOne.CheckStringTotalSumm2025();
         Assert.assertEquals(edoSumTotal.replaceAll("\\s+",""),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
     }
-
-    @Test()
+    @Test(priority = 23)
     public void interactivePage_checkTotalGrowthRate1_SumStringTotalGrowthRate1Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -468,7 +454,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
 
        Assert.assertEquals(interactiveDoc.raschetZnach(edoSumTotal,edoSumTotal2),bdSumTotal,"Сумма не сходится");
     }
-    @Test()
+    @Test(priority = 24)
     public void interactivePage_checkTotalGrowthRate2_SumStringTotalGrowthRate1Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -484,7 +470,7 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         var bdSumTotal = interactiveDoc.stringTotalGrowthRate2.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
         Assert.assertEquals(interactiveDoc.raschetZnach(edoSumTotal,edoSumTotal2),bdSumTotal,"Сумма не сходится");
     }
-    @Test()
+    @Test(priority = 25)
     public void interactivePage_checkTotalGrowthRate3_SumStringTotalGrowthRate1Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
