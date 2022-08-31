@@ -234,7 +234,9 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.setListSubReport("3.1 Расчет объема бюджетных ассигнований на уплату земельного налога на очередной финансовый год");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setListSubReport("3.2 Расчет объема бюджетных ассигнований на уплату земельного налога на первый год планового периода");
+        interactiveDoc.waitForElementToBeRefreshed2();
         interactiveDoc.setfield1QuarterSubform3_1();
+        interactiveDoc.waitTextElementLastField();
         interactiveDoc.getValueFieldEpensesSubform();
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
@@ -279,8 +281,9 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.setListSubReport("3.1 Расчет объема бюджетных ассигнований на уплату земельного налога на очередной финансовый год");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setListSubReport("3.3  Расчет объема бюджетных ассигнований на уплату земельного налога на второй год планового периода");
-        interactiveDoc.setfield1QuarterSubform3_1();
         interactiveDoc.waitForElementToBeRefreshed2();
+        interactiveDoc.setfield1QuarterSubform3_1();
+        interactiveDoc.waitTextElementLastField();
         interactiveDoc.getValueFieldEpensesSubform();
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
@@ -384,9 +387,12 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         cabinetPage.openInteractiveFormDocument();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.separateKBK();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
+
         var edoSumTotal = interactiveDoc.stringTotal2022.getText().replace(',','.');
         var bdSumTotal = requests_11formRIO_tableOne.CheckStringTotalSumm2022();
         Assert.assertEquals(edoSumTotal.replaceAll("\\s+",""),interactiveDoc.okryglenie(bdSumTotal),"Сумма не сходится");
@@ -399,6 +405,8 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         cabinetPage.openInteractiveFormDocument();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.separateKBK();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -414,6 +422,8 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         cabinetPage.openInteractiveFormDocument();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.separateKBK();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -429,6 +439,8 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         cabinetPage.openInteractiveFormDocument();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.separateKBK();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -448,7 +460,6 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
         var edoSumTotal = interactiveDoc.stringTotal2023.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
-
         var edoSumTotal2 = interactiveDoc.stringTotal2022.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
         var bdSumTotal = interactiveDoc.stringTotalGrowthRate1.getAttribute("innerText").replace(',','.').replaceAll("\\s+","");
 

@@ -1,12 +1,10 @@
 package Tests.Form_Rio;
 
 import Page.AuthEDO;
-import Resources.ConfigBuilder;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
 import Tests.TestBase;
 import org.testng.Assert;
-import org.testng.SkipException;
 import org.testng.annotations.Test;
 
 public class Document_Footer_Rio extends TestBase {
@@ -21,10 +19,7 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
-        interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageFormRio();
-        interactiveDoc.setKbkFormRIO();
-        interactiveDoc.setVersionDocument();
+        interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -41,10 +36,7 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
-        interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageFormRio();
-        interactiveDoc.setKbkFormRIO();
-        interactiveDoc.setVersionDocument();
+        interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -61,10 +53,7 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
-        interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageFormRio();
-        interactiveDoc.setKbkFormRIO();
-        interactiveDoc.setVersionDocument();
+        interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -81,10 +70,7 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
-        interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageFormRio();
-        interactiveDoc.setKbkFormRIO();
-        interactiveDoc.setVersionDocument();
+        interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -101,10 +87,7 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
-        interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageFormRio();
-        interactiveDoc.setKbkFormRIO();
-        interactiveDoc.setVersionDocument();
+        interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();

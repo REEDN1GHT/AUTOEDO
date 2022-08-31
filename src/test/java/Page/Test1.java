@@ -1,5 +1,6 @@
 package Page;
 
+import Resources.ConfigBuilder;
 import Tests.Form_Rio.BD_Request_Main_FormRIO;
 import Tests.Form_Rio.Form_Rio_11.BD_Requests_11formRIO_OLD;
 import Tests.TestBase;
@@ -190,10 +191,24 @@ public class Test1 extends TestBase {
         //   BD_Request_Footer_FormRio bd = new BD_Request_Footer_FormRio();
         //    System.out.println(bd.CheckListPHONE());
     }
-
+    @Test
+    public void test1()
+    {
+        String kbkFormRio = ConfigBuilder.getproperty("kbkFormRIO");
+        String[] tokens = kbkFormRio.split("\\s+");
+        //String nullZnach = tokens[0];
+        String Podrazdel = tokens[0];
+        String tselevaia = tokens[1];
+        String vr = tokens[2];
+        System.out.println(Podrazdel);
+        System.out.println(tselevaia);
+        System.out.println(vr);
+    }
     @Test
     public void sum() {
-        System.out.println(requests_11formRIO_tableOne.CheckStringTotalSumm2025());
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.separateKBK();
+        System.out.println(requests_11formRIO_tableOne.CheckStringTotalSumm2022());
     }
 }
 

@@ -1,7 +1,6 @@
 package Page;
 
 import Resources.ConfigBuilder;
-import org.checkerframework.checker.units.qual.K;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.FindBy;
@@ -9,10 +8,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import javax.xml.xpath.XPath;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.security.cert.X509Certificate;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
@@ -25,7 +22,7 @@ public class InteractiveDoc{
     public static String foFormRio;
     public static List<String> actualDate = new ArrayList<>();
     public  BigDecimal dataField;
-
+    public static String subsectionKbk,kbkCS,typeExpensesKbk;
     //Локаторы для периодички
    // @FindBy(id="gwt-uid-57")// присмотреться к локатору, возможно изменится
    // WebElement period;
@@ -59,6 +56,8 @@ public class InteractiveDoc{
     public WebElement buttonKbkFormRio;
     @FindBy (xpath = "//div[@class='v-expand']/div[@class='v-slot'][5]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
     public WebElement buttonVersionDocument;
+    @FindBy(xpath = "//div[@class='v-expand']/div[@class='v-slot'][6]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
+    public WebElement versionDpRIO;
     @FindBy(xpath = "//div[@class='v-filterselect v-widget v-has-width v-required v-filterselect-required v-filterselect-focus']/input")
     public WebElement stageFormRIO;
     @FindBy(css = ".gwt-MenuItem.gwt-MenuItem-selected")
@@ -179,20 +178,31 @@ public class InteractiveDoc{
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokKbkFormRio+"']/parent::td"));
         buttonENTER.click();
     }
-    public void setVersionDocument() {
+    public void setNumberDocument() {
         wait_Kbk_Rio();
         buttonVersionDocument.click();
-        String spisokVersionFormRio = ConfigBuilder.getproperty("VERdpFormRIO");
+        String spisokVersionFormRio = ConfigBuilder.getproperty("NUMBERFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokVersionFormRio+"']/parent::td"));
         buttonENTER.click();
     }
-    public void setNumberDBFormRio() {
+
+    public void setNumberDPDocument() {
         wait_Kbk_Rio();
         buttonVersionDocument.click();
-        String spisokNumberDBFormRio = ConfigBuilder.getproperty("NUMBERdpFormRIO");
-        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokNumberDBFormRio+"']/parent::td"));
+        String spisokVersionFormRio = ConfigBuilder.getproperty("NumberDpFormRIO");
+        WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokVersionFormRio+"']/parent::td"));
         buttonENTER.click();
     }
+
+    public void separateKBK()
+    {
+        String kbkFormRio = ConfigBuilder.getproperty("kbkFormRIO");
+        String[] tokens = kbkFormRio.split("\\s+");
+        subsectionKbk = tokens[0];
+        kbkCS = tokens[1];
+        typeExpensesKbk = tokens[2];
+    }
+
     public void buttonLoadDocumentInteractivePage()  {
         WebElement shadowHost = driver.findElement(By.tagName("left-nav-interactive"));
         SearchContext shadowRoot = shadowHost.getShadowRoot();
@@ -291,7 +301,6 @@ public class InteractiveDoc{
     public void getValueFieldEpensesSubform() throws InterruptedException {
         //Thread.sleep(400);
         float data2023Subform2 = Float.parseFloat(fieldExpensesSubFormLast.getAttribute("value").replace(',','.'));
-        System.out.println(data2023Subform2);
         dataField = new BigDecimal(data2023Subform2).setScale(1, RoundingMode.HALF_UP);
 
     }
@@ -333,7 +342,7 @@ public class InteractiveDoc{
         setYearFormRio();
         setStageFormRio();
         setKbkFormRIO();
-        setVersionDocument();
+        setNumberDocument();
     }
     public void scrollTableSubForm2()
     {
@@ -385,6 +394,7 @@ public class InteractiveDoc{
         WebDriverWait driverWait = new WebDriverWait(driver,Duration.ofSeconds(3));
         driverWait.until(driver1 -> driver.findElements(By.xpath("//div[@class='v-table-body-noselection']//tr")).size()>1);
     }
+
 
 
 // Локаторы для футера формы РИО

@@ -241,7 +241,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@YEAR=" + yearFormRIO;
             ResultSet ResultVersionDP = statementVersionDP.executeQuery(sqlVersionDP);
             while (ResultVersionDP.next()) {
-                String ListVersionDP = ResultVersionDP.getString("Номер документа");
+                String ListVersionDP = ResultVersionDP.getString("Версия");
                 RLVersionDP.add(ListVersionDP);
             }
         } catch (SQLException | ClassNotFoundException throwables) {
@@ -283,7 +283,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CUL_PARENT=\"" + iNNGRBS + "\"," +
                     "@FO=\"" + foFormRio + "\", " +
                     "@STAGE=\"" + stageDPFormRIO + "\", " +
-                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", " +
+                    "@VER_DP=\"" + NUMBERDpFormRIO + "\", " +
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
                     "@VAR_DP=Null, " +
                     "@YEAR=" + yearFormRIO;
@@ -317,7 +317,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CUL_PARENT=\"" + iNNGRBS + "\", " +
                     "@FO=\"" + foFormRio + "\", " +
                     "@STAGE=\"" + stageFormRIO + "\", " +
-                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", " +
+                    "@VER_DP=\"" + NUMBERFormRIO + "\", " +
                     "@CTD_SUB=Null, " +
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
                     "@FIO=Null, " +
@@ -350,7 +350,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CUL_PARENT=\"" + iNNGRBS + "\", " +
                     "@FO=\"" + foFormRio + "\", " +
                     "@STAGE=\"" + stageFormRIO + "\", " +
-                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", " +
+                    "@VER_DP=\"" + NUMBERFormRIO + "\", " +
                     "@CTD_SUB=Null, " +
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
                     "@FIO=Null, " +
@@ -383,7 +383,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CUL_PARENT=\"" + iNNGRBS + "\", " +
                     "@FO=\"" + foFormRio + "\", " +
                     "@STAGE=\"" + stageFormRIO + "\", " +
-                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", " +
+                    "@VER_DP=\"" + NUMBERFormRIO + "\", " +
                     "@CTD_SUB=Null, " +
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
                     "@FIO=Null, " +
@@ -417,7 +417,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CUL_PARENT=\"" + iNNGRBS + "\", " +
                     "@FO=\"" + foFormRio + "\", " +
                     "@STAGE=\"" + stageFormRIO + "\", " +
-                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", " +
+                    "@VER_DP=\"" + NUMBERFormRIO + "\", " +
                     "@CTD_SUB=Null, " +
                     "@CPR_CCS_FULL_CVR_Old=Null, \n" +
                     "@FIO=Null, \n" +
@@ -450,7 +450,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CUL_PARENT=\"" + iNNGRBS + "\", " +
                     "@FO=\"" + foFormRio + "\", " +
                     "@STAGE=\"" + stageFormRIO + "\", " +
-                    "@VER_DP=\"" + NUMBERdpFormRIO + "\", " +
+                    "@VER_DP=\"" + NUMBERFormRIO + "\", " +
                     "@CTD_SUB=Null, " +
                     "@CPR_CCS_FULL_CVR_Old=Null, \n" +
                     "@FIO=Null, \n" +
@@ -480,7 +480,7 @@ public class BD_Request_Main_FormRIO extends BD {
                             "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
                             "@FO=\"" + foFormRio + "\", \n" +
                             "@STAGE=\"" + stageFormRIO + "\", \n" +
-                            "@VER_DP=\"" + NUMBERdpFormRIO + "\", \n" +
+                            "@VER_DP=\"" + NUMBERFormRIO + "\", \n" +
                             "@CPR_CCS_FULL_CVR_Old=Null, \n" +
                             "@VAR_DP=Null, \n" +
                             "@YEAR=" + yearFormRIO;
