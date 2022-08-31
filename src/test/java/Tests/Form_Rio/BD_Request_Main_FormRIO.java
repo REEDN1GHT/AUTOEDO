@@ -230,7 +230,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CUL_PARENT=\"" + iNNGRBS + "\", \n" +
                     "@FO=\"" + foFormRio + "\"," +
                     "@STAGE=\"" + stageDPFormRIO + "\",\n" +
-                    "@VER_DP=Null," +
+                    "@VER_DP=\"" +NUMBERDpFormRIO + "\", \n" +
                     "@CTD_SUB=Null, \n" +
                     "@CPR_CCS_FULL_CVR_Old=Null, \n" +
                     "@FIO=Null, \n" +
@@ -241,8 +241,9 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@YEAR=" + yearFormRIO;
             ResultSet ResultVersionDP = statementVersionDP.executeQuery(sqlVersionDP);
             while (ResultVersionDP.next()) {
-                String ListVersionDP = ResultVersionDP.getString("Версия");
-                RLVersionDP.add(ListVersionDP);
+                String ListVersionDP = ResultVersionDP.getString("Номер документа");
+                RLVersionDP.add(String.join(" ", ListVersionDP));
+                RLVersionDP.set(0, " ");
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
@@ -460,9 +461,10 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@JOB_CHIEF=Null, \n" +
                     "@YEAR=" + yearFormRIO;
             ResultSet ResultJOB_CHIEF = statementJOB_CHIEF.executeQuery(sqlJOB_CHIEF);
+            System.out.println(sqlJOB_CHIEF);
             while (ResultJOB_CHIEF.next()) {
                 String JOB_CHIEF = ResultJOB_CHIEF.getString("Должность");
-                RLjob_chief.add(String.join(" ", JOB_CHIEF));
+                RLjob_chief.add(String.join(" ", JOB_CHIEF).replace("\\n\\t", " "));
                 Collections.sort(RLjob_chief);
             }
         } catch (SQLException | ClassNotFoundException throwables) {

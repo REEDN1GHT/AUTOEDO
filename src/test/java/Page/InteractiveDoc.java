@@ -44,10 +44,11 @@ public class InteractiveDoc{
 
 
     //РИО
-    @FindBy (id = "gwt-uid-31")
+    @FindBy (xpath = "//div[@class='v-expand']/div[@class='v-slot'][3]/div[@class='v-formlayout v-layout v-widget v-has-width']//input")
     WebElement placeiNNGRBS;
     @FindBy(xpath = "//button[text()='ОК']")
     public WebElement modalWindow;
+    public WebElement elementIsNeedRefreshed;
     @FindBy(xpath = "//div[@class='v-expand']/div[@class='v-slot'][1]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
     public WebElement buttonYearRio;
     @FindBy (xpath="//div[@class='v-expand']/div[@class='v-slot'][2]/div[@class='v-formlayout v-layout v-widget v-has-width']//div[@class='v-filterselect-button']")
@@ -283,7 +284,6 @@ public class InteractiveDoc{
     {
         float data2023Subform2 = Float.parseFloat(field2023Number11.getAttribute("value").replace(',','.'));
         dataField = new BigDecimal(data2023Subform2).setScale(2, RoundingMode.HALF_UP).setScale(1, RoundingMode.HALF_UP);
-    System.out.println(dataField);
     }
     public void getValuefield2024Subform2()
     {
@@ -316,7 +316,9 @@ public class InteractiveDoc{
                 .stream()
                 .map(option -> option.getAttribute("innerText").trim())
                 .collect(Collectors.toList());
-
+        if (Objects.equals(myValuess.get(0), "\u00a0")) {
+            myValuess.set(0, " ");
+        }
         return myValuess.toString();
     }
     public void setiNNGRBS() {
@@ -358,7 +360,7 @@ public class InteractiveDoc{
 
     public void waitDocSaveformRio()
     {
-        var newWait = new WebDriverWait(driver,Duration.ofSeconds(30));
+        var newWait = new WebDriverWait(driver,Duration.ofSeconds(180));
         newWait.until(ExpectedConditions.visibilityOfElementLocated(swalSuccessfulSave));
     }
 
@@ -402,6 +404,7 @@ public class InteractiveDoc{
     public String CheckListFIOformRIO() throws InterruptedException {
         List<String> ListFIO = new ArrayList<>();
         int STRnumber = 0;
+        Thread.sleep(400);
         driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/div")).click();
         WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
         String Nstatus = Status.getAttribute("innerText");
@@ -420,6 +423,7 @@ public class InteractiveDoc{
     public String CheckListJOBformRIO() throws InterruptedException {
         List<String> ListJOB = new ArrayList<>();
         int STRnumber = 0;
+        Thread.sleep(400);
         driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/div")).click();
         WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
         String Nstatus = Status.getAttribute("innerText");
@@ -440,7 +444,8 @@ public class InteractiveDoc{
     public String CheckListPHONEformRIO() throws InterruptedException {
         List<String> ListPHONE = new ArrayList<>();
         int STRnumber = 0;
-        driver.findElement(By.xpath("//span[text()='Тел.']/parent::div/following-sibling::div/div")).click(); //Открытие выпадающего списка
+        Thread.sleep(400);
+        driver.findElement(By.xpath("//span[text()='Тел.']/parent::div/following-sibling::div/div")).click();//Открытие выпадающего списка
         WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']")); //Определение кол-ва строк
         String Nstatus = Status.getAttribute("innerText");
         int RNstatus = Integer.parseInt(Nstatus.substring(Nstatus.indexOf("/")+1));
@@ -461,6 +466,7 @@ public class InteractiveDoc{
         List<String> ListFIO_CHIEF = new ArrayList<>();
         int STRnumber = 0;
         switchPlacementtoChiefformRIO.click(); //Переключение на вкладку "Руководитель"
+        Thread.sleep(400);
         driver.findElement(By.xpath("//span[text()='ФИО']/parent::div/following-sibling::div/div")).click();
         WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
         String Nstatus = Status.getAttribute("innerText");
@@ -481,6 +487,7 @@ public class InteractiveDoc{
         List<String> ListJOB_CHIEF = new ArrayList<>();
         int STRnumber = 0;
         switchPlacementtoChiefformRIO.click(); //Переключение на вкладку "Руководитель"
+        Thread.sleep(400);
         driver.findElement(By.xpath("//span[text()='Должность']/parent::div/following-sibling::div/div")).click();
         WebElement Status = driver.findElement(By.xpath("//div[@class='v-filterselect-status']"));
         String Nstatus = Status.getAttribute("innerText");

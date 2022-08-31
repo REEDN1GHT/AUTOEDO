@@ -167,12 +167,12 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         interactiveDoc.waitTablePresent();
         interactiveDoc.scrollTableSubForm2();
         interactiveDoc.setField2023Number10();
-        interactiveDoc.waitTextElement2023SubForm2Field11();
+        Thread.sleep(400);
         interactiveDoc.getValuefield2023Subform2();
         interactiveDoc.setListSubReport("1. Объем бюджетных ассигнований в части уплаты налога на имущество организаций и земельного налога");
         interactiveDoc.buttonAddNewString.click();
         interactiveDoc.setFieldIndictorSubForm1();
-        interactiveDoc.waitTextElementSubForm1Field2023();
+        Thread.sleep(400);
         Assert.assertEquals(interactiveDoc.field2023NotManualInput.getAttribute("value").replace(',','.'),interactiveDoc.dataField.toString(),"Сумма в полях различается");
     }
     @Test(priority = 11)

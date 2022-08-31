@@ -18,8 +18,8 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.parsData();
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -35,8 +35,8 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.parsData();
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -52,8 +52,8 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.parsData();
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -69,8 +69,8 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.parsData();
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
@@ -86,8 +86,8 @@ public class Document_Footer_Rio extends TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.parsData();
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
