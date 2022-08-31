@@ -27,6 +27,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.parsData();
         interactiveDoc.setYearFormRio();
         interactiveDoc.setStageFormRio();
         checkAbsenceModalWindow();
@@ -57,7 +58,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setYearFormRio();
         Thread.sleep(2000);
         interactiveDoc.buttonStageFormRIO.click();
-        checkAppearanceModalWindow();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(), requestRIO.CheckListSTAGEformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
     }
     @Test()
@@ -69,6 +69,7 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.parsData();
         interactiveDoc.setYearFormRio();
         interactiveDoc.setStageFormRio();
         interactiveDoc.parsData();
@@ -85,8 +86,8 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setYearFormRio();
         interactiveDoc.parsData();
+        interactiveDoc.setYearFormRio();
         interactiveDoc.setStageDPFormRio();
         checkAppearanceModalWindow();
         interactiveDoc.buttonKbkFormRio.click();
@@ -102,9 +103,9 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.parsData();
         interactiveDoc.setYearFormRio();
         interactiveDoc.setStageFormRio();
-        interactiveDoc.parsData();
         checkAppearanceModalWindow();
         interactiveDoc.setKbkFormRIO();
         interactiveDoc.buttonVersionDocument.click();
@@ -119,9 +120,9 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.parsData();
         interactiveDoc.setYearFormRio();
         interactiveDoc.setStageDPFormRio();
-        interactiveDoc.parsData();
         checkAppearanceModalWindow();
         interactiveDoc.setKbkDPFormRIO();
         interactiveDoc.buttonVersionDocument.click();
@@ -136,9 +137,9 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.parsData();
         interactiveDoc.setYearFormRio();
         interactiveDoc.setStageDPFormRio();
-        interactiveDoc.parsData();
         checkAppearanceModalWindow();
         interactiveDoc.setKbkDPFormRIO();
         interactiveDoc.setNumberDBFormRio();

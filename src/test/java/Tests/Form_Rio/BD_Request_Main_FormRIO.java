@@ -264,7 +264,6 @@ public class BD_Request_Main_FormRIO extends BD {
             }
             Statement statement2 = getConnectionBudget22().createStatement();
             String sql2 = "select * from DOC where docid=" + NDOCID;
-
             ResultSet Result2 = statement2.executeQuery(sql2);
             while (Result2.next()) {
                 DU_R = Result2.getString("DU_R");
