@@ -448,7 +448,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@DOCID=0, \n" +
                     "@DOCID_Old=0, \n" +
                     "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", " +
-                    "@CUL_PARENT=\"" + iNNGRBS + "\", " +
+                    "@CUL_PARENT='7809029013', " +
                     "@FO=\"" + foFormRio + "\", " +
                     "@STAGE=\"" + stageFormRIO + "\", " +
                     "@VER_DP=\"" + NUMBERFormRIO + "\", " +
@@ -464,7 +464,7 @@ public class BD_Request_Main_FormRIO extends BD {
             System.out.println(sqlJOB_CHIEF);
             while (ResultJOB_CHIEF.next()) {
                 String JOB_CHIEF = ResultJOB_CHIEF.getString("Должность");
-                RLjob_chief.add(String.join(" ", JOB_CHIEF).replace("\\n\\t", " "));
+                RLjob_chief.add(String.join(" ", JOB_CHIEF).replaceAll("[\n,\t,\r]", ""));
                 Collections.sort(RLjob_chief);
             }
         } catch (SQLException | ClassNotFoundException throwables) {
