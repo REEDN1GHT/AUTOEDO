@@ -448,7 +448,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@DOCID=0, \n" +
                     "@DOCID_Old=0, \n" +
                     "@CPR_CCS_FULL_CVR=\"" + kbkFormRIO + "\", " +
-                    "@CUL_PARENT='7809029013', " +
+                    "@CUL_PARENT=\"" + iNNGRBS + "\", " +
                     "@FO=\"" + foFormRio + "\", " +
                     "@STAGE=\"" + stageFormRIO + "\", " +
                     "@VER_DP=\"" + NUMBERFormRIO + "\", " +
@@ -461,7 +461,6 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@JOB_CHIEF=Null, \n" +
                     "@YEAR=" + yearFormRIO;
             ResultSet ResultJOB_CHIEF = statementJOB_CHIEF.executeQuery(sqlJOB_CHIEF);
-            System.out.println(sqlJOB_CHIEF);
             while (ResultJOB_CHIEF.next()) {
                 String JOB_CHIEF = ResultJOB_CHIEF.getString("Должность");
                 RLjob_chief.add(String.join(" ", JOB_CHIEF).replaceAll("[\n,\t,\r]", ""));

@@ -63,7 +63,7 @@ public class InteractiveDoc{
     public WebElement stageFormRIO;
     @FindBy(css = ".gwt-MenuItem.gwt-MenuItem-selected")
     public WebElement viborElement;
-    @FindBy(css=".v-filterselect-input.v-filterselect-input-readonly")
+    @FindBy(xpath="//div[@class='v-expand']/div[@class='v-slot'][6]/div[@class='v-formlayout v-layout v-widget v-has-width']//input")
     public WebElement versionDBFormRio;
     @FindBy(css = ".swal2-confirm.swal2-styled")
     public WebElement modalWindowButtonOK;

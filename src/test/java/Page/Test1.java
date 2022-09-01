@@ -206,9 +206,13 @@ public class Test1 extends TestBase {
     }
     @Test
     public void sum() {
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.separateKBK();
-        System.out.println(requests_11formRIO_tableOne.CheckStringTotalSumm2022());
+
+        String str = "[Глава администрации Адмиралтейского района, Глава администрации Адмиралтейского района Санкт - Петербурга, Глава администрации Адмиралтейского района Санкт-Петербурга, директор СПб ГБУ СОН ЦСПСиД, Заместитель председателя, Заместитель председателя Комитета – \n" +
+                "начальник Управления бюджетной \n" +
+                "и бухгалтерской отчетности, тест]";
+        String str2 = str.replaceAll("\\n"," ").replaceAll("(\\s)\\1", "$1");
+        System.out.println(requestRIO.CheckListJOB_CHIEF().replaceAll("\\r\\n",""));
+       // System.out.println(str2);
     }
 }
 

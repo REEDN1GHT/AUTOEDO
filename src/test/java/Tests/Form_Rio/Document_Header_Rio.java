@@ -27,8 +27,8 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.setSelect();
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.parsData();
         interactiveDoc.setYearFormRio();
+        interactiveDoc.parsData();
         interactiveDoc.setStageFormRio();
         checkAbsenceModalWindow();
         Assert.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
@@ -72,7 +72,6 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setYearFormRio();
         interactiveDoc.parsData();
         interactiveDoc.setStageFormRio();
-        interactiveDoc.parsData();
         checkAppearanceModalWindow();
         interactiveDoc.buttonKbkFormRio.click();
         Assert.assertEquals(interactiveDoc.CheckListHeaderformRioEDO(), requestRIO.CheckKBKformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
@@ -138,8 +137,8 @@ public class Document_Header_Rio extends Tests.TestBase {
         cabinetPage.clickCreate();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearFormRio();
-        interactiveDoc.setStageDPFormRio();
         interactiveDoc.parsData();
+        interactiveDoc.setStageDPFormRio();
         checkAppearanceModalWindow();
         interactiveDoc.setKbkDPFormRIO();
         interactiveDoc.setNumberDPDocument();
@@ -149,8 +148,7 @@ public class Document_Header_Rio extends Tests.TestBase {
 
     public void checkDisabledVersionDPFormRIO() {
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        if(interactiveDoc.versionDBFormRio.getAttribute("readonly") == null) {
-            System.out.println("Есть отклоненные документы");
+        if(interactiveDoc.versionDBFormRio.getAttribute("readonly")!= null) {
             Assert.assertNull(requestRIO.CheckDU_RETURN(), "Есть отклоненные документы");
         }
         else {
