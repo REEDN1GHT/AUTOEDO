@@ -147,8 +147,9 @@ public class InteractiveDoc{
     }
 
     //Поле Год в шапке документа
-    public void setYearFormRio() {
+    public void setYearFormRio() throws InterruptedException {
         waitForElementToBeRefreshed();
+        Thread.sleep(100);
         buttonYearRio.click();
         String spisokYearFormRio = ConfigBuilder.getproperty("yearFormRIO");
         WebElement buttonENTER = driver.findElement(By.xpath("//span[text()='"+spisokYearFormRio+"']/parent::td"));
@@ -216,11 +217,9 @@ public class InteractiveDoc{
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#save"));
         shadowContent.click();
         Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:00");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         String str = formatter.format(date);
-        //String Date1 = String.valueOf(date);
-        actualDate.add(String.join(str));
-
+        actualDate.add(String.join(" ", str));
     }
 
     public void setListSubReport(String str) throws InterruptedException {

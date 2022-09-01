@@ -7,6 +7,8 @@ import Tests.TestBase;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.text.ParseException;
+
 public class Form_Rio_11_Subform_1 extends TestBase {
     @Test(priority = 1)
     public void interactivePage_fieldGuideIndicatorNameSubform1_fieldGuideIndicatorNameSuccessful() throws InterruptedException {
@@ -144,13 +146,14 @@ public class Form_Rio_11_Subform_1 extends TestBase {
         cabinetPage.openInteractiveFormDocument();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
+        interactiveDoc.parsData();
         interactiveDoc.buttonLoadDocumentInteractivePage();
         interactiveDoc.waitSubformRio();
         interactiveDoc.modalWindowButtonOK.click();
         interactiveDoc.setFOOTERformRIO();
         interactiveDoc.buttonSaveDocumentInteractivePage();
         interactiveDoc.waitDocSaveformRio();
-        Assert.assertEquals(interactiveDoc.actualDate.toString(), requestRIO.CheckSaveDocuments(), "Ошибка сохранения документа в АИС БП");
+        Assert.assertEquals(InteractiveDoc.actualDate.toString(), requestRIO.CheckSaveDocuments(), "Ошибка сохранения документа в АИС БП");
     }
     @Test(priority = 10)
     public void interactivePage_field2023PaymentСorporatePropertyTax_fieldDataLoadedSuccessful() throws InterruptedException {

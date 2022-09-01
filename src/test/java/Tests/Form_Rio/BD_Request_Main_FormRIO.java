@@ -493,15 +493,13 @@ public class BD_Request_Main_FormRIO extends BD {
             String sqlDocSave = "Select CDOC, LastUpdate from DOC where DOCID=" + NDOCID;
             ResultSet ResultSave = statementDocSave.executeQuery(sqlDocSave);
             while (ResultSave.next()) {
-                LastUpdate = (ResultSave.getString("LastUpdate"));
-                Date format = new SimpleDateFormat("YYYY-MM-DD HH:mm:").parse((LastUpdate));
-                LastUpdate = String.valueOf(format);
+                Date date = (ResultSave.getDate("LastUpdate"));
+                SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                LastUpdate = format.format(date);
                 RLsaveDOC.add(String.join(" ", LastUpdate));
             }
         } catch (SQLException | ClassNotFoundException throwables) {
             throwables.printStackTrace();
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
         }
         return RLsaveDOC.toString();
     }

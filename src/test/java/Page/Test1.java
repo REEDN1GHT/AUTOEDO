@@ -124,7 +124,7 @@ public class Test1 extends TestBase {
     @Test
     public void test11formBody() {
         BD_Request_Main_FormRIO BD = new BD_Request_Main_FormRIO();
-        System.out.println(BD.CheckListJOB_CHIEF());
+        System.out.println(BD.CheckSaveDocuments());
 
 
     }
