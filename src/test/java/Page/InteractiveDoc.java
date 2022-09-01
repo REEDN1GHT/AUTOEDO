@@ -216,10 +216,10 @@ public class InteractiveDoc{
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#save"));
         shadowContent.click();
         Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("YYYY-MM-DD HH:mm");
-        formatter.format(date);
-        String Date1 = String.valueOf(date);
-        actualDate.add(String.join(Date1));
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:00");
+        String str = formatter.format(date);
+        //String Date1 = String.valueOf(date);
+        actualDate.add(String.join(str));
 
     }
 

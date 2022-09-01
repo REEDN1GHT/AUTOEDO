@@ -7,6 +7,8 @@ import Tests.TestBase;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -17,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static Page.InteractiveDoc.actualDate;
 import static Tests.Form_Rio.BD_Request_Main_FormRIO.DU_R;
 
 public class Test1 extends TestBase {
@@ -207,12 +210,13 @@ public class Test1 extends TestBase {
     @Test
     public void sum() {
 
-        String str = "[Глава администрации Адмиралтейского района, Глава администрации Адмиралтейского района Санкт - Петербурга, Глава администрации Адмиралтейского района Санкт-Петербурга, директор СПб ГБУ СОН ЦСПСиД, Заместитель председателя, Заместитель председателя Комитета – \n" +
-                "начальник Управления бюджетной \n" +
-                "и бухгалтерской отчетности, тест]";
-        String str2 = str.replaceAll("\\n"," ").replaceAll("(\\s)\\1", "$1");
-        System.out.println(requestRIO.CheckListJOB_CHIEF().replaceAll("\\r\\n",""));
-       // System.out.println(str2);
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:00");
+        String str =formatter.format(date);
+        System.out.println(str);
+        //String Date1 = String.valueOf(date);
+        actualDate.add(String.join(str));
+
     }
 }
 
