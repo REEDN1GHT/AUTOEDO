@@ -332,8 +332,8 @@ public class InteractiveDoc{
     }
 
 
-    public void parsData()
-    {
+    public void parsData() throws InterruptedException {
+        Thread.sleep(3000);
         setiNNGRBS();
         setFoFormRIO();
     }
