@@ -38,6 +38,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
                     "@FIO_CHIEF=Null,\n" +
                     "@JOB_CHIEF=Null, \n" +
                     "@YEAR=" +yearFormRIO;
+            System.out.println(sqlNAME);
             ResultSet ResultNAME = statementNAME.executeQuery(sqlNAME);
             while (ResultNAME.next()) {
                 String ListNAME = ResultNAME.getString("Платеж");
@@ -98,6 +99,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
                     "      ([DOC].[DU] Is not Null) AND ([K_LSR].[CUL]=\'"+iNNGRBS+"\')\n" +
                     "\n" +
                     "Order by 1";
+            System.out.println(sqlNAME);
             ResultSet ResultNAME = statementNAME.executeQuery(sqlNAME);
             while (ResultNAME.next()) {
                 Sum = ResultNAME.getString("Сумма в тысячах");
@@ -131,7 +133,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
                     "  And ([K_CS].[CCS_FULL]=\'"+kbkCS+"\') And ([K_PR].[CPR]=\'"+subsectionKbk+"\') And ([K_VR].[CVR]=\'"+typeExpensesKbk+"\') And\n" +
                     "      ([DOC].[DU_R] is not null) And ([K_UL].[CUL]=\'"+iNNGRBS+"\')\n" +
                     "Order by 1\n";
-
+            System.out.println(sqlNAME);
             ResultSet ResultNAME = statementNAME.executeQuery(sqlNAME);
             while (ResultNAME.next()) {
                 Sum = ResultNAME.getString("1 год (ЗР)");
@@ -167,6 +169,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
                     "      ([DOC].[DU_R] is not null) And ([K_UL].[CUL]=\'"+iNNGRBS+"\')\n" +
                     "Group by [DOC].[DU_R], [K_VR].[CVR], [K_PS].[CPS], [DOC].[CDOC], [K_UL].[CUL], [K_PR].[CPR], [K_CS].[CCS_FULL]\n" +
                     "Order by 1\n";
+            System.out.println(sqlNAME);
             ResultSet ResultNAME = statementNAME.executeQuery(sqlNAME);
             while (ResultNAME.next()) {
                 Sum = ResultNAME.getString("2 год (ЗР)");
@@ -203,6 +206,7 @@ public class BD_Requests_11formRIO_TableOne extends BD {
                     "      ([K_VR].[CVR]=\'"+typeExpensesKbk+"\') And ([DOC].[DU_R] is not null) And ([K_UL].[CUL]=\'"+iNNGRBS+"\')\n" +
                     "Group by [DOC].[DU_R], [K_VR].[CVR], [K_PS].[CPS], [DOC].[CDOC], [K_UL].[CUL], [K_PR].[CPR], [K_CS].[CCS_FULL]\n" +
                     "Order by 1\n";
+            System.out.println(sqlNAME);
             ResultSet ResultNAME = statementNAME.executeQuery(sqlNAME);
             while (ResultNAME.next()) {
                 Sum = ResultNAME.getString("3 год (ЗР)");

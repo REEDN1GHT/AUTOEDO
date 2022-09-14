@@ -45,7 +45,9 @@ public class BD_Request_Main_FormRIO extends BD {
                     " @FIO_CHIEF=Null, \n" +
                     " @JOB_CHIEF=Null, \n" +
                     " @YEAR=Null;";
+
             ResultSet ResultYEAR = statementYEAR.executeQuery(sqlYEAR);
+            System.out.println(sqlYEAR);
             while (ResultYEAR.next()) {
                 String ListYEARformRIO = ResultYEAR.getString("Год");
                 RLyear.add(String.join(" ", ListYEARformRIO).trim());
@@ -78,6 +80,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null, \n" +
                     "@JOB_CHIEF=Null, \n" +
                     "@YEAR=" + yearFormRIO;
+
             ResultSet ResultSTAGE = statementSTAGE.executeQuery(sqlSTAGE);
             while (ResultSTAGE.next()) {
                 String ListSTAGEkod = ResultSTAGE.getString("Код");
@@ -111,6 +114,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null,\n" +
                     "@JOB_CHIEF=Null,\n" +
                     "@YEAR=" + yearFormRIO;
+
             ResultSet ResultKBK = statementKBK.executeQuery(sqlKBK);
             while (ResultKBK.next()) {
                 String ListKBKformRIO = ResultKBK.getString("ПБК");
@@ -175,6 +179,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null, " +
                     "@JOB_CHIEF=Null, " +
                     "@YEAR=" + yearFormRIO;
+
             ResultSet ResultVER = statementVER.executeQuery(sqlVER);
             while (ResultVER.next()) {
                 String ListVERforRIO = ResultVER.getString("Номер документа");
@@ -207,6 +212,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null, " +
                     "@JOB_CHIEF=Null, " +
                     "@YEAR=" + yearFormRIO;
+            System.out.println(sqlVER);
             ResultSet ResultVER = statementVER.executeQuery(sqlVER);
             while (ResultVER.next()) {
                 String ListVERforRIO = ResultVER.getString("Номер документа");
@@ -239,6 +245,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null,\n" +
                     "@JOB_CHIEF=Null, \n" +
                     "@YEAR=" + yearFormRIO;
+            System.out.println(sqlVersionDP);
             ResultSet ResultVersionDP = statementVersionDP.executeQuery(sqlVersionDP);
             while (ResultVersionDP.next()) {
                 String ListVersionDP = ResultVersionDP.getString("Номер документа");
@@ -250,6 +257,7 @@ public class BD_Request_Main_FormRIO extends BD {
         }
         return RLVersionDP.toString();
     }
+
     public String CheckRequestGRBS() {
         List<String> RDOCID = new ArrayList<>();
         try {
@@ -259,6 +267,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CUL=\"" + iNNGRBS + "\"," +
                     "@CSTD=\"" + stageFormRIO + "\"," +
                     "@YEAR=\"" + yearFormRIO + "\"";
+
             ResultSet Result1 = statement1.executeQuery(sql);
             while (Result1.next()) {
                 NDOCID = Result1.getString("DOCID");
@@ -288,6 +297,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@CPR_CCS_FULL_CVR_Old=Null, " +
                     "@VAR_DP=Null, " +
                     "@YEAR=" + yearFormRIO;
+            System.out.println(sqlDOCID);
             ResultSet ResultDOCID = statementCheckDOCID.executeQuery(sqlDOCID);
             while (ResultDOCID.next()) {
                 NDOCID = ResultDOCID.getString("DOCID");
@@ -327,6 +337,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null, " +
                     "@JOB_CHIEF=Null, " +
                     "@YEAR=" + yearFormRIO;
+            System.out.println(sqlFIO);
             ResultSet ResultFIO = statementFIO.executeQuery(sqlFIO);
             while (ResultFIO.next()) {
                 String FIO = ResultFIO.getString("ФИО");
@@ -360,6 +371,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null, " +
                     "@JOB_CHIEF=Null, " +
                     "@YEAR=" + yearFormRIO;
+            System.out.println(sqlJOB);
             ResultSet ResultJOB = statementJOB.executeQuery(sqlJOB);
             while (ResultJOB.next()) {
                 String JOB = ResultJOB.getString("Должность");
@@ -393,6 +405,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null, " +
                     "@JOB_CHIEF=Null, " +
                     "@YEAR=" + yearFormRIO;
+            System.out.println(sqlPHONE);
             ResultSet ResultPHONE = statementPHONE.executeQuery(sqlPHONE);
             System.out.println(sqlPHONE);
             while (ResultPHONE.next()) {
@@ -427,6 +440,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null, \n" +
                     "@JOB_CHIEF=Null, \n" +
                     "@YEAR=" + yearFormRIO;
+            System.out.println(sqlFIO_CHIEF);
             ResultSet resultSetFIO_CHIEF = statementFIO_CHIEF.executeQuery(sqlFIO_CHIEF);
             while (resultSetFIO_CHIEF.next()) {
                 String FIO_CHIEF = resultSetFIO_CHIEF.getString("ФИО");
@@ -460,6 +474,7 @@ public class BD_Request_Main_FormRIO extends BD {
                     "@FIO_CHIEF=Null, \n" +
                     "@JOB_CHIEF=Null, \n" +
                     "@YEAR=" + yearFormRIO;
+            System.out.println(sqlJOB_CHIEF);
             ResultSet ResultJOB_CHIEF = statementJOB_CHIEF.executeQuery(sqlJOB_CHIEF);
             while (ResultJOB_CHIEF.next()) {
                 String JOB_CHIEF = ResultJOB_CHIEF.getString("Должность");
@@ -485,6 +500,7 @@ public class BD_Request_Main_FormRIO extends BD {
                             "@CPR_CCS_FULL_CVR_Old=Null, \n" +
                             "@VAR_DP=Null, \n" +
                             "@YEAR=" + yearFormRIO;
+            System.out.println(sqlCheck);
             ResultSet ResultCheck = statementDocCheck.executeQuery(sqlCheck);
             while (ResultCheck.next()) {
                 NDOCID = ResultCheck.getString("DOCID");

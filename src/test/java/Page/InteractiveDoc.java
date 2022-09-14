@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.*;
@@ -43,6 +44,299 @@ public class InteractiveDoc{
 
 
 
+
+    //РИО новая реализация
+    @FindBy(id="year")
+    public WebElement yearNewRealiz02;
+    @FindBy(id="stage")
+    public WebElement stageNewRealiz02;
+    @FindBy(id="kbk")
+    public WebElement kbkNewRealiz02;
+    @FindBy(id="version")
+    public WebElement numberNewRealiz02;
+    @FindBy(id="addSentence")
+    public WebElement versionDPNewRealiz02;
+    @FindBy(id = "inn")
+    public WebElement innNewRealiz02;
+    @FindBy(className = "interactive__top-nav-title")
+    public WebElement foForm;
+    @FindBy(xpath = "//input[@style='width: 100%;']/following::div[@class='multiselect__content-wrapper']//span[@class='multiselect__option multiselect__option--highlight']")
+    public WebElement selectZnach;
+    @FindBy(css = ".interactive__top-nav-title>sup")
+    public WebElement sozdanieNovDoc;
+    @FindBy(css="[placeholder='Select option']")
+    public WebElement inputSubform;
+    @FindBy(xpath="//*[@placeholder='Select option']/parent::div")
+    public WebElement clickInputSubform;
+    @FindBy(css = "span.mr-3.text-caption")
+    public WebElement kolStolbtsov;
+
+    @FindBy(xpath = "//*[text()='Руководитель']")
+    public WebElement switchPlacementtoChiefformRIONewRealiz;
+    public By yearElement = By.cssSelector("#year .multiselect__element");
+    public By stageElement = By.cssSelector("#stage .multiselect__element");
+    public By kbkElement = By.cssSelector("#kbk .multiselect__element");
+    public By versionElement = By.cssSelector("#version .multiselect__element");
+    public By fioIspolnitel = By.cssSelector("#executorName .multiselect__element");
+    public By jobIspolnitel = By.cssSelector("#executorPosition .multiselect__element");
+    public By PhoneIspolnitel = By.cssSelector("#executorPhone .multiselect__element");
+    public By fioChief = By.cssSelector("#chiefName  .multiselect__element");
+    public By jobChief = By.cssSelector("#chiefPosition  .multiselect__element");
+    public By modal2 = By.xpath("//*[text()='Загрузка документа...']");
+    public By subform2String2023 = By.xpath("//tbody[@role='rowgroup']/tr[@aria-rowindex='1']/td[@role='cell']//input");
+
+    public void setYearNewRealiz02()  {
+        yearNewRealiz02.sendKeys(ConfigBuilder.getproperty("yearFormRIO"));
+        waitKbkFormRio02();
+        selectZnach.click();
+
+    }
+    public void setStageNewRealiz02() {
+        stageNewRealiz02.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
+        waitKbkFormRio02();
+        selectZnach.click();
+
+    }
+    public void setStageDPNewRealiz02() {
+        stageNewRealiz02.sendKeys(ConfigBuilder.getproperty("stageDPFormRIO"));
+        waitKbkFormRio02();
+        selectZnach.click();
+
+    }
+    public void setKbkNewRealiz02() {
+        kbkNewRealiz02.sendKeys(ConfigBuilder.getproperty("kbkFormRIO"));
+        waitKbkFormRio02();
+        selectZnach.click();
+
+    }
+    public void waitKbkFormRio02()
+    {
+        wait.until(ExpectedConditions.visibilityOf(selectZnach));
+    }
+    public void setKbkDPNewRealiz02() {
+        kbkNewRealiz02.sendKeys(ConfigBuilder.getproperty("kbkDPFormRIO"));
+        waitKbkFormRio02();
+        selectZnach.click();
+
+    }
+    public void setNumberDPDocumentNewRealiz02() {
+        numberNewRealiz02.sendKeys(ConfigBuilder.getproperty("NumberDpFormRIO"));
+        waitKbkFormRio02();
+        selectZnach.click();
+
+    }
+    public void setNumberDocumentNewRealiz02()
+    {
+       numberNewRealiz02.sendKeys(ConfigBuilder.getproperty("NUMBERFormRIO"));
+        waitKbkFormRio02();
+        selectZnach.click();
+    }
+    public void setSubformRio02(String str){
+        clickInputSubform.click();
+        inputSubform.sendKeys(str);
+        inputSubform.sendKeys(Keys.ENTER);
+    }
+
+    public String getNameFieldColumnSubform2Rio02(int index){
+       String fieldName = driver.findElement(By.cssSelector("th[role='columnheader']:nth-child("+index+")")).getText();
+       return fieldName;
+    }
+    public String getNameFieldStringSubform2Rio02(int index){
+        String fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='1']//input")).getAttribute("value");
+        return fieldName;
+    }
+    public int getScaleFieldSubform2Rio02(int column,int index){
+        String fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='"+column+"']//input"))
+                .getAttribute("value")
+                .replaceAll(" ","");
+        String dataField2 = String.valueOf(new BigDecimal(fieldName).scale());
+        return Integer.parseInt(dataField2);
+    }
+
+    public void setFieldSubform2Rio02(int column,int index) {
+        WebElement fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='"+column+"']//input"));
+        fieldName.sendKeys(Keys.CONTROL+"A");
+        fieldName.sendKeys("15.60");
+        fieldName.sendKeys(Keys.TAB);
+    }
+    //@FindBy(xpath = "//tbody[@role='rowgroup']/tr[@aria-rowindex='1']/td[@aria-colindex='4']//input")
+    //public WebElement fieldName;
+    public void setFieldNegativeSubform2Rio02(int column,int index)  {
+        WebElement fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='"+column+"']//input"));
+        fieldName.sendKeys(Keys.CONTROL+"A");
+        fieldName.sendKeys("wwwwr");
+        fieldName.sendKeys(Keys.TAB);
+    }
+    public String getFieldNegativeValueSubform2Rio02(int column,int index)  {
+        WebElement fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='"+column+"']//input"));
+        //fieldName.sendKeys(Keys.CONTROL+"A");
+        return fieldName.getAttribute("value");
+    }
+    public double getValueField(int column,int index){
+        WebElement fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='"+column+"']//input"));
+        String str =fieldName.getAttribute("value").replaceAll(" ","");
+        return Double.parseDouble(str);
+    }
+
+
+    public String proverka2(){
+        List<String> list = new ArrayList<>();
+        for (var i=1;i<=hasReadonlyOnString2023();i++)
+        {
+            list.add(getNameFieldColumnSubform2Rio02(i));
+        }
+        return list.toString();
+    }
+
+    public String CheckListHeaderYearformRioEDO2(By str) {
+        List<String> myValuess = driver.findElements(str)
+                .stream()
+                .map(option -> option.getAttribute("innerText").trim())
+                .sorted()
+                .collect(Collectors.toList());
+        //if (Objects.equals(myValuess.get(0), "\u00a0")) {
+        //    myValuess.set(0, " ");
+       // }
+        return myValuess.toString();
+    }
+    public int getKolStolbtsov()
+    {
+        return Integer.parseInt(kolStolbtsov.getText().replaceAll("\\D+",""));
+    }
+
+
+    public boolean isElementPresentedNewRealization() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+        List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-show"));
+        return list.size()>0;
+    }
+    public void setHeaderNewRealizationFieldFormRIO() throws InterruptedException {
+        setYearNewRealiz02();
+        setStageNewRealiz02();
+        setKbkNewRealiz02();
+        setNumberDocumentNewRealiz02();
+    }
+
+
+
+    public void waitNewRealizSubformRio()
+    {
+        var newWait = new WebDriverWait(driver,Duration.ofSeconds(30));
+        newWait.until(ExpectedConditions.invisibilityOfElementLocated(modal2));
+    }
+    public int hasReadonlyOnString2023(){
+        List sizeColumn = driver.findElements(subform2String2023);
+        return sizeColumn.size();
+    }
+
+    //тестовая реализация
+    public boolean hasReadonlyOnString(int column,int index){
+        return Boolean.parseBoolean(driver.findElement(By.xpath("//tbody[@role='rowgroup']/tr[@aria-rowindex='"+column+"']/td[@aria-colindex='"+index+"']//input")).getAttribute("readonly"));
+    }
+/*
+    public float formulaForTheFundField(float str, float str2)
+    {
+        var raschet = str*str2*12/1000;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(1, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForTheTotalField(float str3, float str4,float str5,float str6,float str7)
+    {
+        var raschet = (str3+str4+str5+str6+str7)/1000;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(1, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForTheTotalSubform3Field(float str3, float str4,float str5,float str6,float str7,float str8)
+    {
+        var raschet = (str3+str4+str5+str6+str7+str8)/1000;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(1, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForTheService(float str3, float str4)
+    {
+        var raschet = str3*str4*3;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForTheServiceSubform3(float str3, float str4)
+    {
+        var raschet = str3*str4*2;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForSpecicalConditionsField(float str3, float str4)
+    {
+        var raschet = str3*str4*11;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForSpecicalConditionsFieldSubform3(float str3, float str4)
+    {
+        var raschet = str3*str4*10;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForWorkingWithSvedField(float str3, float str4)
+    {
+        var raschet = str3*str4*9;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForEncouragementField(float str3, float str4)
+    {
+        var raschet = str3*str4*4;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForVacationField(float str3, float str4)
+    {
+        var raschet = str3*str4*3;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForFundInYearField(float str3, float str4)
+    {
+        var raschet = str3+str4;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+    public float formulaForFundOVZField(float str3, float str4)
+    {
+        var raschet = str3*str4*1;
+        System.out.println(raschet);
+        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
+        return Float.parseFloat(String.valueOf(dataField));
+    }
+
+ */
+    public double formulaOkryglenie1(double str3)
+    {
+        BigDecimal df = new BigDecimal(Double.toString(str3));
+        System.out.println(str3);
+        df = df.setScale(2,RoundingMode.HALF_UP).setScale(1,RoundingMode.HALF_UP);
+        return Double.parseDouble(String.valueOf(df));
+    }
+    public double formulaOkruglenie2(double str3)
+    {
+        BigDecimal df = new BigDecimal(Double.toString(str3));
+        System.out.println(str3);
+        df = df.setScale(3,RoundingMode.HALF_UP).setScale(2,RoundingMode.HALF_UP);
+        //dataField = new BigDecimal(str3).setScale(2, RoundingMode.HALF_UP);
+        return Double.parseDouble(String.valueOf(df));
+    }
+    @FindBy(id = "money-input-1-sum1")
+    public WebElement subformString2023;
     //РИО
     @FindBy (xpath = "//div[@class='v-expand']/div[@class='v-slot'][3]/div[@class='v-formlayout v-layout v-widget v-has-width']//input")
     WebElement placeiNNGRBS;
@@ -320,8 +614,26 @@ public class InteractiveDoc{
         }
         return myValuess.toString();
     }
+
+    public String CheckListHeaderYearformRioEDO() {
+        List<String> myValuess = driver.findElements(By.cssSelector("#year .multiselect__element"))
+                .stream()
+                .map(option -> option.getAttribute("innerText").trim())
+                .collect(Collectors.toList());
+        if (Objects.equals(myValuess.get(0), "\u00a0")) {
+            myValuess.set(0, " ");
+        }
+        return myValuess.toString();
+    }
+
     public void setiNNGRBS() {
-        iNNGRBS = placeiNNGRBS.getAttribute("value");
+        //iNNGRBS = placeiNNGRBS.getAttribute("value");
+        iNNGRBS = innNewRealiz02.getAttribute("value");
+    }
+    public String setFoFormNewRIO()
+    {
+
+        return foFormRio = foForm.getText().replaceAll("\\D+","");
     }
     public String setFoFormRIO()
     {
@@ -335,7 +647,8 @@ public class InteractiveDoc{
     public void parsData() throws InterruptedException {
         Thread.sleep(3000);
         setiNNGRBS();
-        setFoFormRIO();
+        setFoFormNewRIO();
+        //setFoFormRIO();
     }
 
     public void setHeaderFieldFormRIO() throws InterruptedException
@@ -419,6 +732,7 @@ public class InteractiveDoc{
         Collections.sort(ListFIO);
         return ListFIO.toString();
     }
+
     public String CheckListJOBformRIO() throws InterruptedException {
         List<String> ListJOB = new ArrayList<>();
         int STRnumber = 0;
@@ -595,13 +909,14 @@ public class InteractiveDoc{
                 .getAttribute("value")
                 .length()!=0);
     }
-/*
-public void setPeriod()
-{
-    clickPeriod.click();
-    viborPeriod.click();
+    public void setPeriod()
+    {
+        clickPeriod.click();
+        viborPeriod.click();
 
-}
+    }
+/*
+
     public void setPodotchet_doxod(String podotchet) throws InterruptedException {
         clickPod.click();
         podotchet_doxod.sendKeys(podotchet);

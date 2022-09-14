@@ -5,27 +5,28 @@ import Tests.Form_Rio.BD_Request_Main_FormRIO;
 import Tests.Form_Rio.Form_Rio_11.BD_Requests_11formRIO_OLD;
 import Tests.TestBase;
 
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
+import org.apache.commons.configuration.PropertiesConfigurationLayout;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import javax.management.ConstructorParameters;
-import java.io.ObjectInputFilter;
-import java.lang.annotation.Repeatable;
+import org.testng.internal.Configuration;
+
+import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Properties;
 
 import static Page.InteractiveDoc.actualDate;
 import static Tests.Form_Rio.BD_Request_Main_FormRIO.DU_R;
-import static Resources.ConfigBuilder.*;
 
 public class Test1 extends TestBase {
 
@@ -224,11 +225,18 @@ public class Test1 extends TestBase {
 
     }
 
-   // @Inject
     @Test
-    public void setproperty(String NameProp, String keyProp) {
-        ConfigBuilder.setproperty("ADMINrole","1");
+    public void setproperty2() throws IOException {
+        try {
+            PropertiesConfiguration configuration = new PropertiesConfiguration("src/test/java/Resources/Config.properties");
+            configuration.setProperty("country","Россия");
+            configuration.save();
+        } catch (ConfigurationException e) {
+            e.printStackTrace();
+        }
+
     }
+
 }
 
 

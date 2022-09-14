@@ -18,21 +18,7 @@ public class Document_Header_Rio extends Tests.TestBase {
     public static String kbkDPFormRIO=ConfigBuilder.getproperty("kbkDPFormRIO");
     public static String NUMBERFormRIO =ConfigBuilder.getproperty("NUMBERFormRIO");
     public static String NUMBERDpFormRIO =ConfigBuilder.getproperty("NumberDpFormRIO");
-    @Test()
-    public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect();
-        cabinetPage.clickCreate();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setYearFormRio();
-        interactiveDoc.parsData();
-        interactiveDoc.setStageFormRio();
-        checkAbsenceModalWindow();
-        Assert.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
-    }
+
     @Test()
     public void interactivePage_CheckYearFormRIO_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -144,6 +130,21 @@ public class Document_Header_Rio extends Tests.TestBase {
         interactiveDoc.setNumberDPDocument();
         Thread.sleep(200);
         checkDisabledVersionDPFormRIO();
+    }
+    @Test()
+    public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setYearFormRio();
+        interactiveDoc.parsData();
+        interactiveDoc.setStageFormRio();
+        checkAbsenceModalWindow();
+        Assert.assertNull(requestRIO.CheckRequestGRBS(), "Есть утвержденные заявки ГРБС");
     }
 
     public void checkDisabledVersionDPFormRIO() {

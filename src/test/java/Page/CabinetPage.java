@@ -37,6 +37,11 @@ public class CabinetPage {
         Thread.sleep(1000);
         viborDoc.selectByVisibleText(ConfigBuilder.getproperty("EDOnamedoc"));
     }
+    public void setSelect2() throws InterruptedException {
+        var viborDoc = new Select(docSelect);
+        Thread.sleep(1000);
+        viborDoc.selectByVisibleText(ConfigBuilder.getproperty("EDOnamedoc2"));
+    }
     public void clickCreate()
     {
         buttonUpload.click();
