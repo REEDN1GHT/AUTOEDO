@@ -6,6 +6,7 @@ import org.apache.commons.configuration.PropertiesConfiguration;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import javax.inject.Inject;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,7 +17,6 @@ public class ConfigBuilder {
     protected static BufferedReader Reader;
     public static final String PathConfig = "src/test/java/Resources/Config.properties";
     protected static Properties PROP;
-    static String NameProp,keyProp;
 
     public static String getproperty(String key) {
         try {
@@ -34,33 +34,18 @@ public class ConfigBuilder {
         }
         return PROP.getProperty(key); }
 
-    public static void setproperty(String NameProp, String keyProp) throws IOException {
-
+    public static void setproperty(String NameProp, String keyProp) {
         try {
             PropertiesConfiguration configuration = new PropertiesConfiguration(PathConfig);
 
-            configuration.setProperty(NameProp,keyProp);
+            configuration.setProperty(NameProp, keyProp);
             configuration.save();
         } catch (ConfigurationException e) {
             e.printStackTrace();
+            throw new RuntimeException("Configuration.properties not found at " + "src/test/java/Resources/Config.properties");
         }
 
     }
-    /*
-    public static void setproperty(String NameProp, String keyProp) {
-        String Str = null;
-        try {
-            Str = getproperty(NameProp);
-            PROP = new Properties();
-            OutputStream output = new FileOutputStream(PathConfig + "src/test/java/Resources/Config.properties");
-            PROP.setProperty(NameProp, keyProp);
-            //PROP.
-        } catch (Exception exp) {
-            exp.printStackTrace();
-            throw new RuntimeException("Configuration.properties not found at " + "src/test/java/Resources/Config.properties");
-        }
-        System.out.println(Str);
-    }*/
 }
 
 

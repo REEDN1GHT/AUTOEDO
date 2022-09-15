@@ -87,13 +87,11 @@ public class AuthEDO {
             driver.navigate().to("http://172.31.1.149/edo/main");
         }
     }
-    /* public void authorization1() throws InterruptedException {
+    public void authorizationWithCabinetPage() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        Auth_through_the_admin_panel authADM = new Auth_through_the_admin_panel(driver, wait);
-            if (Objects.equals(EDOurl, EDOPROD)) {
-            authADM.ADMINauthorization();
-            } else {
-            authEDO.open();
+        authEDO.open();
+        if(authEDO.isElementPresented()==1 )
+        {
             authEDO.setButtonEnterMainPage();
             authEDO.setLoginField();
             authEDO.setPasswordField();
@@ -101,7 +99,8 @@ public class AuthEDO {
             authEDO.waitCabinet();
             authEDO.role();
             authEDO.setButtonSignInCabinet();
-            }
+        } else if(authEDO.isElementPresented()>1) {
+            driver.navigate().to("http://172.31.1.149/edo/main");
         }
-    }*/
+    }
 }
