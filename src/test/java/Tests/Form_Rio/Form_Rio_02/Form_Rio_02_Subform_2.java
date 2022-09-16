@@ -18,7 +18,8 @@ public class Form_Rio_02_Subform_2 extends TestBase {
 
 
     @Test()
-    public void interactivePage_CheckTableNotAvailableManualInputSubform2_TableNotAvailableManualInput() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputPeriodSubform2_NotAvailableManualInputPeriod() throws InterruptedException {
+        int numColumn = 1;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
@@ -30,8 +31,162 @@ public class Form_Rio_02_Subform_2 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("2. Расчет фонда оплаты труда Губернатора Санкт-Петербурга");
-        proverka(interactiveDoc);
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputCalculatedUnitsSubform2_NotAvailableManualInputCalculatedUnits() throws InterruptedException {
+        int numColumn = 2;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputFundSubform2_NotAvailableManualInputFund() throws InterruptedException {
+        int numColumn = 5;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputTotalSubform2_NotAvailableManualInputTotal() throws InterruptedException {
+        int numColumn = 6;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputForServiceSubform2_NotAvailableManualInputForService() throws InterruptedException {
+        int numColumn = 7;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputForSpecialConditionsSubform2_NotAvailableManualInputForSpecialConditions() throws InterruptedException {
+        int numColumn = 8;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputForWorkingWithSvedSubform2_NotAvailableManualInputForWorkingWithSved() throws InterruptedException {
+        int numColumn = 9;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputEncouragementSubform2_NotAvailableManualInputEncouragement() throws InterruptedException {
+        int numColumn = 10;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputVacationSubform2_NotAvailableManualInputVacation() throws InterruptedException {
+        int numColumn = 11;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNotAvailableManualInputFundInYearSubform2_NotAvailableManualInputFundInYear() throws InterruptedException {
+        int numColumn = 12;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        proverka(interactiveDoc,numColumn);
     }
 
     @Test()
@@ -609,17 +764,15 @@ public class Form_Rio_02_Subform_2 extends TestBase {
         aserts.assertAll();
     }
 
-    public void proverka(InteractiveDoc interactiveDoc){
+    public void proverka(InteractiveDoc interactiveDoc,int column){
         test2 aserts = new test2();
-        for (var i=1;i<=interactiveDoc.hasReadonlyOnString2023();i++)
-        {
-            if (i==3) { i = i+2; }
+
             for(var j = 1;j<=interactiveDoc.getKolStolbtsov();j++)
             {
-            String str = interactiveDoc.getNameFieldColumnSubform2Rio02(i);
+            String str = interactiveDoc.getNameFieldColumnSubform2Rio02(column);
             String str2 = interactiveDoc.getNameFieldStringSubform2Rio02(j);
-            aserts.assertTrue(interactiveDoc.hasReadonlyOnString(j,i),"Ошибка в поле. Строка " + str2 + " Столбец " + str );
-        }}
+            aserts.assertTrue(interactiveDoc.hasReadonlyOnString(j,column),"Ошибка в поле. Строка " + str2 + " Столбец " + str );
+        }
         aserts.assertAll();
     }
 

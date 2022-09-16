@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class Form_Rio_02_Subform_3 extends TestBase {
+public class Form_Rio_02_Subform_4 extends TestBase {
     @Test()
     public void interactivePage_CheckNotAvailableManualInputPeriodSubform2_NotAvailableManualInputPeriod() throws InterruptedException {
         int numColumn = 1;
@@ -199,7 +199,6 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka(interactiveDoc,numColumn);
     }
-
     @Test()
     public void interactivePage_CheckNameHederTableSubform2_NameHederTableSuccesful() throws InterruptedException {
         List<String> str = Arrays.asList("Период","Расчетн.ед.","Численность","Оклад","Фонд","Всего","За выслугу","За особые усл.","За раб. со свед.","Поощрение","За вып. ОВЗ","Отпуск","Фонд в год");
@@ -214,7 +213,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         Assert.assertEquals(interactiveDoc.proverka2(),str.toString(),"Ошибка");
     }
 
@@ -231,7 +230,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka3(interactiveDoc);
         // Assert.assertEquals(proverka2(interactiveDoc),str.toString(),"Ошибка");
     }
@@ -249,7 +248,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka4(numColumn);
     }
     @Test()
@@ -266,7 +265,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka5(numColumn);
         //  aserts.assertAll();
     }
@@ -284,7 +283,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka4(numColumn);
         //  aserts.assertAll();
     }
@@ -302,7 +301,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka4(numColumn);
         // aserts.assertAll();
 
@@ -321,7 +320,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka5(numColumn);
     }
 
@@ -339,7 +338,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka5(numColumn);
     }
     @Test()
@@ -356,7 +355,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka5(numColumn);
     }
     @Test()
@@ -373,7 +372,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka5(numColumn);
     }
     @Test()
@@ -390,7 +389,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka5(numColumn);
     }
     @Test()
@@ -407,7 +406,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka5(numColumn);
     }
     @Test()
@@ -424,7 +423,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka4(numColumn);
     }
     @Test()
@@ -441,7 +440,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         // interactiveDoc.webElement.sendKeys("ewqdwqf");
         // Assert.assertEquals(interactiveDoc.webElement.getAttribute("value"),"0.00","Ошибка");
         assertFieldNegativeValue(numColumn);
@@ -460,7 +459,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         // interactiveDoc.webElement.sendKeys("ewqdwqf");
         // Assert.assertEquals(interactiveDoc.webElement.getAttribute("value"),"0.00","Ошибка");
         assertFieldNegativeValue(numColumn);
@@ -480,7 +479,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldFund(numColumn);
     }
     @Test()
@@ -497,7 +496,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldTotal(numColumn);
     }
     @Test()
@@ -514,7 +513,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldForSecrice(numColumn);
     }
     @Test()
@@ -531,7 +530,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldForSpecialConditions(numColumn);
     }
 
@@ -549,7 +548,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldForWorkingWithSvedConditions(numColumn);
     }
     @Test()
@@ -566,7 +565,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldForEncouragementConditions(numColumn);
     }
     @Test()
@@ -583,7 +582,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldForVacationConditions(numColumn);
     }
     @Test()
@@ -600,7 +599,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldForFundInYearConditions(numColumn);
     }
 
@@ -618,7 +617,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldForOVZConditions(numColumn);
     }
 
@@ -708,7 +707,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
 
             double str4 = interactiveDoc.getValueField(2,index);
             double str3 = interactiveDoc.getValueField(numColumn,index);
-            var raschet = str3*str4*9;
+            var raschet = str3*str4*1.5;
             aserts.assertEquals(interactiveDoc.getValueField(9,index),interactiveDoc.formulaOkruglenie2(raschet),"Ошибка в поле. Строка " + str2 + " Столбец " + str );
         }
         aserts.assertAll();
