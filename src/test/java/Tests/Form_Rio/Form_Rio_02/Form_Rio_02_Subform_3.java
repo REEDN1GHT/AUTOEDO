@@ -16,11 +16,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNotAvailableManualInputPeriodSubform2_NotAvailableManualInputPeriod() throws InterruptedException {
         int numColumn = 1;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -204,11 +200,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNameHederTableSubform2_NameHederTableSuccesful() throws InterruptedException {
         List<String> str = Arrays.asList("Период","Расчетн.ед.","Численность","Оклад","Фонд","Всего","За выслугу","За особые усл.","За раб. со свед.","Поощрение","За вып. ОВЗ","Отпуск","Фонд в год");
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -221,11 +213,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     @Test()
     public void interactivePage_CheckManualInpurTableSubform2_ManualInputTableSuccesful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -239,11 +227,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesSettlementUnitSubform2_NumberDecimalPlacesSettlementUnitSuccesful() throws InterruptedException {
         int numColumn = 2;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -256,11 +240,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesSalarySubform2_NumberDecimalPlacesSalarySuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -274,11 +254,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesFundSubform2_NumberDecimalPlacesFundSuccesful() throws InterruptedException {
         int numColumn = 5;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -292,11 +268,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesTotalSubform2_NumberDecimalPlacesTotalSuccesful() throws InterruptedException {
         int numColumn = 6;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -311,11 +283,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesForServiceSubform2_NumberDecimalPlacesForServiceSuccesful() throws InterruptedException {
         int numColumn = 7;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -329,11 +297,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesforSpecialConditionsSubform2_NumberDecimalPlacesforSpecialConditionsSuccesful() throws InterruptedException {
         int numColumn = 8;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -346,11 +310,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesForWorkingWithSvedSubform2_NumberDecimalPlacesForWorkingWithSvedSuccesful() throws InterruptedException {
         int numColumn = 9;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -363,11 +323,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesEncouragementSubform2_NumberDecimalPlacesEncouragementSuccesful() throws InterruptedException {
         int numColumn = 10;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -380,11 +336,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesOVZSubform2_NumberDecimalPlacesOVZSuccesful() throws InterruptedException {
         int numColumn = 11;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -397,11 +349,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesVacationSubform2_NumberDecimalPlacesVacationSuccesful() throws InterruptedException {
         int numColumn = 12;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -414,11 +362,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNumberDecimalPlacesFundInYearSubform2_NumberDecimalPlacesFundInYearSuccesful() throws InterruptedException {
         int numColumn = 13;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -431,11 +375,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNegativeTestFieldChislennostSubform2_NegativeTestFieldChislennostFundSuccesful() throws InterruptedException {
         int numColumn = 3;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -450,11 +390,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckNegativeTestFieldSalarySubform2_NegativeTestFieldSalaryFundSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -470,11 +406,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldFundSubform2_CalculationFieldFundSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -487,11 +419,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldTotalSubform2_CalculationFieldTotalSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -504,11 +432,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldForServiceSubform2_CalculationFieldForServiceSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -521,11 +445,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldForSpecialConditionsSubform2_CalculationFieldForSpecialConditionsSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -539,11 +459,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldForWorkingWithSvedSubform2_CalculationFieldForWorkingWithSvedSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -556,11 +472,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldEncouragementSubform2_CalculationFieldForEncouragementSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -573,11 +485,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldVacationSubform2_CalculationFieldForVacationSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -590,11 +498,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldFundInYearSubform2_CalculationFieldForFundInYearSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();
@@ -608,11 +512,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     public void interactivePage_CheckCalculationFieldOVZSubform2_CalculationFieldForOVZSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderNewRealizationFieldFormRIO();
         interactiveDoc.parsData();

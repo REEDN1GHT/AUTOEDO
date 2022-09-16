@@ -14,11 +14,7 @@ public class HeaderRio02 extends TestBase {
     @Test()
     public void interactivePage_CheckYearFormRIO_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         var str = interactiveDoc.CheckListHeaderYearformRioEDO2(interactiveDoc.yearElement);
         Assert.assertEquals(str,requestRIO.CheckListYEARformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
@@ -27,11 +23,7 @@ public class HeaderRio02 extends TestBase {
     @Test
     public void interactivePage_CheckStageFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearNewRealiz02();
         var str = interactiveDoc.CheckListHeaderYearformRioEDO2(interactiveDoc.stageElement);
@@ -41,11 +33,7 @@ public class HeaderRio02 extends TestBase {
     @Test
     public void interactivePage_CheckKbkFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
         interactiveDoc.setYearNewRealiz02();
@@ -59,11 +47,7 @@ public class HeaderRio02 extends TestBase {
     @Test()
     public void interactivePage_CheckKbkDPFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
         interactiveDoc.setYearNewRealiz02();
@@ -75,11 +59,7 @@ public class HeaderRio02 extends TestBase {
     @Test()
     public void interactivePage_CheckVersionFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
         interactiveDoc.setYearNewRealiz02();
@@ -92,11 +72,7 @@ public class HeaderRio02 extends TestBase {
     @Test()
     public void interactivePage_CheckNumberDPFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
         interactiveDoc.setYearNewRealiz02();
@@ -109,11 +85,7 @@ public class HeaderRio02 extends TestBase {
     @Test()
     public void interactivePage_VersionDPFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect2();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setYearNewRealiz02();
         interactiveDoc.parsData();
@@ -127,11 +99,7 @@ public class HeaderRio02 extends TestBase {
   @Test()
   public void interactivePage_CheckModalWindowNoKBK_Successful() throws InterruptedException {
       AuthEDO authEDO = new AuthEDO(driver, wait);
-      authEDO.authorization();
-      CabinetPage cabinetPage = new CabinetPage(driver, wait);
-      cabinetPage.createDocument();
-      cabinetPage.setSelect2();
-      cabinetPage.clickCreate();
+      authEDO.authorizationWithCabinetPage();
       InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
       interactiveDoc.parsData();
       interactiveDoc.setYearNewRealiz02();

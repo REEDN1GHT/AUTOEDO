@@ -14,9 +14,11 @@ import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
+import org.testng.annotations.Guice;
 import org.testng.annotations.Test;
 import org.testng.internal.Configuration;
 
+import javax.inject.Inject;
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -234,6 +236,13 @@ public class Test1 extends TestBase {
         } catch (ConfigurationException e) {
             e.printStackTrace();
         }
+
+    }
+
+
+    @Test
+    public void set1() throws IOException {
+        ConfigBuilder.setproperty("ADMINrole3", "Сотрудник");
 
     }
 

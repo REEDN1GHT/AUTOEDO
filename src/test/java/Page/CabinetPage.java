@@ -16,6 +16,7 @@ import java.time.Duration;
 public class CabinetPage {
     private WebDriver driver;
     private WebDriverWait wait;
+    public static String URLForm;
 
     @FindBy(id="uploadForm")
     WebElement docSelect;
@@ -50,6 +51,9 @@ public class CabinetPage {
         createDocument();
         setSelect();
         clickCreate();
+    }
+    public void parseUrlForm(){
+        URLForm = driver.getCurrentUrl();
     }
 
 }

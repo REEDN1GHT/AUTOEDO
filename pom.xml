@@ -50,6 +50,12 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>8.4.1.jre11</version>
         </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF8</project.build.sourceEncoding>
