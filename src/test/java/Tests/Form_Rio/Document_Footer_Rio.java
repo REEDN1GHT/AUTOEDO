@@ -12,11 +12,7 @@ public class Document_Footer_Rio extends TestBase {
     @Test()
     public void interactivePage_CheckFIOformRIO_Successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.parsData();
@@ -29,11 +25,7 @@ public class Document_Footer_Rio extends TestBase {
     @Test
     public void interactivePage_CheckJOBformRIO_successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.parsData();
@@ -46,11 +38,7 @@ public class Document_Footer_Rio extends TestBase {
     @Test
     public void interactivePage_CheckPHONEformRIO_successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.parsData();
@@ -63,11 +51,7 @@ public class Document_Footer_Rio extends TestBase {
     @Test
     public void interactivePage_CheckFIO_CHIEFformRIO_successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.parsData();
@@ -80,11 +64,7 @@ public class Document_Footer_Rio extends TestBase {
     @Test
     public void interactivePage_CheckJOB_CHIEFformRIO_successful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorization();
-        CabinetPage cabinetPage = new CabinetPage(driver, wait);
-        cabinetPage.createDocument();
-        cabinetPage.setSelect();
-        cabinetPage.clickCreate();
+        authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.setHeaderFieldFormRIO();
         interactiveDoc.parsData();

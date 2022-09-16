@@ -15,6 +15,8 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Objects;
 
+import static Page.CabinetPage.URLForm;
+
 
 public class AuthEDO {
     private WebDriver driver;
@@ -89,6 +91,7 @@ public class AuthEDO {
     }
     public void authorizationWithCabinetPage() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
+        CabinetPage cabinetPage = new CabinetPage(driver, wait);
         authEDO.open();
         if(authEDO.isElementPresented()==1 )
         {
@@ -99,8 +102,12 @@ public class AuthEDO {
             authEDO.waitCabinet();
             authEDO.role();
             authEDO.setButtonSignInCabinet();
+            cabinetPage.createDocument();
+            cabinetPage.setSelect();
+            cabinetPage.clickCreate();
+            cabinetPage.parseUrlForm();
         } else if(authEDO.isElementPresented()>1) {
-            driver.navigate().to("http://172.31.1.149/edo/main");
+            driver.navigate().to(URLForm);
         }
     }
 }
