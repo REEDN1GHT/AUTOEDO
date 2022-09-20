@@ -242,7 +242,8 @@ public class Test1 extends TestBase {
 
     @Test
     public void set1() throws IOException {
-        ConfigBuilder.setproperty("ADMINrole3", "Сотрудник");
+        ConfigBuilder.setproperty("EDOnamedoc", "Расчёты и обоснования, форма 02");
+        System.out.println(ConfigBuilder.getproperty("EDOnamedoc"));
 
     }
 
