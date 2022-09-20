@@ -103,7 +103,7 @@ public class AuthEDO {
             authEDO.role();
             authEDO.setButtonSignInCabinet();
             cabinetPage.createDocument();
-            cabinetPage.setSelect();
+            cabinetPage.setSelect2();
             cabinetPage.clickCreate();
             cabinetPage.parseUrlForm();
         } else if(authEDO.isElementPresented()>1) {

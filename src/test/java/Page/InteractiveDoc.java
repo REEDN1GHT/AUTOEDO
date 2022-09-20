@@ -58,6 +58,8 @@ public class InteractiveDoc{
     public WebElement versionDPNewRealiz02;
     @FindBy(id = "inn")
     public WebElement innNewRealiz02;
+    @FindBy(id = "1-name1")
+    public WebElement namePokazatel02;
     @FindBy(className = "interactive__top-nav-title")
     public WebElement foForm;
     @FindBy(xpath = "//input[@style='width: 100%;']/following::div[@class='multiselect__content-wrapper']//span[@class='multiselect__option multiselect__option--highlight']")
@@ -70,7 +72,8 @@ public class InteractiveDoc{
     public WebElement clickInputSubform;
     @FindBy(css = "span.mr-3.text-caption")
     public WebElement kolStolbtsov;
-
+    @FindBy(css=".btn.mr-2.btn-outline-primary.btn-small")
+    public WebElement buttonAddNewStringNewRealiz;
     @FindBy(xpath = "//*[text()='Руководитель']")
     public WebElement switchPlacementtoChiefformRIONewRealiz;
     public By yearElement = By.cssSelector("#year .multiselect__element");
@@ -84,7 +87,8 @@ public class InteractiveDoc{
     public By jobChief = By.cssSelector("#chiefPosition  .multiselect__element");
     public By modal2 = By.xpath("//*[text()='Загрузка документа...']");
     public By subform2String2023 = By.xpath("//tbody[@role='rowgroup']/tr[@aria-rowindex='1']/td[@role='cell']//input");
-
+    public By nameButtonAddNewStringNewRealiz = By.xpath("//button[text()=' Добавить строку ']");
+    public By namePokazatelSubform8 = By.xpath("//div[@id='1-name1']//li[@class='multiselect__element']");
     public void setYearNewRealiz02()  {
         yearNewRealiz02.sendKeys(ConfigBuilder.getproperty("yearFormRIO"));
         waitKbkFormRio02();
@@ -136,13 +140,26 @@ public class InteractiveDoc{
         inputSubform.sendKeys(str);
         inputSubform.sendKeys(Keys.ENTER);
     }
-
+    public void setNamePokazatelSubform8NewRealiz02()
+    {
+        namePokazatel02.sendKeys(ConfigBuilder.getproperty("NamePokazatel"));
+        waitKbkFormRio02();
+        selectZnach.click();
+    }
+    public boolean buttonAddStringPresented()
+    {
+    return driver.findElements(nameButtonAddNewStringNewRealiz).size() >0;
+    }
     public String getNameFieldColumnSubform2Rio02(int index){
        String fieldName = driver.findElement(By.cssSelector("th[role='columnheader']:nth-child("+index+")")).getText();
        return fieldName;
     }
     public String getNameFieldStringSubform2Rio02(int index){
         String fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='1']//input")).getAttribute("value");
+        return fieldName;
+    }
+    public String getNameColumnZnachSubform8Rio02(int index,int column){
+        String fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='"+column+"']//input")).getAttribute("value");
         return fieldName;
     }
     public int getScaleFieldSubform2Rio02(int column,int index){
@@ -187,7 +204,14 @@ public class InteractiveDoc{
         }
         return list.toString();
     }
-
+    public String proverkaColumnZnach(){
+        List<String> list = new ArrayList<>();
+        for (var i=1;i<=hasReadonlyOnString2023();i++)
+        {
+            list.add(getNameColumnZnachSubform8Rio02(i,2));
+        }
+        return list.toString();
+    }
     public String CheckListHeaderYearformRioEDO2(By str) {
         List<String> myValuess = driver.findElements(str)
                 .stream()
@@ -233,93 +257,7 @@ public class InteractiveDoc{
     public boolean hasReadonlyOnString(int column,int index){
         return Boolean.parseBoolean(driver.findElement(By.xpath("//tbody[@role='rowgroup']/tr[@aria-rowindex='"+column+"']/td[@aria-colindex='"+index+"']//input")).getAttribute("readonly"));
     }
-/*
-    public float formulaForTheFundField(float str, float str2)
-    {
-        var raschet = str*str2*12/1000;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(1, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForTheTotalField(float str3, float str4,float str5,float str6,float str7)
-    {
-        var raschet = (str3+str4+str5+str6+str7)/1000;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(1, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForTheTotalSubform3Field(float str3, float str4,float str5,float str6,float str7,float str8)
-    {
-        var raschet = (str3+str4+str5+str6+str7+str8)/1000;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(1, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForTheService(float str3, float str4)
-    {
-        var raschet = str3*str4*3;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForTheServiceSubform3(float str3, float str4)
-    {
-        var raschet = str3*str4*2;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForSpecicalConditionsField(float str3, float str4)
-    {
-        var raschet = str3*str4*11;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForSpecicalConditionsFieldSubform3(float str3, float str4)
-    {
-        var raschet = str3*str4*10;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForWorkingWithSvedField(float str3, float str4)
-    {
-        var raschet = str3*str4*9;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForEncouragementField(float str3, float str4)
-    {
-        var raschet = str3*str4*4;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForVacationField(float str3, float str4)
-    {
-        var raschet = str3*str4*3;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForFundInYearField(float str3, float str4)
-    {
-        var raschet = str3+str4;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
-    public float formulaForFundOVZField(float str3, float str4)
-    {
-        var raschet = str3*str4*1;
-        System.out.println(raschet);
-        dataField = new BigDecimal(raschet).setScale(2, RoundingMode.HALF_UP);
-        return Float.parseFloat(String.valueOf(dataField));
-    }
 
- */
     public double formulaOkryglenie1(double str3)
     {
         BigDecimal df = new BigDecimal(Double.toString(str3));
