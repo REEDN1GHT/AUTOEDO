@@ -73,7 +73,7 @@ public class AuthEDO {
     public void waitCabinet() {
         wait.until(ExpectedConditions.elementToBeClickable(buttonSignInCabinet));
     }
-    public void authorization() throws InterruptedException {
+    public void authorization() {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.open();
         if(authEDO.isElementPresented()==1 )
@@ -89,7 +89,7 @@ public class AuthEDO {
             driver.navigate().to("http://172.31.1.149/edo/main");
         }
     }
-    public void authorizationWithCabinetPage() throws InterruptedException {
+    public void authorizationWithCabinetPage() {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         CabinetPage cabinetPage = new CabinetPage(driver, wait);
         authEDO.open();

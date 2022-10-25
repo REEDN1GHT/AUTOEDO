@@ -246,7 +246,17 @@ public class Test1 extends TestBase {
         System.out.println(ConfigBuilder.getproperty("EDOnamedoc"));
 
     }
-
+    @Test(invocationCount=7)
+    public void testCreateDoc() throws IOException, InterruptedException {
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorization();
+        CabinetPage cabinetPage=new CabinetPage(driver,wait);
+        cabinetPage.createDocument();
+        cabinetPage.setSelect2();
+        cabinetPage.clickCreate();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        Assert.assertEquals(interactiveDoc.webElements.getAttribute("value"),"Расчёты и обоснования, форма 02");
+    }
 }
 
 

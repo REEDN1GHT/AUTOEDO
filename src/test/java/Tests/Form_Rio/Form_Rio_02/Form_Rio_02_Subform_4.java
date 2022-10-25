@@ -328,32 +328,6 @@ public class Form_Rio_02_Subform_4 extends TestBase {
         interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         proverka4(numColumn);
     }
-    @Test()
-    public void interactivePage_CheckNegativeTestFieldChislennostSubform2_NegativeTestFieldChislennostFundSuccesful() throws InterruptedException {
-        int numColumn = 3;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
-        assertFieldNegativeValue(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckNegativeTestFieldSalarySubform2_NegativeTestFieldSalaryFundSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
-        assertFieldNegativeValue(numColumn);
-    }
 
     @Test()
     public void interactivePage_CheckCalculationFieldFundSubform2_CalculationFieldFundSuccesful() throws InterruptedException {
@@ -473,6 +447,32 @@ public class Form_Rio_02_Subform_4 extends TestBase {
         zagruzkaDocumenta();
         interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
         assertFieldForOVZConditions(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNegativeTestFieldChislennostSubform2_NegativeTestFieldChislennostFundSuccesful() throws InterruptedException {
+        int numColumn = 3;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        assertFieldNegativeValue(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNegativeTestFieldSalarySubform2_NegativeTestFieldSalaryFundSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("4. Расчет фонда оплаты труда по государственным должностям");
+        assertFieldNegativeValue(numColumn);
     }
 
     public void assertFieldForOVZConditions(int numColumn) throws InterruptedException {

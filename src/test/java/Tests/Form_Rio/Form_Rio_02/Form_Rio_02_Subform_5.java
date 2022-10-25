@@ -396,47 +396,7 @@ public class Form_Rio_02_Subform_5 extends TestBase {
         interactiveDoc.setSubformRio02(nameSubform);
         proverka4(numColumn);
     }
-    @Test()
-    public void interactivePage_CheckNegativeTestFieldChislennostSubform2_NegativeTestFieldChislennostFundSuccesful() throws InterruptedException {
-        int numColumn = 3;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02(nameSubform);
-        assertFieldNegativeValue(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckNegativeTestPlacesExpenseOfFBFundsSubform2_NegativeTestFieldPlacesExpenseOfFBFunds() throws InterruptedException {
-        int numColumn = 15;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02(nameSubform);
-
-        assertFieldNegativeValue(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckNegativeTestFieldSalarySubform2_NegativeTestFieldSalaryFundSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02(nameSubform);
-        assertFieldNegativeValue(numColumn);
-    }
-    @Test()
+     @Test()
     public void interactivePage_CheckCalculationFieldFundSubform2_CalculationFieldFundSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -565,6 +525,46 @@ public class Form_Rio_02_Subform_5 extends TestBase {
         zagruzkaDocumenta();
         interactiveDoc.setSubformRio02(nameSubform);
         assertFieldForOVZConditions(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNegativeTestFieldChislennostSubform2_NegativeTestFieldChislennostFundSuccesful() throws InterruptedException {
+        int numColumn = 3;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02(nameSubform);
+        assertFieldNegativeValue(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNegativeTestPlacesExpenseOfFBFundsSubform2_NegativeTestFieldPlacesExpenseOfFBFunds() throws InterruptedException {
+        int numColumn = 15;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02(nameSubform);
+
+        assertFieldNegativeValue(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNegativeTestFieldSalarySubform2_NegativeTestFieldSalaryFundSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02(nameSubform);
+        assertFieldNegativeValue(numColumn);
     }
 
     public void assertFieldForOVZConditions(int numColumn) throws InterruptedException {

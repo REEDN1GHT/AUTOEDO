@@ -3,13 +3,17 @@ package Tests.Form_Rio.Form_Rio_02;
 import Page.AuthEDO;
 import Page.CabinetPage;
 import Page.InteractiveDoc;
+import Resources.ConfigBuilder;
 import Tests.TestBase;
 import org.testng.Assert;
 import org.testng.SkipException;
 import org.testng.annotations.Test;
 
+import javax.swing.*;
+
 public class HeaderRio02 extends TestBase {
     public static String vrFormRio = "121";
+
    // @Test(invocationCount = 10)
     @Test()
     public void interactivePage_CheckYearFormRIO_Successfull() throws InterruptedException {
@@ -22,6 +26,7 @@ public class HeaderRio02 extends TestBase {
     }
     @Test
     public void interactivePage_CheckStageFormRio_Successfull() throws InterruptedException {
+
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
@@ -30,6 +35,7 @@ public class HeaderRio02 extends TestBase {
         Assert.assertEquals(str,requestRIO.CheckListSTAGEformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
 
     }
+
     @Test
     public void interactivePage_CheckKbkFormRio_Successfull() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
@@ -37,11 +43,11 @@ public class HeaderRio02 extends TestBase {
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
         interactiveDoc.setYearNewRealiz02();
+        ConfigBuilder.setproperty("stageFormRIO","01");
         interactiveDoc.setStageNewRealiz02();
         checkAppearanceModalWindow();
         var str = interactiveDoc.CheckListHeaderYearformRioEDO2(interactiveDoc.kbkElement);
         Assert.assertEquals(str,requestRIO.CheckKBKformRIO(),"Справочник ЭДО не соответствует справочнику в БД");
-
     }
 
     @Test()
@@ -51,6 +57,7 @@ public class HeaderRio02 extends TestBase {
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
         interactiveDoc.parsData();
         interactiveDoc.setYearNewRealiz02();
+        ConfigBuilder.setproperty("stageFormRIO","01 ДП");
         interactiveDoc.setStageDPNewRealiz02();
         checkAppearanceModalWindow();
         var str = interactiveDoc.CheckListHeaderYearformRioEDO2(interactiveDoc.kbkElement);

@@ -22,6 +22,8 @@ public class CabinetPage {
     WebElement docSelect;
     @FindBy(id="upload")
     public WebElement buttonUpload;
+
+    private By waitModalCreateDoc = By.cssSelector("#createDocModal .h5");
     public CabinetPage(WebDriver driver,WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
@@ -33,25 +35,31 @@ public class CabinetPage {
         WebElement shadowContent = shadowRoot.findElement(By.cssSelector("#createDocumentButton"));
         shadowContent.click();
     }
-    public void setSelect() throws InterruptedException {
+    public void setSelect() {
         var viborDoc = new Select(docSelect);
-        Thread.sleep(1000);
+        setWaitModalCreateDoc();
         viborDoc.selectByVisibleText(ConfigBuilder.getproperty("EDOnamedoc"));
     }
-    public void setSelect2() throws InterruptedException {
+    public void setSelect2() {
         var viborDoc = new Select(docSelect);
-        Thread.sleep(1000);
+        setWaitModalCreateDoc();
         viborDoc.selectByVisibleText(ConfigBuilder.getproperty("EDOnamedoc2"));
     }
     public void clickCreate()
     {
         buttonUpload.click();
     }
-    public void openInteractiveFormDocument() throws InterruptedException {
+    public void openInteractiveFormDocument() {
         createDocument();
         setSelect();
         clickCreate();
     }
+    public void setWaitModalCreateDoc()
+    {
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(5));
+        newWait.until(ExpectedConditions.textToBePresentInElementLocated(waitModalCreateDoc,"Новый документ"));
+    }
+
     public void parseUrlForm(){
         URLForm = driver.getCurrentUrl();
     }

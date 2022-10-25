@@ -12,6 +12,9 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Form_Rio_02_Subform_8 extends TestBase {
+    String nameSubform5 = "5. Расчет фонда оплаты труда по государственным гражданским служащим Санкт-Петербурга";
+    String nameSubform6 = "6. Расчет фонда оплаты труда по работникам, замещающим должности, не являющиеся должностями государственной гражданской службы";
+    String nameSubform7 = "7. Расчет фонда оплаты труда рабочих в органах государственной власти и иных органах Санкт-Петербурга";
     String nameSubform = "8. Расчет фонда оплаты труда по государственным гражданским служащим, работникам, замещающим должности, не являющиеся должностями государственной гражданской службы Санкт-Петербурга и рабочих в органах государственной власти, содержание которых, производится за счет средств федерального бюджета";
     @Test()
     public void interactivePage_CheckNameHederTableSubform8_NameHederTableSuccesful() throws InterruptedException {
@@ -23,7 +26,8 @@ public class Form_Rio_02_Subform_8 extends TestBase {
         interactiveDoc.parsData();
         interactiveDoc.waitNewRealizSubformRio();
         zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02(nameSubform);
+        Thread.sleep(1000);
+        interactiveDoc.setSubformRio00(nameSubform);
         Assert.assertEquals(interactiveDoc.proverka2(),str.toString(),"Ошибка");
     }
     @Test()
@@ -110,7 +114,7 @@ public class Form_Rio_02_Subform_8 extends TestBase {
         proverka4(numColumn);
     }
     @Test()
-    public void interactivePage_CheckNamePeriodTableSubform8_NameHederTableSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNamePeriodTableSubform1_NameHederTableSuccesful() throws InterruptedException {
         List<String> str = Arrays.asList("2023","2024","2025");
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -124,6 +128,72 @@ public class Form_Rio_02_Subform_8 extends TestBase {
         interactiveDoc.setNamePokazatelSubform8NewRealiz02();
         Assert.assertEquals(interactiveDoc.proverkaColumnZnach(),str.toString(),"Ошибка");
 
+    }
+    @Test()
+    public void interactivePage_CheckZnachFundInYear2023TableSubform8_ZnachFundInYearSuccesful() throws InterruptedException {
+        int numString2023 = 1;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02(nameSubform5);
+        float fundInYearSubform5 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform6);
+        float fundInYearSubform6 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform7);
+        float fundInYearSubform7 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform);
+        interactiveDoc.buttonAddNewStringNewRealiz.click();
+        interactiveDoc.setNamePokazatelSubform8NewRealiz02();
+        float sum = fundInYearSubform5+fundInYearSubform6+fundInYearSubform7;
+        Assert.assertEquals(interactiveDoc.getLastField(numString2023),interactiveDoc.formulaOkryglenie1(sum),"Данные подтянулись не корректно");
+    }
+    @Test()
+    public void interactivePage_CheckZnachFundInYear2024TableSubform8_ZnachFundInYearSuccesful() throws InterruptedException {
+        int numString2023 = 2;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02(nameSubform5);
+        float fundInYearSubform5 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform6);
+        float fundInYearSubform6 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform7);
+        float fundInYearSubform7 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform);
+        interactiveDoc.buttonAddNewStringNewRealiz.click();
+        interactiveDoc.setNamePokazatelSubform8NewRealiz02();
+        float sum = fundInYearSubform5+fundInYearSubform6+fundInYearSubform7;
+        Assert.assertEquals(interactiveDoc.getLastField(numString2023),interactiveDoc.formulaOkryglenie1(sum),"Данные подтянулись не корректно");
+    }
+    @Test()
+    public void interactivePage_CheckZnachFundInYear2025TableSubform8_ZnachFundInYearSuccesful() throws InterruptedException {
+        int numString2023 = 3;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02(nameSubform5);
+        float fundInYearSubform5 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform6);
+        float fundInYearSubform6 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform7);
+        float fundInYearSubform7 = interactiveDoc.setAndGetField(numString2023);
+        interactiveDoc.setSubformRio02(nameSubform);
+        interactiveDoc.buttonAddNewStringNewRealiz.click();
+        interactiveDoc.setNamePokazatelSubform8NewRealiz02();
+        float sum = fundInYearSubform5+fundInYearSubform6+fundInYearSubform7;
+        Assert.assertEquals(interactiveDoc.getLastField(numString2023),interactiveDoc.formulaOkryglenie1(sum),"Данные подтянулись не корректно");
     }
 
     public void proverka(InteractiveDoc interactiveDoc,int numColumn){

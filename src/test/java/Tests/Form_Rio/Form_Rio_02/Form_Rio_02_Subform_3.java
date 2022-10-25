@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Form_Rio_02_Subform_3 extends TestBase {
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputPeriodSubform2_NotAvailableManualInputPeriod() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputPeriodSubform3_NotAvailableManualInputPeriod() throws InterruptedException {
         int numColumn = 1;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -26,7 +26,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputCalculatedUnitsSubform2_NotAvailableManualInputCalculatedUnits() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputCalculatedUnitsSubform3_NotAvailableManualInputCalculatedUnits() throws InterruptedException {
         int numColumn = 2;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -43,7 +43,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputFundSubform2_NotAvailableManualInputFund() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputFundSubform3_NotAvailableManualInputFund() throws InterruptedException {
         int numColumn = 5;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -60,7 +60,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputTotalSubform2_NotAvailableManualInputTotal() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputTotalSubform3_NotAvailableManualInputTotal() throws InterruptedException {
         int numColumn = 6;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -77,7 +77,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputForServiceSubform2_NotAvailableManualInputForService() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputForServiceSubform3_NotAvailableManualInputForService() throws InterruptedException {
         int numColumn = 7;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -94,7 +94,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputForSpecialConditionsSubform2_NotAvailableManualInputForSpecialConditions() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputForSpecialConditionsSubform3_NotAvailableManualInputForSpecialConditions() throws InterruptedException {
         int numColumn = 8;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -111,7 +111,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputForWorkingWithSvedSubform2_NotAvailableManualInputForWorkingWithSved() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputForWorkingWithSvedSubform3_NotAvailableManualInputForWorkingWithSved() throws InterruptedException {
         int numColumn = 9;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -128,7 +128,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputEncouragementSubform2_NotAvailableManualInputEncouragement() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputEncouragementSubform3_NotAvailableManualInputEncouragement() throws InterruptedException {
         int numColumn = 10;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -145,7 +145,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputOVZSubform2_NotAvailableManualInputOVZ() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputOVZSubform3_NotAvailableManualInputOVZ() throws InterruptedException {
         int numColumn = 11;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -162,7 +162,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputVacationSubform2_NotAvailableManualInputVacation() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputVacationSubform3_NotAvailableManualInputVacation() throws InterruptedException {
         int numColumn = 12;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -179,7 +179,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka(interactiveDoc,numColumn);
     }
     @Test()
-    public void interactivePage_CheckNotAvailableManualInputFundInYearSubform2_NotAvailableManualInputFundInYear() throws InterruptedException {
+    public void interactivePage_CheckNotAvailableManualInputFundInYearSubform3_NotAvailableManualInputFundInYear() throws InterruptedException {
         int numColumn = 13;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorization();
@@ -197,7 +197,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     }
 
     @Test()
-    public void interactivePage_CheckNameHederTableSubform2_NameHederTableSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNameHederTableSubform3_NameHederTableSuccesful() throws InterruptedException {
         List<String> str = Arrays.asList("Период","Расчетн.ед.","Численность","Оклад","Фонд","Всего","За выслугу","За особые усл.","За раб. со свед.","Поощрение","За вып. ОВЗ","Отпуск","Фонд в год");
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -211,7 +211,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     }
 
     @Test()
-    public void interactivePage_CheckManualInpurTableSubform2_ManualInputTableSuccesful() throws InterruptedException {
+    public void interactivePage_CheckManualInpurTableSubform3_ManualInputTableSuccesful() throws InterruptedException {
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
         InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
@@ -224,7 +224,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         // Assert.assertEquals(proverka2(interactiveDoc),str.toString(),"Ошибка");
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesSettlementUnitSubform2_NumberDecimalPlacesSettlementUnitSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesSettlementUnitSubform3_NumberDecimalPlacesSettlementUnitSuccesful() throws InterruptedException {
         int numColumn = 2;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -237,7 +237,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka4(numColumn);
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesSalarySubform2_NumberDecimalPlacesSalarySuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesSalarySubform3_NumberDecimalPlacesSalarySuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -251,7 +251,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         //  aserts.assertAll();
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesFundSubform2_NumberDecimalPlacesFundSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesFundSubform3_NumberDecimalPlacesFundSuccesful() throws InterruptedException {
         int numColumn = 5;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -265,7 +265,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         //  aserts.assertAll();
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesTotalSubform2_NumberDecimalPlacesTotalSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesTotalSubform3_NumberDecimalPlacesTotalSuccesful() throws InterruptedException {
         int numColumn = 6;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -280,7 +280,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
 
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesForServiceSubform2_NumberDecimalPlacesForServiceSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesForServiceSubform3_NumberDecimalPlacesForServiceSuccesful() throws InterruptedException {
         int numColumn = 7;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -294,7 +294,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
     }
 
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesforSpecialConditionsSubform2_NumberDecimalPlacesforSpecialConditionsSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesforSpecialConditionsSubform3_NumberDecimalPlacesforSpecialConditionsSuccesful() throws InterruptedException {
         int numColumn = 8;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -307,7 +307,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka5(numColumn);
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesForWorkingWithSvedSubform2_NumberDecimalPlacesForWorkingWithSvedSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesForWorkingWithSvedSubform3_NumberDecimalPlacesForWorkingWithSvedSuccesful() throws InterruptedException {
         int numColumn = 9;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -320,7 +320,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka5(numColumn);
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesEncouragementSubform2_NumberDecimalPlacesEncouragementSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesEncouragementSubform3_NumberDecimalPlacesEncouragementSuccesful() throws InterruptedException {
         int numColumn = 10;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -333,7 +333,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka5(numColumn);
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesOVZSubform2_NumberDecimalPlacesOVZSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesOVZSubform3_NumberDecimalPlacesOVZSuccesful() throws InterruptedException {
         int numColumn = 11;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -346,7 +346,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka5(numColumn);
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesVacationSubform2_NumberDecimalPlacesVacationSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesVacationSubform3_NumberDecimalPlacesVacationSuccesful() throws InterruptedException {
         int numColumn = 12;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -359,7 +359,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         proverka5(numColumn);
     }
     @Test()
-    public void interactivePage_CheckNumberDecimalPlacesFundInYearSubform2_NumberDecimalPlacesFundInYearSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNumberDecimalPlacesFundInYearSubform3_NumberDecimalPlacesFundInYearSuccesful() throws InterruptedException {
         int numColumn = 13;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -371,8 +371,128 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
         proverka4(numColumn);
     }
+
     @Test()
-    public void interactivePage_CheckNegativeTestFieldChislennostSubform2_NegativeTestFieldChislennostFundSuccesful() throws InterruptedException {
+    public void interactivePage_CheckCalculationFieldFundSubform3_CalculationFieldFundSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldFund(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckCalculationFieldTotalSubform3_CalculationFieldTotalSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldTotal(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckCalculationFieldForServiceSubform3_CalculationFieldForServiceSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldForSecrice(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckCalculationFieldForSpecialConditionsSubform3_CalculationFieldForSpecialConditionsSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldForSpecialConditions(numColumn);
+    }
+
+    @Test()
+    public void interactivePage_CheckCalculationFieldForWorkingWithSvedSubform3_CalculationFieldForWorkingWithSvedSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldForWorkingWithSvedConditions(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckCalculationFieldEncouragementSubform3_CalculationFieldForEncouragementSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldForEncouragementConditions(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckCalculationFieldVacationSubform3_CalculationFieldForVacationSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldForVacationConditions(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckCalculationFieldFundInYearSubform3_CalculationFieldForFundInYearSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldForFundInYearConditions(numColumn);
+    }
+
+    @Test()
+    public void interactivePage_CheckCalculationFieldOVZSubform3_CalculationFieldForOVZSuccesful() throws InterruptedException {
+        int numColumn = 4;
+        AuthEDO authEDO = new AuthEDO(driver, wait);
+        authEDO.authorizationWithCabinetPage();
+        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
+        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
+        interactiveDoc.parsData();
+        interactiveDoc.waitNewRealizSubformRio();
+        zagruzkaDocumenta();
+        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
+        assertFieldForOVZConditions(numColumn);
+    }
+    @Test()
+    public void interactivePage_CheckNegativeTestFieldChislennostSubform3_NegativeTestFieldChislennostFundSuccesful() throws InterruptedException {
         int numColumn = 3;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -387,7 +507,7 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         assertFieldNegativeValue(numColumn);
     }
     @Test()
-    public void interactivePage_CheckNegativeTestFieldSalarySubform2_NegativeTestFieldSalaryFundSuccesful() throws InterruptedException {
+    public void interactivePage_CheckNegativeTestFieldSalarySubform3_NegativeTestFieldSalaryFundSuccesful() throws InterruptedException {
         int numColumn = 4;
         AuthEDO authEDO = new AuthEDO(driver, wait);
         authEDO.authorizationWithCabinetPage();
@@ -400,126 +520,6 @@ public class Form_Rio_02_Subform_3 extends TestBase {
         // interactiveDoc.webElement.sendKeys("ewqdwqf");
         // Assert.assertEquals(interactiveDoc.webElement.getAttribute("value"),"0.00","Ошибка");
         assertFieldNegativeValue(numColumn);
-    }
-
-    @Test()
-    public void interactivePage_CheckCalculationFieldFundSubform2_CalculationFieldFundSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldFund(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckCalculationFieldTotalSubform2_CalculationFieldTotalSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldTotal(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckCalculationFieldForServiceSubform2_CalculationFieldForServiceSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldForSecrice(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckCalculationFieldForSpecialConditionsSubform2_CalculationFieldForSpecialConditionsSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldForSpecialConditions(numColumn);
-    }
-
-    @Test()
-    public void interactivePage_CheckCalculationFieldForWorkingWithSvedSubform2_CalculationFieldForWorkingWithSvedSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldForWorkingWithSvedConditions(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckCalculationFieldEncouragementSubform2_CalculationFieldForEncouragementSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldForEncouragementConditions(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckCalculationFieldVacationSubform2_CalculationFieldForVacationSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldForVacationConditions(numColumn);
-    }
-    @Test()
-    public void interactivePage_CheckCalculationFieldFundInYearSubform2_CalculationFieldForFundInYearSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldForFundInYearConditions(numColumn);
-    }
-
-    @Test()
-    public void interactivePage_CheckCalculationFieldOVZSubform2_CalculationFieldForOVZSuccesful() throws InterruptedException {
-        int numColumn = 4;
-        AuthEDO authEDO = new AuthEDO(driver, wait);
-        authEDO.authorizationWithCabinetPage();
-        InteractiveDoc interactiveDoc = new InteractiveDoc(driver,wait);
-        interactiveDoc.setHeaderNewRealizationFieldFormRIO();
-        interactiveDoc.parsData();
-        interactiveDoc.waitNewRealizSubformRio();
-        zagruzkaDocumenta();
-        interactiveDoc.setSubformRio02("3. Расчет фонда оплаты труда Председателя Законодательного собрания Санкт-Петербурга");
-        assertFieldForOVZConditions(numColumn);
     }
 
     public void assertFieldForOVZConditions(int numColumn) throws InterruptedException {

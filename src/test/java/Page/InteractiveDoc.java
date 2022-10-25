@@ -42,7 +42,8 @@ public class InteractiveDoc{
     @FindBy (css=".swal2-actions.swal2-loading")
     private By loaderDoc = By.id("swal2-title");
 
-
+    @FindBy(css=".interactive__top-nav-title")
+    WebElement webElements;
 
 
     //РИО новая реализация
@@ -66,9 +67,9 @@ public class InteractiveDoc{
     public WebElement selectZnach;
     @FindBy(css = ".interactive__top-nav-title>sup")
     public WebElement sozdanieNovDoc;
-    @FindBy(css="[placeholder='Select option']")
+    @FindBy(xpath="//div[@preselect-first='true']//input")
     public WebElement inputSubform;
-    @FindBy(xpath="//*[@placeholder='Select option']/parent::div")
+    @FindBy(xpath="//div[@class='multiselect e-select e-select--light e-select--large']/div[@class='multiselect__tags']")
     public WebElement clickInputSubform;
     @FindBy(css = "span.mr-3.text-caption")
     public WebElement kolStolbtsov;
@@ -78,6 +79,7 @@ public class InteractiveDoc{
     public WebElement switchPlacementtoChiefformRIONewRealiz;
     public By yearElement = By.cssSelector("#year .multiselect__element");
     public By stageElement = By.cssSelector("#stage .multiselect__element");
+    public By elementNameIndicator = By.xpath("//*[@id='3-name1']//li[@class='multiselect__element']");
     public By kbkElement = By.cssSelector("#kbk .multiselect__element");
     public By versionElement = By.cssSelector("#version .multiselect__element");
     public By fioIspolnitel = By.cssSelector("#executorName .multiselect__element");
@@ -87,14 +89,17 @@ public class InteractiveDoc{
     public By jobChief = By.cssSelector("#chiefPosition  .multiselect__element");
     public By modal2 = By.xpath("//*[text()='Загрузка документа...']");
     public By subform2String2023 = By.xpath("//tbody[@role='rowgroup']/tr[@aria-rowindex='1']/td[@role='cell']//input");
+    public By subformkolstolb = By.xpath("//th[@role='columnheader']");
     public By nameButtonAddNewStringNewRealiz = By.xpath("//button[text()=' Добавить строку ']");
     public By namePokazatelSubform8 = By.xpath("//div[@id='1-name1']//li[@class='multiselect__element']");
+
     public void setYearNewRealiz02()  {
         yearNewRealiz02.sendKeys(ConfigBuilder.getproperty("yearFormRIO"));
         waitKbkFormRio02();
         selectZnach.click();
 
     }
+
     public void setStageNewRealiz02() {
         stageNewRealiz02.sendKeys(ConfigBuilder.getproperty("stageFormRIO"));
         waitKbkFormRio02();
@@ -115,7 +120,8 @@ public class InteractiveDoc{
     }
     public void waitKbkFormRio02()
     {
-        wait.until(ExpectedConditions.visibilityOf(selectZnach));
+        WebDriverWait newWait = new WebDriverWait(driver,Duration.ofSeconds(10));
+        newWait.until(ExpectedConditions.visibilityOf(selectZnach));
     }
     public void setKbkDPNewRealiz02() {
         kbkNewRealiz02.sendKeys(ConfigBuilder.getproperty("kbkDPFormRIO"));
@@ -135,8 +141,15 @@ public class InteractiveDoc{
         waitKbkFormRio02();
         selectZnach.click();
     }
-    public void setSubformRio02(String str){
+    public void setSubformRio00(String str) throws InterruptedException {
         clickInputSubform.click();
+        inputSubform.sendKeys(str);
+        inputSubform.sendKeys(Keys.ENTER);
+    }
+    public void setSubformRio02(String str)  {
+
+        clickInputSubform.click();
+
         inputSubform.sendKeys(str);
         inputSubform.sendKeys(Keys.ENTER);
     }
@@ -151,7 +164,7 @@ public class InteractiveDoc{
     return driver.findElements(nameButtonAddNewStringNewRealiz).size() >0;
     }
     public String getNameFieldColumnSubform2Rio02(int index){
-       String fieldName = driver.findElement(By.cssSelector("th[role='columnheader']:nth-child("+index+")")).getText();
+       String fieldName = driver.findElement(By.xpath("//th[@aria-colindex='"+index+"']/div[1]")).getText();
        return fieldName;
     }
     public String getNameFieldStringSubform2Rio02(int index){
@@ -173,7 +186,7 @@ public class InteractiveDoc{
     public void setFieldSubform2Rio02(int column,int index) {
         WebElement fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+index+"']/td[@aria-colindex='"+column+"']//input"));
         fieldName.sendKeys(Keys.CONTROL+"A");
-        fieldName.sendKeys("15.60");
+        fieldName.sendKeys("15");
         fieldName.sendKeys(Keys.TAB);
     }
     //@FindBy(xpath = "//tbody[@role='rowgroup']/tr[@aria-rowindex='1']/td[@aria-colindex='4']//input")
@@ -194,11 +207,21 @@ public class InteractiveDoc{
         String str =fieldName.getAttribute("value").replaceAll(" ","");
         return Double.parseDouble(str);
     }
-
-
+    public float setAndGetField(int numString) throws InterruptedException {
+        WebElement fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+numString+"']//td[@role='cell'][last()]//input"));
+        fieldName.sendKeys(Keys.CONTROL+"A");
+        fieldName.sendKeys("154.2");
+        //fieldName.sendKeys(Keys.TAB);
+        return Float.parseFloat(fieldName.getAttribute("value"));
+    }
+    public double getLastField(int numString){
+        WebElement fieldName = driver.findElement(By.xpath("//tr[@aria-rowindex='"+numString+"']//td[@role='cell'][last()]//input"));
+        return Double.parseDouble(fieldName.getAttribute("value"));
+    }
     public String proverka2(){
         List<String> list = new ArrayList<>();
-        for (var i=1;i<=hasReadonlyOnString2023();i++)
+
+        for (var i=1;i<=headerColSize();i++)
         {
             list.add(getNameFieldColumnSubform2Rio02(i));
         }
@@ -212,11 +235,12 @@ public class InteractiveDoc{
         }
         return list.toString();
     }
+
     public String CheckListHeaderYearformRioEDO2(By str) {
         List<String> myValuess = driver.findElements(str)
                 .stream()
                 .map(option -> option.getAttribute("innerText").trim())
-                .sorted()
+                //.sorted()
                 .collect(Collectors.toList());
         //if (Objects.equals(myValuess.get(0), "\u00a0")) {
         //    myValuess.set(0, " ");
@@ -234,7 +258,7 @@ public class InteractiveDoc{
         List list = driver.findElements(By.cssSelector(".swal2-popup.swal2-modal.swal2-show"));
         return list.size()>0;
     }
-    public void setHeaderNewRealizationFieldFormRIO() throws InterruptedException {
+    public void setHeaderNewRealizationFieldFormRIO(){
         setYearNewRealiz02();
         setStageNewRealiz02();
         setKbkNewRealiz02();
@@ -250,6 +274,10 @@ public class InteractiveDoc{
     }
     public int hasReadonlyOnString2023(){
         List sizeColumn = driver.findElements(subform2String2023);
+        return sizeColumn.size();
+    }
+    public int headerColSize(){
+        List sizeColumn = driver.findElements(subformkolstolb);
         return sizeColumn.size();
     }
 
@@ -582,11 +610,9 @@ public class InteractiveDoc{
     }
 
 
-    public void parsData() throws InterruptedException {
-        Thread.sleep(3000);
+    public void parsData(){
         setiNNGRBS();
         setFoFormNewRIO();
-        //setFoFormRIO();
     }
 
     public void setHeaderFieldFormRIO() throws InterruptedException

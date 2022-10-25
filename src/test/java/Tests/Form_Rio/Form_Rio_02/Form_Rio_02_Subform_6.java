@@ -225,6 +225,7 @@ public class Form_Rio_02_Subform_6 extends TestBase {
         interactiveDoc.setSubformRio02(nameSubform);
         assertFieldNegativeValue(numColumn);
     }
+
     @Test()
     public void interactivePage_CheckNotAvailableManualInputPeriodSubform2_NotAvailableManualInputPeriod() throws InterruptedException {
         int numColumn = 1;

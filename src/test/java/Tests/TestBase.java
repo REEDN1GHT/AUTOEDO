@@ -13,6 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.*;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -22,7 +23,9 @@ import java.time.Duration;
     public class TestBase {
     protected static WebDriver driver;
     protected static WebDriverWait wait;
+    protected static JFrame jFrame;
     public static BD con = new BD();
+    public static String getMessage;
     public BD_Request_Monthly_Report_0503117 request = new BD_Request_Monthly_Report_0503117();
     public BD_Request_Main_FormRIO requestRIO = new BD_Request_Main_FormRIO();
     public BD_Requests_11formRIO_TableOne requests_11formRIO_tableOne = new BD_Requests_11formRIO_TableOne();
@@ -32,6 +35,7 @@ import java.time.Duration;
         con.getConnectionBudget22();
         con.getConnectionBudget21();
         System.setProperty("webdriver.chrome.driver","drivers\\chromedriver.exe");
+        //
         driver = new ChromeDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         driver.manage().window().maximize();
@@ -45,5 +49,11 @@ import java.time.Duration;
         con.closeConnectBudget22();
         con.closeConnectBudget21();
         driver.quit();
+    }
+
+    public void sss()
+    {
+        jFrame = new JFrame();
+        getMessage = JOptionPane.showInputDialog(jFrame, "Enter your message");
     }
 }

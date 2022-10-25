@@ -79,11 +79,45 @@ public class BD_Requests_02formRIO extends BD {
                     "    @PHONE=null,\n" +
                     "    @FIO_CHIEF=null,\n" +
                     "    @JOB_CHIEF=null,\n" +
-                    "    @YEAR='2022'";
+                    "    @YEAR=\'"+yearFormRIO+"\'";
 
             ResultSet Result2 = statement1.executeQuery(sql);
             while (Result2.next()) {
                 String name = Result2.getString("Наименование");
+                RDOCID.add(name);
+            }
+        } catch (SQLException | ClassNotFoundException throwables) {
+            throwables.printStackTrace();
+        }
+        return RDOCID.toString();
+    }
+    public String CheckNamePokazatelSubform1() {
+        List<String> RDOCID = new ArrayList<>();
+        try {
+            Statement statement1 = getConnectionBudget22().createStatement();
+            String sql ="Execute dbo.FO_Doc_List\n" +
+                    "@FieldName='FO_NAME1',\n" +
+                    "@GroupName='7830002430/1599',\n" +
+                    "@DOCID=null,\n" +
+                    "@DOCID_Old=null,\n" +
+                    "@CPR_CCS_FULL_CVR=null,\n" +
+                    "@CUL_PARENT=null,\n" +
+                    "@FO=null,\n" +
+                    "@STAGE=null,\n" +
+                    "@VER_DP=null,\n" +
+                    "@CTD_SUB='021',\n" +
+                    "@CPR_CCS_FULL_CVR_Old=Null,\n" +
+                    "@FIO=null,\n" +
+                    "@JOB=null,\n" +
+                    "@PHONE=null,\n" +
+                    "@FIO_CHIEF=null,\n" +
+                    "@JOB_CHIEF=null,\n" +
+                    "\n" +
+                    "@YEAR=\'"+yearFormRIO+"\'";
+
+            ResultSet Result2 = statement1.executeQuery(sql);
+            while (Result2.next()) {
+                String name = Result2.getString("Наимнование");
                 RDOCID.add(name);
             }
         } catch (SQLException | ClassNotFoundException throwables) {
